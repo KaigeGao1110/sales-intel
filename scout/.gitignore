@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+data/snapshots/
+data/companies.json
+data/alerts_log.json
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
