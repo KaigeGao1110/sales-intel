@@ -1,0 +1,181 @@
+=== SUBAGENT 3: Monitoring Architecture Research ===
+Timestamp: Fri Mar 27 03:59:22 UTC 2026
+
+## MONITORING SYSTEM ARCHITECTURE
+
+┌─────────────────────────────────────────────────────────────┐
+│                    SCOUT MONITOR SYSTEM                      │
+└─────────────────────────────────────────────────────────────┘
+
+                    ┌──────────────────┐
+                    │   CLOUD RUN      │
+                    │   (Daily Cron)   │
+                    └────────┬─────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              │              │              │
+              ▼              ▼              ▼
+      ┌───────────┐  ┌───────────┐  ┌───────────┐
+      │  Company  │  │  Company  │  │  Company  │
+      │   List    │  │   List    │  │   List    │
+      │ (Monitor) │  │ (Monitor) │  │ (Monitor) │
+      └─────┬─────┘  └─────┬─────┘  └─────┬─────┘
+            │              │              │
+            ▼              ▼              ▼
+      ┌─────────────────────────────────────────┐
+      │           DATA STORE (SQLite)           │
+      │  - companies.json (monitored list)      │
+      │  - snapshots/ (last known state)        │
+      │  - alerts/ (triggered alerts log)      │
+      └───────────────────┬─────────────────────┘
+                          │
+                          ▼
+      ┌─────────────────────────────────────────┐
+      │         CHANGE DETECTION ENGINE         │
+      │  - Compare current vs last snapshot     │
+      │  - Score changes by significance        │
+      │  - Filter noise (minor updates)         │
+      └───────────────────┬─────────────────────┘
+                          │
+                          ▼
+      ┌─────────────────────────────────────────┐
+      │           ALERT EVALUATOR               │
+      │  - Check against alert rules            │
+      │  - Deduplicate similar alerts            │
+      │  - Determine notification method         │
+      └───────────────────┬─────────────────────┘
+                          │
+                          ▼
+              ┌───────────┴───────────┐
+              │                       │
+              ▼                       ▼
+      ┌─────────────┐         ┌─────────────┐
+      │   EMAIL     │         │   SLACK     │
+      │  (Gmail)    │         │  Webhook    │
+      └─────────────┘         └─────────────┘
+
+## STORAGE SCHEMA
+
+companies.json (monitored companies list):
+{
+  "companies": [
+    {
+      "id": "uuid",
+      "name": "Acme Corp",
+      "domain": "acme.com",
+      "added_date": "2024-01-15",
+      "last_checked": "2024-03-20T10:30:00Z",
+      "status": "active",
+      "alert_channels": ["email", "slack"],
+      "alert_email": "sales@company.com"
+    }
+  ]
+}
+
+snapshots/acme_corp_2024-03-20.json (state at check time):
+{
+  "company_id": "uuid",
+  "check_date": "2024-03-20",
+  "news": [...],
+  "jobs": [...],
+  "reviews": [...],
+  "funding": {...}
+}
+
+alerts_log.json:
+{
+  "alerts": [
+    {
+      "id": "uuid",
+      "company_id": "uuid",
+      "alert_date": "2024-03-20T14:00:00Z",
+      "type": "news",
+      "severity": "high",
+      "title": "Acme Corp announces layoffs",
+      "summary": "...",
+      "notified": true,
+      "notification_date": "2024-03-20T14:05:00Z"
+    }
+  ]
+}
+
+## CHANGE DETECTION ALGORITHM
+SIMPLE CHANGE DETECTION:
+
+1. STORAGE: Keep last 2 snapshots per company
+   - Compare current vs previous (not vs initial)
+   - Only look at delta
+
+2. NEWS CHANGES:
+   - New articles since last check → signal
+   - Sentiment shift (positive→negative) → high signal
+   - Volume spike (3+ articles in 24h) → medium signal
+
+3. JOB CHANGES:
+   - Job postings up 20%+ → growth/scaling
+   - Job postings down → cost cutting / slowdown
+   - Specific role spikes (hiring security, laying off CS) → problem indicators
+
+4. REVIEW CHANGES:
+   - Rating drop > 0.3 stars → problem
+   - New negative reviews → customer satisfaction issue
+
+5. FUNDING CHANGES:
+   - New round announced → budget available
+   - Layoffs announced → cost cutting mode
+
+SIGNIFICANCE SCORING:
+- Layoffs: +10 points
+- New funding: +8 points
+- Rating drop: +7 points
+- Sentiment shift: +6 points
+- Volume spike: +4 points
+- Minor news: +1 point
+
+ALERT THRESHOLD: Score >= 10 → send alert
+
+## ALERT EVALUATION CRITERIA
+
+HIGH PRIORITY (immediate alert):
+- Layoffs / restructuring announced
+- Major product failure / security breach
+- Leadership change (CEO, CTO, VP Sales)
+- Funding round closed (especially down round)
+- Major customer loss
+
+MEDIUM PRIORITY (daily digest):
+- Review rating change > 0.3 stars
+- 5+ new articles in 48 hours
+- Hiring freeze announced
+- Competitor merger/acquisition
+- Product launch failure
+
+LOW PRIORITY (weekly summary):
+- Minor news coverage
+- Small job posting changes (<10%)
+- Regular company updates
+
+DEDUPLICATION RULES:
+- Same event → only alert once
+- Related events (e.g., multiple layoff articles) → single alert
+- Time decay: after 7 days, same type = new alert
+
+## CHECK FREQUENCY RECOMMENDATIONS
+
+MVP APPROACH (Cloud Run optimization):
+- NEWS: Daily (24h cache, free tier friendly)
+- JOBS: Daily (job postings don't change hourly)
+- REVIEWS: Every 3 days (G2/Trustpilot update weekly)
+- FUNDING: Weekly (Crunchbase updates less frequently)
+
+CLOUD RUN COST OPTIMIZATION:
+- Use Cloud Run Jobs (not continuous server)
+- Batch all company checks in single job run
+- Target: <30 seconds execution = ~$0.01/day
+- Monthly cost: ~$0.30 for monitoring 50 companies
+
+SCALABILITY:
+- 1 Cloud Run Job handles 100 companies easily
+- If >500 companies, parallelize by industry/region
+
+=== SUBAGENT 3 COMPLETE ===

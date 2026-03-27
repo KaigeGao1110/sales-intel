@@ -1,0 +1,82 @@
+=== SUBAGENT 1: Company Data Sources Research ===
+Timestamp: Fri Mar 27 03:59:21 UTC 2026
+
+## NEWS APIs
+
+1. NewsAPI.org (newsapi.org)
+   - Free tier: 100 requests/day
+   - Great for mainstream news
+   - Python: newsapi = NewsApiClient(api_key='KEY')
+
+2. Brave Search API (brave.com/search/api)
+   - Free tier: 2000 requests/month
+   - Good for web search + news combined
+   - Python: brave.search.SearchClient)
+
+3. Bing News Search (azure.microsoft.com/services/cognitive-services/bing-news-search)
+   - Free tier: Bing News Search S1 (1000 transactions/month)
+   - Microsoft's news API
+
+## COMPANY INFO APIs
+
+1. Clearbit Discovery API
+   - Free tier: 5,000 requests/month
+   - Company enrichment with financials, tech stack
+   - Python: clearbit.EnrichmentApi)
+
+2. Apollo.io
+   - Free tier: 50 credits/month
+   - Company & contact data
+
+3. Crunchbase (crunchbase.com)
+   - Free tier: limited company data
+   - Good for funding rounds
+
+## REVIEW SITES
+
+1. Glassdoor - scraping not recommended (legal risk)
+   - Alternative: Use LinkedIn company reviews API if available
+
+2. G2 - No free API, scraping against TOS
+   - Alternative: Product Hunt for product reviews
+
+3. Trustpilot - Has an API (Business API free tier)
+   - Reviews and ratings available
+
+## JOB POSTINGS
+
+1. The Muse API - Job listings and company profiles
+   - Free tier available
+
+2. LinkedIn Job Analytics - indirect signal via job posting volume
+   - SerpAPI can search LinkedIn jobs for a company
+
+3. Indeed - No official API, scraping against TOS
+   - Alternative: SerpAPI for Indeed job search
+
+## MVP RECOMMENDATIONS
+
+PRIMARY STACK:
+1. Brave Search API - Best free option for web + news search
+2. NewsAPI.org - Supplement with mainstream news
+3. Clearbit - Company enrichment (5000/mo free)
+4. Crunchbase - Funding data (free tier)
+
+MVP CODE EXAMPLE (Brave Search):
+from brave import SearchClient
+
+client = SearchClient(api_key="YOUR_API_KEY")
+
+# Search for company news
+results = client.search(
+    query="Acme Corp company news 2024",
+    count=10,
+    markets=["en-US"]
+)
+
+for result in results:
+    print(f"Title: {result.title}")
+    print(f"URL: {result.url}")
+    print(f"Description: {result.description}")
+
+=== SUBAGENT 1 COMPLETE ===

@@ -1,0 +1,16 @@
+{
+  "companies": [
+    {
+      "id": "4b75abad-1725-4c09-a076-d2769bae1aee",
+      "name": "Notion",
+      "domain": "",
+      "added_date": "2026-03-27",
+      "last_checked": null,
+      "status": "active",
+      "alert_channels": [
+        "console"
+      ],
+      "alert_email": ""
+    }
+  ]
+}
