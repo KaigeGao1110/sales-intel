@@ -1,17 +1,73 @@
-"""CRUD operations for companies.json storage."""
+"""CRUD operations for companies.json storage with GCS sync."""
 
 import json
+import logging
 import os
 import uuid
 from datetime import datetime, timezone
-from typing import Optional
 from pathlib import Path
+from typing import Optional
+
+from rich.console import Console
+
+console = Console()
+logger = logging.getLogger(__name__)
 
 DATA_FILE = Path(__file__).parent.parent / "data" / "companies.json"
+GCS_BUCKET = os.getenv("SCOUT_DATA_BUCKET", "")
+GCS_OBJECT = "companies.json"
+
+
+def _get_gcs_client():
+    """Get a GCS client, returning None if unavailable."""
+    try:
+        from google.cloud import storage
+
+        return storage.Client()
+    except Exception:
+        return None
+
+
+def _load_from_gcs(client) -> Optional[dict]:
+    """Try to load companies.json from GCS."""
+    try:
+        bucket = client.bucket(GCS_BUCKET)
+        blob = bucket.blob(GCS_OBJECT)
+        if blob.exists():
+            content = blob.download_as_text()
+            return json.loads(content)
+    except Exception as e:
+        console.print(f"[yellow]GCS read failed: {e}[/yellow]")
+    return None
+
+
+def _save_to_gcs(client, data: dict) -> bool:
+    """Save companies.json to GCS. Returns True on success."""
+    try:
+        bucket = client.bucket(GCS_BUCKET)
+        blob = bucket.blob(GCS_OBJECT)
+        blob.upload_from_string(json.dumps(data, indent=2), content_type="application/json")
+        return True
+    except Exception as e:
+        console.print(f"[yellow]GCS write failed: {e}[/yellow]")
+        return False
 
 
 def _load() -> dict:
-    """Load companies.json, returning empty structure if missing."""
+    """Load companies.json, trying GCS first, then local file."""
+    # Try GCS first
+    if GCS_BUCKET:
+        client = _get_gcs_client()
+        if client:
+            gcs_data = _load_from_gcs(client)
+            if gcs_data is not None:
+                # Sync to local file as backup
+                DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+                with open(DATA_FILE, "w") as f:
+                    json.dump(gcs_data, f, indent=2)
+                return gcs_data
+
+    # Fall back to local file
     if not DATA_FILE.exists():
         return {"companies": []}
     with open(DATA_FILE, "r") as f:
@@ -19,10 +75,16 @@ def _load() -> dict:
 
 
 def _save(data: dict) -> None:
-    """Persist data to companies.json."""
+    """Persist data to local file and optionally GCS."""
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=2)
+
+    # Sync to GCS
+    if GCS_BUCKET:
+        client = _get_gcs_client()
+        if client:
+            _save_to_gcs(client, data)
 
 
 def get_all() -> list[dict]:

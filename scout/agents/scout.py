@@ -1,7 +1,9 @@
 """Scout Main Agent - orchestrates research and brief generation."""
 
+import json
 import os
 from typing import Optional
+
 from rich.console import Console
 from rich.markdown import Markdown
 
@@ -14,6 +16,37 @@ from prompts.brief_template import (
 from storage import companies as company_store
 
 console = Console()
+
+PUBSUB_TOPIC = os.getenv("PUBSUB_TOPIC", "scout-monitor-trigger")
+
+
+def _publish_to_pubsub(company_name: str, company_id: str) -> bool:
+    """Publish a trigger message to Pub/Sub topic for on-demand monitoring.
+
+    Returns True if published successfully, False otherwise.
+    """
+    try:
+        from google.cloud import pubsub_v1
+
+        publisher = pubsub_v1.PublisherClient()
+        topic_path = publisher.topic_path(
+            os.getenv("GCP_PROJECT", "testforcureforge"),
+            PUBSUB_TOPIC,
+        )
+        message = json.dumps({"company_name": company_name, "company_id": company_id})
+        future = publisher.publish(topic_path, message.encode("utf-8"))
+        future.result(timeout=10)
+        console.print(f"[dim]  Pub/Sub trigger sent for '{company_name}'[/dim]")
+        return True
+    except ImportError:
+        console.print(
+            "[yellow]Warning: google-cloud-pubsub not installed — "
+            "skipping Pub/Sub trigger[/yellow]"
+        )
+        return False
+    except Exception as e:
+        console.print(f"[yellow]Pub/Sub publish failed: {e}[/yellow]")
+        return False
 
 
 def _get_llm_brief(company_name: str, research_data: dict) -> Optional[str]:
@@ -112,6 +145,8 @@ class ScoutAgent:
                     f"\n[green]Added '{company_name}' to monitoring[/green] "
                     f"(id={company['id']})"
                 )
+                # Trigger on-demand monitoring via Pub/Sub
+                _publish_to_pubsub(company_name, company["id"])
 
         return brief
 

@@ -11,6 +11,42 @@
         "console"
       ],
       "alert_email": ""
+    },
+    {
+      "id": "5ff83d5d-ded8-42f6-9bd5-72e99e4c7c16",
+      "name": "Atlassian",
+      "domain": "",
+      "added_date": "2026-03-28",
+      "last_checked": null,
+      "status": "active",
+      "alert_channels": [
+        "email"
+      ],
+      "alert_email": "test@example.com"
+    },
+    {
+      "id": "9ec04a59-90cc-4199-8724-e3a0e988a39a",
+      "name": "Canva",
+      "domain": "",
+      "added_date": "2026-03-28",
+      "last_checked": null,
+      "status": "active",
+      "alert_channels": [
+        "email"
+      ],
+      "alert_email": "test@example.com"
+    },
+    {
+      "id": "91ff8cb4-a304-48f6-8139-07c094636ad0",
+      "name": "Slack",
+      "domain": "",
+      "added_date": "2026-03-28",
+      "last_checked": null,
+      "status": "active",
+      "alert_channels": [
+        "email"
+      ],
+      "alert_email": "test@example.com"
     }
   ]
 }
