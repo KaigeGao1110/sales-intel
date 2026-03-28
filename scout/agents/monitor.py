@@ -33,7 +33,7 @@ def _run_watchers(company_name: str, previous_snapshot: dict) -> dict:
     for watcher_name, watcher in watchers:
         console.print(f"[dim]    Running {watcher_name}...[/dim]", end="")
         result = watcher.run(company_name, previous_snapshot)
-        console.print(f" score={result['score']} — {result['details']}[/dim]")
+        console.print(f"[dim] score={result['score']} — {result['details']}[/dim]")
         results.append(result)
 
     news_result = results[0]
