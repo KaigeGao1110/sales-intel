@@ -6,6 +6,7 @@ from typing import Optional
 from rich.console import Console
 
 from storage import alerts as alert_store
+from services.hunter import HunterService
 
 console = Console()
 
@@ -20,6 +21,40 @@ SCORING_TABLE = {
 }
 
 ALERT_THRESHOLD = 10
+
+
+def _lookup_contacts(company_name: str, domain: str = "") -> list[dict]:
+    """Look up company contacts via Hunter.io.
+
+    Returns up to 3 relevant contacts (prioritizing executives and sales).
+    """
+    hunter = HunterService()
+    if not hunter.available:
+        return []
+
+    contacts = []
+
+    # If we have a domain, search by domain (executives first)
+    if domain:
+        all_contacts = hunter.domain_search(
+            domain=domain,
+            company=company_name,
+            seniority="executive",
+        )
+        # Also try senior-level
+        if len(all_contacts) < 3:
+            senior = hunter.domain_search(
+                domain=domain,
+                company=company_name,
+                seniority="senior",
+            )
+            for c in senior:
+                if c not in all_contacts:
+                    all_contacts.append(c)
+
+        contacts = all_contacts[:3]
+
+    return contacts
 
 
 def _score_changes(changes: dict) -> tuple[int, list[str], str]:
@@ -122,22 +157,58 @@ def _send_email_alert(
         return False
 
 
-def _send_slack_alert(webhook_url: str, company_name: str, title: str, body: str) -> bool:
-    """Send alert via Slack webhook.
+def _send_slack_alert(
+    webhook_url: str,
+    company_name: str,
+    title: str,
+    body: str,
+    contacts: Optional[list[dict]] = None,
+    company_domain: str = "",
+) -> bool:
+    """Send alert via Slack webhook with optional Hunter.io contact info.
 
     Returns True if sent successfully.
     """
     import requests
 
-    payload = {
-        "text": f":rotating_light: *Scout Alert: {company_name}*",
-        "blocks": [
-            {
+    # Build contact section
+    contact_blocks = []
+    if contacts:
+        for c in contacts[:3]:
+            position = c.get("position", "Unknown")
+            confidence = c.get("confidence", 0)
+            email = c.get("email", "")
+            linkedin = c.get("linkedin_url", "")
+            verified = c.get("verification", {}).get("status") == "valid"
+            verified_emoji = "✅" if verified else "⚠️"
+            contact_blocks.append({
                 "type": "section",
-                "text": {"type": "mrkdwn", "text": f"*{title}*\n{body}"},
-            }
-        ],
-    }
+                "text": {
+                    "type": "mrkdwn",
+                    "text": (
+                        f"• *{c.get('first_name', '')} {c.get('last_name', '')}* "
+                        f"({position}) {verified_emoji}\n"
+                        f"  📧 `{email}`" + (f" | 🔗 [LinkedIn]({linkedin})" if linkedin else "")
+                    ),
+                },
+            })
+
+    blocks = [
+        {
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f":rotating_light: *Scout Alert: {company_name}*\n*{title}*\n{body}"},
+        }
+    ]
+
+    if contact_blocks:
+        blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": "_👤 *Potential contacts (via Hunter.io):*_"},
+        })
+        blocks.extend(contact_blocks)
+
+    payload = {"text": f"Scout Alert: {company_name}", "blocks": blocks}
+
     try:
         resp = requests.post(webhook_url, json=payload, timeout=10)
         resp.raise_for_status()
@@ -195,6 +266,14 @@ class AlertAgent:
         channels = company.get("alert_channels", ["console"])
         notified = False
 
+        # Look up contacts via Hunter.io when alert fires
+        contacts = _lookup_contacts(
+            company_name=company["name"],
+            domain=company.get("domain", ""),
+        )
+        if contacts:
+            console.print(f"[dim]  Hunter.io found {len(contacts)} contact(s)[/dim]")
+
         for channel in channels:
             if channel == "email" and company.get("alert_email"):
                 html_body = f"<h2>{company['name']} — Scout Alert</h2><p>{summary.replace(chr(10), '<br>')}</p>"
@@ -204,13 +283,30 @@ class AlertAgent:
             elif channel == "slack":
                 slack_url = os.getenv("SLACK_WEBHOOK_URL", "")
                 if slack_url:
-                    if _send_slack_alert(slack_url, company["name"], title, summary):
+                    if _send_slack_alert(
+                        slack_url,
+                        company["name"],
+                        title,
+                        summary,
+                        contacts=contacts,
+                        company_domain=company.get("domain", ""),
+                    ):
                         notified = True
 
             elif channel == "console":
                 console.print(
                     f"[bold yellow]Console Alert:[/bold yellow] {summary}"
                 )
+                if contacts:
+                    for c in contacts[:3]:
+                        email = c.get("email", "")
+                        name = f"{c.get('first_name', '')} {c.get('last_name', '')}".strip()
+                        pos = c.get("position", "")
+                        verified = c.get("verification", {}).get("status")
+                        console.print(
+                            f"  👤 {name} ({pos}) — {email} "
+                            f"{'[valid]' if verified == 'valid' else '[unverified]'}"
+                        )
                 notified = True
 
         alert = alert_store.log_alert(
