@@ -3,6 +3,7 @@
 import re
 
 from services.brave_search import BraveSearchService
+from services.tavily import TavilyService
 
 
 LAYOFF_KEYWORDS = [
@@ -74,18 +75,28 @@ def _detect_funding(texts: list[str]) -> dict:
 def run(company_name: str) -> dict:
     """Web Researcher - searches for hiring/funding signals. Run-only."""
     brave = BraveSearchService()
+    tavily = TavilyService()
 
-    hiring_results: list[dict] = []
-    funding_results: list[dict] = []
+    brave_hiring: list[dict] = []
+    brave_funding: list[dict] = []
+    tavily_hiring: list[dict] = []
+    tavily_funding: list[dict] = []
 
     if brave.available:
-        hiring_results = brave.search_hiring_signals(company_name)
-        funding_results = brave.search_funding(company_name)
+        brave_hiring = brave.search_hiring_signals(company_name)
+        brave_funding = brave.search_funding(company_name)
+
+    if tavily.available:
+        tavily_hiring = tavily.search_hiring_signals(company_name)
+        tavily_funding = tavily.search_funding(company_name)
+
+    all_hiring = brave_hiring + tavily_hiring
+    all_funding = brave_funding + tavily_funding
 
     all_texts: list[str] = []
     raw_signals: list[str] = []
 
-    for item in hiring_results + funding_results:
+    for item in all_hiring + all_funding:
         text = f"{item.get('title', '')} {item.get('description', '')}"
         if text.strip():
             all_texts.append(text)

@@ -1,7 +1,8 @@
-"""News Researcher - fetches recent news. Run-only, no state."""
+"""News Researcher - fetches recent news from multiple sources. Run-only, no state."""
 
 from services.brave_search import BraveSearchService
 from services.news_api import NewsAPIService
+from services.tavily import TavilyService
 
 
 def _detect_sentiment(text: str) -> str:
@@ -20,12 +21,14 @@ def _detect_sentiment(text: str) -> str:
 
 
 def run(company_name: str) -> dict:
-    """News Researcher - fetches recent news. Run-only, no state."""
+    """News Researcher - fetches recent news from Brave, NewsAPI, and Tavily. Run-only."""
     brave = BraveSearchService()
     news_api = NewsAPIService()
+    tavily = TavilyService()
 
     brave_results: list[dict] = []
     newsapi_results: list[dict] = []
+    tavily_results: list[dict] = []
 
     if brave.available:
         brave_results = brave.search_news(company_name)
@@ -33,12 +36,15 @@ def run(company_name: str) -> dict:
     if news_api.available:
         newsapi_results = news_api.get_company_news(company_name)
 
+    if tavily.available:
+        tavily_results = tavily.search_news(company_name)
+
     # Merge and deduplicate by URL
     seen_urls: set[str] = set()
     articles: list[dict] = []
     sentiments: list[str] = []
 
-    for item in brave_results + newsapi_results:
+    for item in brave_results + newsapi_results + tavily_results:
         url = item.get("url", "")
         if url and url not in seen_urls:
             seen_urls.add(url)
