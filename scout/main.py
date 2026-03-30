@@ -435,6 +435,64 @@ def outreach(company_name: str, domain: str, variants: int) -> None:
 
 
 # ---------------------------------------------------------------------------
+# slack commands
+# ---------------------------------------------------------------------------
+
+@cli.group()
+def slack() -> None:
+    """Slack bot management commands."""
+    pass
+
+
+@slack.command("start")
+def slack_start() -> None:
+    """Start the Scout Slack bot (runs run_slack.py)."""
+    import subprocess
+    import os
+    from pathlib import Path
+
+    env_file = Path(__file__).parent / ".env.slack"
+    env_args = ["--env-file", str(env_file)] if env_file.exists() else []
+
+    # Check required env vars
+    if not os.getenv("SLACK_BOT_TOKEN"):
+        # Try loading .env.slack
+        if env_file.exists():
+            from dotenv import load_dotenv
+            load_dotenv(env_file)
+
+    if not os.getenv("SLACK_BOT_TOKEN"):
+        console.print("[red]SLACK_BOT_TOKEN not set. See .env.slack.example[/red]")
+        return
+    if not os.getenv("SLACK_SIGNING_SECRET"):
+        console.print("[red]SLACK_SIGNING_SECRET not set. See .env.slack.example[/red]")
+        return
+    if not os.getenv("SLACK_APP_TOKEN"):
+        console.print("[red]SLACK_APP_TOKEN not set. See .env.slack.example[/red]")
+        return
+
+    console.print("[green]Starting Scout Slack Bot...[/green]")
+    subprocess.run(
+        [sys.executable, str(Path(__file__).parent / "run_slack.py")] + env_args,
+        check=False,
+    )
+
+
+@slack.command("alert-test")
+def slack_alert_test() -> None:
+    """Send a test alert to the configured Slack channel."""
+    try:
+        from slack_bot import alerts
+        success = alerts.send_test_alert()
+        if success:
+            console.print("[green]Test alert sent successfully![/green]")
+        else:
+            console.print("[red]Failed to send test alert. Check your SLACK_WEBHOOK_URL or SLACK_BOT_TOKEN + SLACK_CHANNEL_ID[/red]")
+    except Exception as e:
+        console.print(f"[red]Error: {e}[/red]")
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
