@@ -357,7 +357,7 @@ def outreach(company_name: str, domain: str, variants: int) -> None:
     """
     from agents.scout import ScoutAgent
     from agents.research import ResearchAgent
-    from agents.outreach import OutreachAgent
+    from agents.outreach import OutreachAgent, print_outreach_result
     from agents.alert import _lookup_contacts
     from storage import companies as company_store
     from storage import snapshots
@@ -421,7 +421,7 @@ def outreach(company_name: str, domain: str, variants: int) -> None:
     )
 
     # Step 5: Print results
-    agent.print_outreach_result(result, company_name, contacts)
+    print_outreach_result(result, company_name, contacts)
 
     # Step 6: Log to outreach.json
     company_id = company["id"] if company else "unknown"
