@@ -1,0 +1,8 @@
+{
+  "description": "B2B SaaS companies, Series A-C, 50-500 employees",
+  "min_employees": 50,
+  "max_employees": 500,
+  "industries": ["software", "saas", "technology", "fintech", "healthtech"],
+  "funding_stages": ["Series A", "Series B", "Series C"],
+  "notes": "Edit this file to match your ideal customer profile"
+}

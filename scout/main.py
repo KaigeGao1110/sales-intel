@@ -227,6 +227,89 @@ def alert_test(email: str) -> None:
     agent.send_test_alert(email)
 
 
+# ---------------------------------------------------------------------------
+# score commands
+# ---------------------------------------------------------------------------
+
+@cli.command()
+@click.argument("company_name")
+def score(company_name: str) -> None:
+    """Score a single company against ICP and intent signals.
+
+    COMPANY_NAME: Name of the company to score.
+    """
+    from agents.scoring import LeadScoringAgent
+    from agents.research import ResearchAgent
+    from storage import companies as company_store
+
+    company = company_store.get_by_name(company_name)
+    if not company:
+        console.print(f"[red]Company not found: '{company_name}'[/red]")
+        return
+
+    # Run fresh research
+    agent = ResearchAgent()
+    research_data = agent.research(company_name, domain=company.get("domain", ""))
+
+    # Score
+    scorer = LeadScoringAgent()
+    result = scorer.score(company_name, research_data)
+
+    # Save score
+    from storage import scores as score_store
+    score_store.save(
+        company_id=company["id"],
+        company_name=company_name,
+        score=result["score"],
+        grade=result["grade"],
+        reasons=result["reasons"],
+        recommended_action=result["recommended_action"],
+    )
+
+    # Print breakdown
+    console.print(f"\n[bold cyan]Score for {company_name}[/bold cyan]")
+    console.print(f"  Total Score: [bold]{result['score']}[/bold] — Grade [bold]{result['grade']}[/bold]\n")
+    console.print("[bold]Breakdown:[/bold]")
+    for reason in result["reasons"]:
+        console.print(f"  • {reason}")
+    console.print(f"\n[bold green]Recommended Action:[/bold green] {result['recommended_action']}")
+
+
+@cli.command()
+def rank() -> None:
+    """Score and rank all monitored companies."""
+    from agents.scoring import LeadScoringAgent
+    from storage import scores as score_store
+    from storage import companies as company_store
+
+    companies = company_store.get_active()
+    if not companies:
+        console.print("[yellow]No active companies to rank.[/yellow]")
+        return
+
+    # Run scoring
+    scorer = LeadScoringAgent()
+    scorer.print_rank_table()
+
+    # Save all scores
+    results = scorer.rank_all()
+    for r in results:
+        company = company_store.get_by_name(r["company_name"])
+        if company:
+            score_store.save(
+                company_id=company["id"],
+                company_name=r["company_name"],
+                score=r["score"],
+                grade=r["grade"],
+                reasons=r["reasons"],
+                recommended_action=r["recommended_action"],
+            )
+
+
+# ---------------------------------------------------------------------------
+# alert commands
+# ---------------------------------------------------------------------------
+
 @alert.command("list")
 def alert_list() -> None:
     """List recent alerts."""
@@ -257,6 +340,98 @@ def alert_list() -> None:
             "[green]yes[/green]" if a.get("notified") else "[red]no[/red]",
         )
     console.print(table)
+
+
+# ---------------------------------------------------------------------------
+# outreach command
+# ---------------------------------------------------------------------------
+
+@cli.command()
+@click.argument("company_name")
+@click.option("--domain", default="", help="Company domain for contact lookup")
+@click.option("--variants", default=2, help="Number of variants to generate (default 2)")
+def outreach(company_name: str, domain: str, variants: int) -> None:
+    """Generate personalized outreach for a company.
+
+    COMPANY_NAME: Name of the company to generate outreach for.
+    """
+    from agents.scout import ScoutAgent
+    from agents.research import ResearchAgent
+    from agents.outreach import OutreachAgent
+    from agents.alert import _lookup_contacts
+    from storage import companies as company_store
+    from storage import snapshots
+    from storage import outreach as outreach_store
+
+    # Step 1: Look up company
+    company = company_store.get_by_name(company_name)
+    if company:
+        console.print(f"[dim]  Found '{company_name}' in monitoring (id={company['id']})[/dim]")
+        domain = domain or company.get("domain", "")
+    else:
+        console.print(f"[yellow]  '{company_name}' not in monitoring — will generate fresh research[/yellow]")
+        scout = ScoutAgent()
+        brief = scout.scout(company_name=company_name, domain=domain, add_to_monitoring=False)
+        console.print("\n[bold cyan]Brief generated:[/bold cyan]")
+        scout.print_brief(brief)
+        # Reload company after scout
+        company = company_store.get_by_name(company_name)
+
+    # Step 2: Load research data from latest snapshot
+    research_data = None
+    if company:
+        snapshot = snapshots.get_latest(company["id"])
+        if snapshot:
+            research_data = {
+                "company_name": company_name,
+                "news": snapshot.get("news", []),
+                "jobs_signal": snapshot.get("jobs", {}),
+                "funding": snapshot.get("funding", {}),
+                "reviews_signal": snapshot.get("reviews", {}),
+                "raw_signals": snapshot.get("raw_signals", []),
+                "enrichment": {},
+            }
+            console.print(f"[dim]  Loaded latest snapshot from {snapshot.get('check_date', 'unknown')}[/dim]")
+        else:
+            console.print("[yellow]  No snapshot found — running fresh research[/yellow]")
+            research_agent = ResearchAgent()
+            research_data = research_agent.research(company_name, domain=domain)
+
+    if not research_data:
+        console.print("[red]  Could not obtain research data for outreach generation[/red]")
+        return
+
+    # Step 3: Look up contacts
+    contacts = _lookup_contacts(company_name, domain=domain)
+    if contacts:
+        console.print(f"[dim]  Found {len(contacts)} contact(s) via Hunter.io[/dim]")
+    else:
+        console.print("[yellow]  No contacts found via Hunter.io[/yellow]")
+
+    # Step 4: Generate outreach
+    console.print("\n[bold cyan]Generating outreach...[/bold cyan]")
+    agent = OutreachAgent()
+    brief_text = ""
+    result = agent.generate(
+        company_name=company_name,
+        brief=brief_text,
+        research_data=research_data,
+        contacts=contacts,
+        variants=variants,
+    )
+
+    # Step 5: Print results
+    agent.print_outreach_result(result, company_name, contacts)
+
+    # Step 6: Log to outreach.json
+    company_id = company["id"] if company else "unknown"
+    outreach_store.log(
+        company_id=company_id,
+        company_name=company_name,
+        contacts=contacts,
+        variants=result,
+    )
+    console.print(f"\n[dim]  Logged to ~/.scout/outreach.json[/dim]")
 
 
 # ---------------------------------------------------------------------------

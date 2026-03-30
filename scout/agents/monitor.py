@@ -4,11 +4,13 @@ from rich.console import Console
 
 from agents.research import ResearchAgent
 from agents.alert import AlertAgent
+from agents.scoring import LeadScoringAgent
 from agents.watchers import news as news_watcher
 from agents.watchers import jobs as jobs_watcher
 from agents.watchers import funding as funding_watcher
 from storage import companies as company_store
 from storage import snapshots as snapshot_store
+from storage import scores as score_store
 
 console = Console()
 
@@ -105,6 +107,19 @@ class MonitorAgent:
             alert = self.alert_agent.evaluate_and_alert(company, changes)
         else:
             console.print("[dim]  First snapshot — no comparison available[/dim]")
+
+        # Score the company
+        scorer = LeadScoringAgent()
+        score_result = scorer.score(name, research_data)
+        score_store.save(
+            company_id=cid,
+            company_name=name,
+            score=score_result["score"],
+            grade=score_result["grade"],
+            reasons=score_result["reasons"],
+            recommended_action=score_result["recommended_action"],
+        )
+        console.print(f"[dim]  Score: [Score {score_result['score']}/{score_result['grade']}] {name}[/dim]")
 
         # Update last_checked
         company_store.update_last_checked(cid)
