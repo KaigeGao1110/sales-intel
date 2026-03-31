@@ -417,6 +417,150 @@ def generate_outreach(company_name: str, background_tasks: BackgroundTasks):
 
 
 # ---------------------------------------------------------------------------
+# Meeting Prep
+# ---------------------------------------------------------------------------
+
+class PrepRequest(BaseModel):
+    attendees: Optional[list[str]] = None
+    meeting_time: Optional[str] = None
+
+class PrepResponse(BaseModel):
+    meeting_id: str
+    company_name: str
+    attendees: list[str]
+    prep_content: dict
+    meeting_time: Optional[str]
+    status: str
+
+@app.post("/prep/{company_name}", response_model=PrepResponse)
+def generate_prep(company_name: str, request: PrepRequest):
+    """Generate a meeting prep brief for a company."""
+    from agents.prep import MeetingPrepAgent
+    agent = MeetingPrepAgent()
+    result = agent.generate_prep(
+        company_name,
+        request.attendees or [],
+        request.meeting_time,
+    )
+    if "error" in result:
+        raise HTTPException(status_code=500, detail=result["error"])
+    return PrepResponse(**result)
+
+
+class PrepCalendarResponse(BaseModel):
+    meetings_found: int
+    preps_generated: int
+    meetings: list[dict]
+
+@app.post("/prep/calendar", response_model=PrepCalendarResponse)
+def auto_prep_calendar(request: PrepRequest = None):
+    """Auto-prep meetings from Google Calendar."""
+    from integrations.calendar import get_upcoming_prep_candidates
+    from agents.prep import MeetingPrepAgent
+
+    hours = 24
+    candidates = get_upcoming_prep_candidates(hours)
+    if not candidates:
+        return PrepCalendarResponse(meetings_found=0, preps_generated=0, meetings=[])
+
+    agent = MeetingPrepAgent()
+    results = []
+    generated = 0
+
+    for c in candidates:
+        prep = agent.generate_prep(
+            c["company_name"],
+            c["attendee_emails"],
+            c["meeting_time"],
+        )
+        if "error" not in prep:
+            generated += 1
+        results.append({
+            "company_name": c["company_name"],
+            "title": c["title"],
+            "meeting_time": c["meeting_time"],
+            "prep_id": prep.get("meeting_id", ""),
+            "status": "generated" if "error" not in prep else prep.get("error", ""),
+        })
+
+    return PrepCalendarResponse(
+        meetings_found=len(candidates),
+        preps_generated=generated,
+        meetings=results,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Pipeline Intelligence
+# ---------------------------------------------------------------------------
+
+class TrackRequest(BaseModel):
+    company_name: str
+    stage: str = "discovery"
+    expected_close: Optional[str] = None
+    champion_contact: Optional[str] = None
+
+class OpportunityResponse(BaseModel):
+    opportunity_id: str
+    company_name: str
+    stage: str
+    health_score: int
+    expected_close: Optional[str]
+    champion_contact: Optional[str]
+    signals: list
+    status: str
+
+@app.get("/pipeline", response_model=list[OpportunityResponse])
+def list_pipeline():
+    """List all tracked pipeline opportunities."""
+    from storage import pipeline as pipeline_store
+    opps = pipeline_store.get_all_opportunities()
+    return [OpportunityResponse(
+        opportunity_id=o["opportunity_id"],
+        company_name=o["company_name"],
+        stage=o["stage"],
+        health_score=o.get("health_score", 50),
+        expected_close=o.get("expected_close"),
+        champion_contact=o.get("champion_contact"),
+        signals=o.get("signals", []),
+        status=o.get("status", "active"),
+    ) for o in opps if o.get("status") == "active"]
+
+
+@app.post("/pipeline/track", response_model=OpportunityResponse)
+def track_opportunity(request: TrackRequest):
+    """Track a company as a pipeline opportunity."""
+    from storage import pipeline as pipeline_store
+    opp = pipeline_store.track_opportunity(
+        company_name=request.company_name,
+        stage=request.stage,
+        expected_close=request.expected_close,
+        champion_contact=request.champion_contact,
+    )
+    return OpportunityResponse(**opp)
+
+
+@app.delete("/pipeline/track/{company_name}")
+def untrack_opportunity(company_name: str):
+    """Stop tracking a pipeline opportunity."""
+    from storage import pipeline as pipeline_store
+    if not pipeline_store.untrack(company_name):
+        raise HTTPException(status_code=404, detail=f"Opportunity not found: {company_name}")
+    return {"status": "untracked", "company_name": company_name}
+
+
+@app.get("/pipeline/{company_name}/assess")
+def assess_deal(company_name: str):
+    """Assess deal health for a tracked opportunity."""
+    from agents.pipeline import PipelineIntelligenceAgent
+    agent = PipelineIntelligenceAgent()
+    result = agent.assess_deal_health(company_name)
+    if "error" in result.get("breakdown", {}):
+        raise HTTPException(status_code=404, detail=result["breakdown"]["error"])
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Health check
 # ---------------------------------------------------------------------------
 
