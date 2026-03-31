@@ -8,6 +8,7 @@ from agents.scoring import LeadScoringAgent
 from agents.watchers import news as news_watcher
 from agents.watchers import jobs as jobs_watcher
 from agents.watchers import funding as funding_watcher
+from agents.pipeline_watcher import PipelineWatcher
 from storage import companies as company_store
 from storage import snapshots as snapshot_store
 from storage import scores as score_store
@@ -68,6 +69,7 @@ class MonitorAgent:
     def __init__(self) -> None:
         self.research_agent = ResearchAgent()
         self.alert_agent = AlertAgent()
+        self.pipeline_watcher = PipelineWatcher()
 
     def check_company(self, company: dict) -> dict:
         """Run a full check for a single company.
@@ -99,6 +101,7 @@ class MonitorAgent:
 
         if previous:
             changes = _run_watchers(name, previous)
+            changes["research_data"] = research_data  # for PipelineWatcher
             console.print(
                 f"[dim]  Changes: layoffs={changes.get('layoffs_detected')}, "
                 f"new_funding={changes.get('new_funding')}, "
@@ -107,6 +110,15 @@ class MonitorAgent:
             alert = self.alert_agent.evaluate_and_alert(company, changes)
         else:
             console.print("[dim]  First snapshot — no comparison available[/dim]")
+
+        # Pipeline health check (if tracked as opportunity)
+        pipeline_result = self.pipeline_watcher.run(name, changes if previous else {"research_data": research_data})
+        if pipeline_result.get("alert_triggered"):
+            console.print(
+                f"[bold red]  ⚠️ Pipeline alert: {name} health dropped "
+                f"{pipeline_result.get('score_delta', 0)} pts "
+                f"({pipeline_result.get('previous_score')} → {pipeline_result.get('score')})[/bold red]"
+            )
 
         # Score the company
         scorer = LeadScoringAgent()
@@ -129,6 +141,8 @@ class MonitorAgent:
             "snapshot_path": str(path),
             "changes": changes,
             "alert_triggered": alert is not None,
+            "pipeline_alert": pipeline_result.get("alert_triggered", False),
+            "pipeline_score": pipeline_result.get("score", 0),
         }
 
     def check_by_name(self, name: str) -> dict:
