@@ -495,6 +495,68 @@ def prep(company_name: str, attendees: str, meeting_time: str) -> None:
     console.print(f"\n[dim]Prep ID: {prep_data.get('meeting_id', 'N/A')}[/dim]")
 
 
+@cli.command()
+@click.option("--hours", default=24, help="Hours ahead to check (default 24)")
+@click.option("--auto", is_flag=True, default=False, help="Auto-generate prep for all meetings")
+def prep_calendar(hours: int, auto: bool) -> None:
+    """Pull upcoming calendar meetings and optionally auto-prep them."""
+    from integrations.calendar import get_upcoming_prep_candidates
+    from agents.prep import MeetingPrepAgent
+
+    with console.status(f"[bold cyan]Fetching calendar events (next {hours}h)...[/bold cyan]"):
+        candidates = get_upcoming_prep_candidates(hours)
+
+    if not candidates:
+        console.print("[yellow]No upcoming meetings found in calendar.[/yellow]")
+        return
+
+    console.print(f"[green]Found {len(candidates)} upcoming meeting(s):[/green]\n")
+
+    table = Table(title="Upcoming Meetings", show_header=True, header_style="bold cyan")
+    table.add_column("Company", style="bold")
+    table.add_column("Title")
+    table.add_column("Time")
+    table.add_column("Attendees")
+
+    for c in candidates:
+        table.add_row(
+            c["company_name"],
+            c["title"],
+            c["meeting_time"][:16] if c["meeting_time"] else "—",
+            str(len(c["attendee_emails"])),
+        )
+    console.print(table)
+
+    if not auto:
+        console.print("\n[dim]Use --auto to auto-generate prep briefs for all meetings[/dim]")
+        return
+
+    # Auto-prep all meetings
+    console.print(f"\n[bold cyan]Generating prep briefs...[/bold cyan]\n")
+    agent = MeetingPrepAgent()
+
+    for c in candidates:
+        console.print(f"[bold]→ {c['company_name']}[/bold] ({c['title']})")
+        try:
+            prep_data = agent.generate_prep(
+                c["company_name"],
+                c["attendee_emails"],
+                c["meeting_time"],
+            )
+            if "error" in prep_data:
+                console.print(f"  [red]Error: {prep_data['error']}[/red]")
+                continue
+
+            content = prep_data.get("prep_content", {})
+            if content.get("pain_points"):
+                console.print(f"  Pain points: {', '.join(content['pain_points'][:3])}")
+            if content.get("questions"):
+                console.print(f"  Top question: {content['questions'][0]}")
+            console.print(f"  [dim]Prep ID: {prep_data.get('meeting_id', 'N/A')}[/dim]\n")
+        except Exception as e:
+            console.print(f"  [red]Failed: {e}[/red]\n")
+
+
 # ---------------------------------------------------------------------------
 # pipeline commands
 # ---------------------------------------------------------------------------
