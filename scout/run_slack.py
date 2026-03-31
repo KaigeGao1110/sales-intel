@@ -56,8 +56,8 @@ def main():
     handler = SocketModeHandler(app, slack_app_token)
     port = int(os.getenv("SLACK_BOT_PORT", "3000"))
 
-    logger.info(f"Starting Scout Slack Bot on port {port}...")
-    handler.start(port=port)
+    logger.info(f"Starting Scout Slack Bot...")
+    handler.start()
 
 
 if __name__ == "__main__":
