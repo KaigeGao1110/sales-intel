@@ -5,19 +5,20 @@
       "name": "Notion",
       "domain": "",
       "added_date": "2026-03-27",
-      "last_checked": "2026-03-28T16:00:05.999808+00:00",
+      "last_checked": "2026-03-31T16:00:12.514132+00:00",
       "status": "active",
       "alert_channels": [
-        "console"
+        "console",
+        "slack"
       ],
-      "alert_email": ""
+      "alert_email": "test@example.com"
     },
     {
       "id": "5ff83d5d-ded8-42f6-9bd5-72e99e4c7c16",
       "name": "Atlassian",
       "domain": "",
       "added_date": "2026-03-28",
-      "last_checked": null,
+      "last_checked": "2026-03-31T16:00:20.755727+00:00",
       "status": "active",
       "alert_channels": [
         "email"
@@ -29,7 +30,7 @@
       "name": "Canva",
       "domain": "",
       "added_date": "2026-03-28",
-      "last_checked": null,
+      "last_checked": "2026-03-31T16:00:29.209465+00:00",
       "status": "active",
       "alert_channels": [
         "email"
@@ -41,12 +42,24 @@
       "name": "Slack",
       "domain": "",
       "added_date": "2026-03-28",
-      "last_checked": null,
+      "last_checked": "2026-03-31T16:00:35.961081+00:00",
       "status": "active",
       "alert_channels": [
         "email"
       ],
       "alert_email": "test@example.com"
+    },
+    {
+      "id": "9dcc39bf-e2fb-4aa8-851e-c19ddb9b4987",
+      "name": "Stripe",
+      "domain": "stripe.com",
+      "added_date": "2026-03-30",
+      "last_checked": "2026-03-31T16:00:43.642992+00:00",
+      "status": "active",
+      "alert_channels": [
+        "console"
+      ],
+      "alert_email": ""
     }
   ]
 }

@@ -1,0 +1,66 @@
+# Cloud Build configuration for Scout API
+# Deploy to Cloud Run using: gcloud builds submit --config=cloudbuild.yaml
+
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/scout-api:$COMMIT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/scout-api:latest'
+      - '-f'
+      - 'scout/Dockerfile'
+      - '.'
+    env:
+      - 'PROJECT_ROOT=/workspace'
+
+  # Push to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/scout-api:$COMMIT_SHA'
+    waitFor: ['-']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/scout-api:latest'
+    waitFor: ['-']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'scout-api'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/scout-api:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '512Mi'
+      - '--cpu'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars'
+      - 'SCOUT_DATA_BUCKET=$_SCOUT_DATA_BUCKET,GCP_PROJECT=$PROJECT_ID'
+    waitFor: ['-']
+
+# Store images in Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/scout-api:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/scout-api:latest'
+
+# Build timeout
+timeout: '600s'
+
+# Substitution variables
+substitutions:
+  _SCOUT_DATA_BUCKET: ''

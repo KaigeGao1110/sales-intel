@@ -435,6 +435,190 @@ def outreach(company_name: str, domain: str, variants: int) -> None:
 
 
 # ---------------------------------------------------------------------------
+# prep command
+# ---------------------------------------------------------------------------
+
+@cli.command()
+@click.argument("company_name")
+@click.option("--attendees", default="", help="Comma-separated attendee emails")
+@click.option("--time", "meeting_time", default=None, help="Meeting time (ISO format)")
+def prep(company_name: str, attendees: str, meeting_time: str) -> None:
+    """Generate a meeting prep brief for a company.
+
+    COMPANY_NAME: Name of the company for the meeting.
+    """
+    from agents.prep import MeetingPrepAgent
+
+    attendee_emails = [e.strip() for e in attendees.split(",") if e.strip()] if attendees else []
+    if not attendee_emails:
+        console.print("[yellow]No attendees specified. Use --attendees to add emails.[/yellow]")
+
+    agent = MeetingPrepAgent()
+    with console.status(f"[bold cyan]Generating prep brief for {company_name}...[/bold cyan]"):
+        prep_data = agent.generate_prep(company_name, attendee_emails, meeting_time)
+
+    if "error" in prep_data:
+        console.print(f"[red]Error: {prep_data['error']}[/red]")
+        return
+
+    content = prep_data.get("prep_content", {})
+
+    console.print(f"\n[bold cyan]Meeting Prep: {company_name}[/bold cyan]")
+    if meeting_time:
+        console.print(f"  Time: {meeting_time}")
+    if attendee_emails:
+        console.print(f"  Attendees: {', '.join(attendee_emails)}")
+
+    console.print(f"\n[bold]Context:[/bold]")
+    console.print(f"  {content.get('context', 'N/A')}")
+
+    if content.get("pain_points"):
+        console.print(f"\n[bold red]Pain Points:[/bold red]")
+        for pp in content["pain_points"]:
+            console.print(f"  • {pp}")
+
+    if content.get("questions"):
+        console.print(f"\n[bold green]Opening Questions:[/bold green]")
+        for q in content["questions"]:
+            console.print(f"  • {q}")
+
+    if content.get("topics_to_avoid"):
+        console.print(f"\n[bold yellow]Topics to Avoid:[/bold yellow]")
+        for t in content["topics_to_avoid"]:
+            console.print(f"  • {t}")
+
+    if content.get("key_facts"):
+        console.print(f"\n[bold]Key Facts:[/bold]")
+        for f in content["key_facts"]:
+            console.print(f"  • {f}")
+
+    console.print(f"\n[dim]Prep ID: {prep_data.get('meeting_id', 'N/A')}[/dim]")
+
+
+# ---------------------------------------------------------------------------
+# pipeline commands
+# ---------------------------------------------------------------------------
+
+@cli.group()
+def pipeline() -> None:
+    """Pipeline intelligence and deal tracking."""
+    pass
+
+
+@pipeline.command("track")
+@click.argument("company_name")
+@click.option("--stage", default="discovery", help="Pipeline stage",
+              type=click.Choice(["discovery", "qualification", "proposal",
+                                 "negotiation", "poc", "closed_won", "closed_lost"]))
+@click.option("--close", "expected_close", default=None, help="Expected close date (YYYY-MM-DD)")
+@click.option("--champion", default=None, help="Champion contact email")
+def pipeline_track(company_name: str, stage: str, expected_close: str, champion: str) -> None:
+    """Start tracking a company as a pipeline opportunity."""
+    from storage import pipeline as pipeline_store
+
+    opp = pipeline_store.track_opportunity(
+        company_name=company_name,
+        stage=stage,
+        expected_close=expected_close,
+        champion_contact=champion,
+    )
+    console.print(
+        f"[green]Tracking '{company_name}' as opportunity[/green]\n"
+        f"  ID: {opp['opportunity_id']}\n"
+        f"  Stage: {opp['stage']}\n"
+        f"  Health: {opp['health_score']}"
+    )
+
+
+@pipeline.command("untrack")
+@click.argument("company_name")
+def pipeline_untrack(company_name: str) -> None:
+    """Stop tracking a pipeline opportunity."""
+    from storage import pipeline as pipeline_store
+
+    if pipeline_store.untrack(company_name):
+        console.print(f"[yellow]Stopped tracking '{company_name}'[/yellow]")
+    else:
+        console.print(f"[red]Opportunity not found: '{company_name}'[/red]")
+
+
+@pipeline.command("list")
+def pipeline_list() -> None:
+    """List all tracked pipeline opportunities with health scores."""
+    from agents.pipeline import PipelineIntelligenceAgent
+
+    agent = PipelineIntelligenceAgent()
+    summary = agent.get_pipeline_summary()
+
+    if summary["total_count"] == 0:
+        console.print("[yellow]No pipeline opportunities tracked.[/yellow]")
+        console.print("Add one with: python main.py pipeline track 'Company Name' --stage proposal")
+        return
+
+    table = Table(title="Pipeline", show_header=True, header_style="bold cyan")
+    table.add_column("Company", style="bold")
+    table.add_column("Stage")
+    table.add_column("Health")
+    table.add_column("Expected Close")
+    table.add_column("Champion")
+
+    from storage import pipeline as pipeline_store
+    opps = pipeline_store.get_all_opportunities()
+    for opp in opps:
+        if opp.get("status") != "active":
+            continue
+        health = opp.get("health_score", 0)
+        health_color = "green" if health >= 70 else "yellow" if health >= 40 else "red"
+        table.add_row(
+            opp["company_name"],
+            opp.get("stage", "—"),
+            f"[{health_color}]{health}/100[/{health_color}]",
+            opp.get("expected_close") or "—",
+            opp.get("champion_contact") or "—",
+        )
+
+    console.print(table)
+    if summary["unhealthy_count"] > 0:
+        console.print(
+            f"\n[red]⚠️ {summary['unhealthy_count']} deal(s) below health threshold[/red]"
+        )
+
+
+@pipeline.command("assess")
+@click.argument("company_name")
+def pipeline_assess(company_name: str) -> None:
+    """Assess deal health for a tracked opportunity."""
+    from agents.pipeline import PipelineIntelligenceAgent
+
+    agent = PipelineIntelligenceAgent()
+    result = agent.assess_deal_health(company_name)
+
+    if "error" in result.get("breakdown", {}):
+        console.print(f"[red]{result['breakdown']['error']}[/red]")
+        return
+
+    breakdown = result["breakdown"]
+    console.print(f"\n[bold cyan]Deal Health: {company_name}[/bold cyan]")
+    console.print(f"  Overall Score: [bold]{result['health_score']}/100[/bold]")
+    console.print(f"  Stage: {result['stage']}")
+    console.print(f"\n[bold]Breakdown:[/bold]")
+    console.print(f"  • Stage: {breakdown['stage']}/20")
+    console.print(f"  • Champion Stability: {breakdown['champion_stability']}/20")
+    console.print(f"  • No Danger Signals: {breakdown['no_danger_signals']}/40")
+    console.print(f"  • Momentum: {breakdown['momentum']}/20")
+
+    signals = result.get("signals", {})
+    if signals.get("danger_signals"):
+        console.print(f"\n[bold red]⚠️ Danger Signals:[/bold red]")
+        for s in signals["danger_signals"]:
+            console.print(f"  • {s}")
+    if signals.get("momentum_signals"):
+        console.print(f"\n[bold green]Positive Signals:[/bold green]")
+        for s in signals["momentum_signals"]:
+            console.print(f"  • {s}")
+
+
+# ---------------------------------------------------------------------------
 # slack commands
 # ---------------------------------------------------------------------------
 

@@ -525,6 +525,9 @@ def handle_help() -> dict:
         ("`/scout-score [name]`", "Show score breakdown for a company"),
         ("`/scout-outreach [name]`", "Generate personalized outreach content"),
         ("`/scout-monitor`", "Run monitoring checks on all companies"),
+        ("`/scout-prep [name] [emails]`", "Generate meeting prep brief (e.g. `/scout-prep Acme john@acme.com`)"),
+        ("`/scout-track [name] [stage]`", "Track a company as pipeline deal (e.g. `/scout-track Acme proposal`)"),
+        ("`/scout-pipeline`", "View all pipeline deals with health scores"),
         ("`/scout-help`", "Show this help message"),
     ]
 
@@ -562,6 +565,199 @@ def handle_help() -> dict:
     ])
 
     return {"response_type": "ephemeral", "blocks": blocks}
+
+
+# ---------------------------------------------------------------------------
+# /scout-prep
+# ---------------------------------------------------------------------------
+
+def handle_prep(company_name: str, attendee_emails: str = "") -> dict:
+    """Handle /scout-prep [company_name] [emails...] — generate meeting prep brief."""
+    if not company_name or not company_name.strip():
+        return _error_blocks("Usage: `/scout-prep [company name] [email1,email2,...]`")
+
+    company_name = company_name.strip()
+    emails = [e.strip() for e in attendee_emails.split(",") if e.strip()] if attendee_emails else []
+
+    try:
+        from agents.prep import MeetingPrepAgent
+
+        agent = MeetingPrepAgent()
+        prep_data = agent.generate_prep(company_name, emails)
+    except Exception as e:
+        return _error_blocks(f"Meeting prep failed: {e}")
+
+    if "error" in prep_data:
+        return _error_blocks(prep_data["error"])
+
+    content = prep_data.get("prep_content", {})
+
+    blocks: list[dict] = [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": f"📋 Meeting Prep: {company_name}",
+                "emoji": True,
+            },
+        },
+        {"type": "divider"},
+    ]
+
+    # Context
+    if content.get("context"):
+        blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f"*Context:*\n{content['context'][:500]}"},
+        })
+
+    # Pain points
+    if content.get("pain_points"):
+        pp_text = "\n".join(f"• {p}" for p in content["pain_points"][:5])
+        blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f"*⚠️ Pain Points:*\n{pp_text}"},
+        })
+
+    # Questions
+    if content.get("questions"):
+        q_text = "\n".join(f"• {q}" for q in content["questions"][:5])
+        blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f"*💡 Opening Questions:*\n{q_text}"},
+        })
+
+    # Topics to avoid
+    if content.get("topics_to_avoid"):
+        avoid_text = "\n".join(f"• {t}" for t in content["topics_to_avoid"][:3])
+        blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f"*🚫 Topics to Avoid:*\n{avoid_text}"},
+        })
+
+    return {"response_type": "in_channel", "blocks": blocks}
+
+
+# ---------------------------------------------------------------------------
+# /scout-track
+# ---------------------------------------------------------------------------
+
+def handle_track(company_name: str, args: str = "") -> dict:
+    """Handle /scout-track [company_name] [stage] — start tracking as pipeline deal."""
+    if not company_name or not company_name.strip():
+        return _error_blocks("Usage: `/scout-track [company] [stage]` (stages: discovery|qualification|proposal|negotiation|poc)")
+
+    company_name = company_name.strip()
+    stage = "discovery"
+    if args and args.strip():
+        stage = args.strip().lower()
+
+    valid_stages = ["discovery", "qualification", "proposal", "negotiation", "poc", "closed_won", "closed_lost"]
+    if stage not in valid_stages:
+        return _error_blocks(f"Invalid stage: `{stage}`. Valid stages: {', '.join(valid_stages)}")
+
+    try:
+        from storage import pipeline as pipeline_store
+
+        opp = pipeline_store.track_opportunity(
+            company_name=company_name,
+            stage=stage,
+        )
+    except Exception as e:
+        return _error_blocks(f"Failed to track: {e}")
+
+    health = opp.get("health_score", 50)
+    health_emoji = "🟢" if health >= 70 else "🟡" if health >= 40 else "🔴"
+
+    return {
+        "response_type": "in_channel",
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"📌 Now tracking *{company_name}* as pipeline opportunity\n"
+                            f"Stage: *{stage}* | Health: {health_emoji} *{health}/100*",
+                },
+            }
+        ],
+    }
+
+
+# ---------------------------------------------------------------------------
+# /scout-pipeline
+# ---------------------------------------------------------------------------
+
+def handle_pipeline() -> dict:
+    """Handle /scout-pipeline — show all pipeline deals with health scores."""
+    try:
+        from agents.pipeline import PipelineIntelligenceAgent
+
+        agent = PipelineIntelligenceAgent()
+        summary = agent.get_pipeline_summary()
+    except Exception as e:
+        return _error_blocks(f"Pipeline query failed: {e}")
+
+    if summary["total_count"] == 0:
+        return {
+            "response_type": "ephemeral",
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": "No pipeline opportunities tracked.\nUse `/scout-track [company] [stage]` to start tracking.",
+                    },
+                }
+            ],
+        }
+
+    from storage import pipeline as pipeline_store
+    opps = pipeline_store.get_all_opportunities()
+
+    blocks: list[dict] = [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": "📈 Pipeline Deals",
+                "emoji": True,
+            },
+        },
+        {"type": "divider"},
+    ]
+
+    for opp in opps:
+        if opp.get("status") != "active":
+            continue
+        health = opp.get("health_score", 50)
+        health_emoji = "🟢" if health >= 70 else "🟡" if health >= 40 else "🔴"
+        stage = opp.get("stage", "—").title()
+        close = opp.get("expected_close") or "—"
+        champion = opp.get("champion_contact") or "—"
+
+        blocks.append({
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": (
+                    f"*{opp['company_name']}*\n"
+                    f"Stage: {stage} | Health: {health_emoji} *{health}/100* | "
+                    f"Close: {close} | Champion: {champion}"
+                ),
+            },
+        })
+
+    if summary["unhealthy_count"] > 0:
+        blocks.append({
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"⚠️ *{summary['unhealthy_count']} deal(s)* below health threshold",
+            },
+        })
+
+    return {"response_type": "in_channel", "blocks": blocks}
 
 
 # ---------------------------------------------------------------------------

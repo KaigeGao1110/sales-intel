@@ -1,3 +1,20 @@
 {
-  "alerts": []
+  "alerts": [
+    {
+      "id": "f8497e1c-ae0e-4404-a9da-db9ecd636b8f",
+      "company_id": "5ff83d5d-ded8-42f6-9bd5-72e99e4c7c16",
+      "company_name": "Atlassian",
+      "alert_date": "2026-03-30T04:00:17.511966+00:00",
+      "type": "funding",
+      "severity": "medium",
+      "title": "Atlassian: New funding: Series D, 2 minor news item(s)",
+      "summary": "\u2022 New funding: Series D\n\u2022 2 minor news item(s)",
+      "score": 10,
+      "notified": false,
+      "notification_date": null,
+      "channels": [
+        "email"
+      ]
+    }
+  ]
 }

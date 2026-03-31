@@ -92,6 +92,38 @@ def scout_help(ack, respond):
     respond(**result)
 
 
+@app.command("/scout-prep")
+def scout_prep(ack, respond, command):
+    """Generate meeting prep brief for a company."""
+    ack()
+    text = command.get("text", "").strip()
+    parts = text.split(maxsplit=1)
+    company_name = parts[0] if parts else ""
+    emails = parts[1] if len(parts) > 1 else ""
+    result = commands.handle_prep(company_name, emails)
+    respond(**result)
+
+
+@app.command("/scout-track")
+def scout_track(ack, respond, command):
+    """Track a company as a pipeline deal."""
+    ack()
+    text = command.get("text", "").strip()
+    parts = text.split(maxsplit=1)
+    company_name = parts[0] if parts else ""
+    args = parts[1] if len(parts) > 1 else ""
+    result = commands.handle_track(company_name, args)
+    respond(**result)
+
+
+@app.command("/scout-pipeline")
+def scout_pipeline(ack, respond):
+    """View all pipeline deals with health scores."""
+    ack()
+    result = commands.handle_pipeline()
+    respond(**result)
+
+
 # ---------------------------------------------------------------------------
 # OAuth / installation (optional — for "Add to Slack" flow)
 # ---------------------------------------------------------------------------
