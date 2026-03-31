@@ -526,6 +526,7 @@ def handle_help() -> dict:
         ("`/scout-outreach [name]`", "Generate personalized outreach content"),
         ("`/scout-monitor`", "Run monitoring checks on all companies"),
         ("`/scout-prep [name] [emails]`", "Generate meeting prep brief (e.g. `/scout-prep Acme john@acme.com`)"),
+        ("`/scout-warm-intro [name]`", "Find warm intro paths to contacts at a company"),
         ("`/scout-track [name] [stage]`", "Track a company as pipeline deal (e.g. `/scout-track Acme proposal`)"),
         ("`/scout-pipeline`", "View all pipeline deals with health scores"),
         ("`/scout-help`", "Show this help message"),
@@ -754,6 +755,105 @@ def handle_pipeline() -> dict:
             "text": {
                 "type": "mrkdwn",
                 "text": f"⚠️ *{summary['unhealthy_count']} deal(s)* below health threshold",
+            },
+        })
+
+    return {"response_type": "in_channel", "blocks": blocks}
+
+
+# ---------------------------------------------------------------------------
+# Error helper
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# /scout-warm-intro
+# ---------------------------------------------------------------------------
+
+def handle_warm_intro(company_name: str) -> dict:
+    """Handle /scout-warm-intro [company_name] — find warm intro paths."""
+    if not company_name or not company_name.strip():
+        return _error_blocks("Usage: `/scout-warm-intro [company name]`")
+
+    company_name = company_name.strip()
+
+    try:
+        from agents.warm_intro import find_intro_paths
+        result = find_intro_paths(company_name=company_name)
+    except Exception as e:
+        return _error_blocks(f"Failed to find intro paths: {e}")
+
+    contacts = result.get("contacts", [])
+    intro_paths = result.get("intro_paths", [])
+    recommended = result.get("recommended_path")
+
+    if not contacts:
+        return {
+            "response_type": "ephemeral",
+            "blocks": [
+                {
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": f"No contacts found for *{company_name}*.",
+                    },
+                }
+            ],
+        }
+
+    blocks: list[dict] = [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": f"🤝 Warm Intro Paths: {company_name}",
+                "emoji": True,
+            },
+        },
+        {"type": "divider"},
+    ]
+
+    # Contacts found
+    contact_lines = []
+    for c in contacts[:3]:
+        name = c.get("name", "—")
+        role = c.get("role", "—")
+        email = c.get("email", "—") or "—"
+        contact_lines.append(f"• *{name}* — {role} ({email})")
+
+    blocks.append({
+        "type": "section",
+        "text": {
+            "type": "mrkdwn",
+            "text": f"*Key Contacts Found:*\n" + "\n".join(contact_lines),
+        },
+    })
+    blocks.append({"type": "divider"})
+
+    # Intro paths
+    if intro_paths:
+        path_lines = []
+        for p in intro_paths[:5]:
+            score = p.get("score", 0)
+            path_type = p.get("path_type", "general")
+            reason = p.get("reason", "")[:60]
+            path_lines.append(f"• `[{score}]` {path_type}: {reason}")
+
+        blocks.append({
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "*Warm Intro Paths:*\n" + "\n".join(path_lines),
+            },
+        })
+
+    # Recommended intro request
+    if recommended:
+        blocks.append({"type": "divider"})
+        blocks.append({
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*Recommended Intro Request:*\n```{recommended[:500]}```",
             },
         })
 

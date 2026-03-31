@@ -124,6 +124,15 @@ def scout_pipeline(ack, respond):
     respond(**result)
 
 
+@app.command("/scout-warm-intro")
+def scout_warm_intro(ack, respond, command):
+    """Find warm intro paths to contacts at a company."""
+    ack()
+    company_name = command.get("text", "").strip()
+    result = commands.handle_warm_intro(company_name)
+    respond(**result)
+
+
 # ---------------------------------------------------------------------------
 # OAuth / installation (optional — for "Add to Slack" flow)
 # ---------------------------------------------------------------------------

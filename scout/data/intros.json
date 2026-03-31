@@ -1,0 +1,202 @@
+{
+  "intros": [
+    {
+      "request_id": "fabff894-9e69-47d2-b554-90ff3aa6a342",
+      "company_name": "Acme Corp",
+      "target_contact": {
+        "name": "ACME Corp Global",
+        "email": "",
+        "role": "Founded as a Strategic Advisory and Investment Management Corporation, ACME Corp is committed to cre"
+      },
+      "intro_paths": [
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Acme Law School Alumni Update : The Other McCain",
+          "reason": "Sometimes, you have to explain the set-up for a joke before it makes any sense to a general reader: The Acme Corporation is a fictional corporation that features prominently in the Road Runner/Wile\u2026",
+          "contact": "Acme Corporation",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - North Seattle Community College | LinkedIn",
+          "reason": "Experience: North Seattle Community College \u00b7 Education: Seattle University \u00b7 Location: Seattle \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith, CFA - Parti Pris Investment Partners | LinkedIn",
+          "reason": "Joe is Co-founder, Chief Investment Officer and head of Parti Pris\u2019 Investment Strategy\u2026 \u00b7 Experience: Parti Pris Investment Partners \u00b7 Education: Carnegie Mellon University - Tepper School of Business \u00b7 Location: Greater Seattle Area \u00b7 500+ connections on LinkedIn.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - Truist | LinkedIn",
+          "reason": "Experience: Truist \u00b7 Location: Charlotte \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for ACME Corp Global",
+          "contact": "ACME Corp Global",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:20:48.460087+00:00"
+    },
+    {
+      "request_id": "6335c777-79f4-45ca-bc4e-42d6370a15cf",
+      "company_name": "Test Corp",
+      "target_contact": {
+        "name": "Test Corp",
+        "email": "",
+        "role": "Test Corp | <strong>16 followers</strong> on LinkedIn."
+      },
+      "intro_paths": [
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for Test Corp",
+          "contact": "Test Corp",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:20:50.238033+00:00"
+    },
+    {
+      "request_id": "aabe0a02-ed3a-47e5-a34d-823b0e1f7e64",
+      "company_name": "Acme Corp",
+      "target_contact": {
+        "name": "ACME Corp Global",
+        "email": "",
+        "role": "Founded as a Strategic Advisory and Investment Management Corporation, ACME Corp is committed to cre"
+      },
+      "intro_paths": [
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Acme Law School Alumni Update : The Other McCain",
+          "reason": "Sometimes, you have to explain the set-up for a joke before it makes any sense to a general reader: The Acme Corporation is a fictional corporation that features prominently in the Road Runner/Wile\u2026",
+          "contact": "Acme Corporation",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - North Seattle Community College | LinkedIn",
+          "reason": "Experience: North Seattle Community College \u00b7 Education: Seattle University \u00b7 Location: Seattle \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith, CFA - Parti Pris Investment Partners | LinkedIn",
+          "reason": "Joe is Co-founder, Chief Investment Officer and head of Parti Pris\u2019 Investment Strategy\u2026 \u00b7 Experience: Parti Pris Investment Partners \u00b7 Education: Carnegie Mellon University - Tepper School of Business \u00b7 Location: Greater Seattle Area \u00b7 500+ connections on LinkedIn.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - Truist | LinkedIn",
+          "reason": "Experience: Truist \u00b7 Location: Charlotte \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for ACME Corp Global",
+          "contact": "ACME Corp Global",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:21:01.052703+00:00"
+    },
+    {
+      "request_id": "7d94ba9e-1351-4838-9d98-bbd29a9af3bf",
+      "company_name": "Test Corp",
+      "target_contact": {
+        "name": "Test Corp",
+        "email": "",
+        "role": "Test Corp | <strong>16 followers</strong> on LinkedIn."
+      },
+      "intro_paths": [
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for Test Corp",
+          "contact": "Test Corp",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:21:01.726465+00:00"
+    },
+    {
+      "request_id": "7bce68d8-4dbf-4934-a540-c477dfcc21fe",
+      "company_name": "Acme Corp",
+      "target_contact": {
+        "name": "ACME Corp Global",
+        "email": "",
+        "role": "Founded as a Strategic Advisory and Investment Management Corporation, ACME Corp is committed to cre"
+      },
+      "intro_paths": [
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Acme Law School Alumni Update : The Other McCain",
+          "reason": "Sometimes, you have to explain the set-up for a joke before it makes any sense to a general reader: The Acme Corporation is a fictional corporation that features prominently in the Road Runner/Wile\u2026",
+          "contact": "Acme Corporation",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - North Seattle Community College | LinkedIn",
+          "reason": "Experience: North Seattle Community College \u00b7 Education: Seattle University \u00b7 Location: Seattle \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith, CFA - Parti Pris Investment Partners | LinkedIn",
+          "reason": "Joe is Co-founder, Chief Investment Officer and head of Parti Pris\u2019 Investment Strategy\u2026 \u00b7 Experience: Parti Pris Investment Partners \u00b7 Education: Carnegie Mellon University - Tepper School of Business \u00b7 Location: Greater Seattle Area \u00b7 500+ connections on LinkedIn.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "mutual_connection",
+          "suggested_introducer": "Joe Smith - Truist | LinkedIn",
+          "reason": "Experience: Truist \u00b7 Location: Charlotte \u00b7 500+ connections on LinkedIn. View Joe Smith\u2019s profile on LinkedIn, a professional community of 1 billion members.",
+          "contact": "Joe Smith",
+          "score": 90
+        },
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for ACME Corp Global",
+          "contact": "ACME Corp Global",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:41:43.551859+00:00"
+    },
+    {
+      "request_id": "9a905823-6200-457b-9c2c-e472ac66ae60",
+      "company_name": "Test Corp",
+      "target_contact": {
+        "name": "Test Corp",
+        "email": "",
+        "role": "Test Corp | <strong>16 followers</strong> on LinkedIn."
+      },
+      "intro_paths": [
+        {
+          "path_type": "general",
+          "suggested_introducer": "Research further via LinkedIn",
+          "reason": "No direct shared background found \u2014 recommend deeper LinkedIn research for Test Corp",
+          "contact": "Test Corp",
+          "score": 20
+        }
+      ],
+      "created_at": "2026-03-31T20:41:45.330831+00:00"
+    }
+  ]
+}

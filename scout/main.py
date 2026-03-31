@@ -435,6 +435,30 @@ def outreach(company_name: str, domain: str, variants: int) -> None:
 
 
 # ---------------------------------------------------------------------------
+# warm-intro command
+# ---------------------------------------------------------------------------
+
+@cli.command()
+@click.argument("company_name")
+@click.option("--domain", default="", help="Company domain")
+@click.option("--role", default="decision maker", help="Target role to find")
+def warm_intro(company_name: str, domain: str, role: str) -> None:
+    """Find warm introduction paths to key contacts at a company.
+
+    COMPANY_NAME: Name of the target company.
+    """
+    from agents.warm_intro import find_intro_paths, print_intro_result
+
+    with console.status(f"[bold cyan]Finding warm intro paths for {company_name}...[/bold cyan]"):
+        result = find_intro_paths(
+            company_name=company_name,
+            target_role=role,
+            domain=domain,
+        )
+    print_intro_result(result)
+
+
+# ---------------------------------------------------------------------------
 # prep command
 # ---------------------------------------------------------------------------
 
@@ -678,6 +702,31 @@ def pipeline_assess(company_name: str) -> None:
         console.print(f"\n[bold green]Positive Signals:[/bold green]")
         for s in signals["momentum_signals"]:
             console.print(f"  • {s}")
+
+
+# ---------------------------------------------------------------------------
+# warm-intro command
+# ---------------------------------------------------------------------------
+
+@cli.command()
+@click.argument("company_name")
+@click.option("--domain", default="", help="Company domain (e.g. acme.com)")
+@click.option("--role", default="decision maker", help="Target role to find")
+def warm_intro(company_name: str, domain: str, role: str) -> None:
+    """Find warm introduction paths to key contacts at a company.
+
+    COMPANY_NAME: Name of the target company.
+    """
+    from agents.warm_intro import find_intro_paths, print_intro_result
+
+    with console.status(f"[bold cyan]Finding warm intro paths for {company_name}...[/bold cyan]"):
+        result = find_intro_paths(
+            company_name=company_name,
+            target_role=role,
+            domain=domain,
+        )
+
+    print_intro_result(result)
 
 
 # ---------------------------------------------------------------------------

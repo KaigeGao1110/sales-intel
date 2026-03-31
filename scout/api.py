@@ -561,6 +561,81 @@ def assess_deal(company_name: str):
 
 
 # ---------------------------------------------------------------------------
+# Warm Intro Finder
+# ---------------------------------------------------------------------------
+
+class WarmIntroRequest(BaseModel):
+    target_role: str = "decision maker"
+    domain: str = ""
+
+
+class IntroPathResponse(BaseModel):
+    path_type: str
+    score: int
+    reason: str
+    suggested_introducer: str
+    contact_name: Optional[str] = None
+
+
+class ContactResponse(BaseModel):
+    name: str
+    email: Optional[str]
+    role: str
+    linkedin_url: Optional[str]
+    source: str
+
+
+class WarmIntroResponse(BaseModel):
+    company_name: str
+    contacts: list[ContactResponse]
+    intro_paths: list[IntroPathResponse]
+    recommended_path: Optional[str]
+    created_at: Optional[str]
+
+
+@app.post("/warm-intro/{company_name}", response_model=WarmIntroResponse)
+def find_warm_intro(company_name: str, request: WarmIntroRequest):
+    """Find warm introduction paths to key contacts at a company."""
+    from agents.warm_intro import find_intro_paths
+
+    result = find_intro_paths(
+        company_name=company_name,
+        target_role=request.target_role,
+        domain=request.domain,
+    )
+
+    contacts = [
+        ContactResponse(
+            name=c.get("name", ""),
+            email=c.get("email"),
+            role=c.get("role", ""),
+            linkedin_url=c.get("linkedin_url"),
+            source=c.get("source", ""),
+        )
+        for c in result.get("contacts", [])
+    ]
+
+    intro_paths = [
+        IntroPathResponse(
+            path_type=p.get("path_type", ""),
+            score=p.get("score", 0),
+            reason=p.get("reason", ""),
+            suggested_introducer=p.get("suggested_introducer", ""),
+            contact_name=p.get("contact_name"),
+        )
+        for p in result.get("intro_paths", [])
+    ]
+
+    return WarmIntroResponse(
+        company_name=result.get("company_name", company_name),
+        contacts=contacts,
+        intro_paths=intro_paths,
+        recommended_path=result.get("recommended_path"),
+        created_at=result.get("created_at"),
+    )
+
+
+# ---------------------------------------------------------------------------
 # Health check
 # ---------------------------------------------------------------------------
 
