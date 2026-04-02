@@ -15,6 +15,22 @@
       "channels": [
         "email"
       ]
+    },
+    {
+      "id": "f81d8de3-6372-477d-b25e-732f064772a1",
+      "company_id": "91ff8cb4-a304-48f6-8139-07c094636ad0",
+      "company_name": "Slack",
+      "alert_date": "2026-04-01T16:00:33.157543+00:00",
+      "type": "funding",
+      "severity": "medium",
+      "title": "Slack: New funding: $841 million, 2 minor news item(s)",
+      "summary": "\u2022 New funding: $841 million\n\u2022 2 minor news item(s)",
+      "score": 10,
+      "notified": false,
+      "notification_date": null,
+      "channels": [
+        "email"
+      ]
     }
   ]
 }
