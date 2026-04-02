@@ -17,12 +17,28 @@ DATA_FILE = Path(__file__).parent.parent / "data" / "companies.json"
 GCS_BUCKET = os.getenv("SCOUT_DATA_BUCKET", "")
 GCS_OBJECT = "companies.json"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── GCS helpers ──────────────────────────────────────────────────────────────
 
 def _get_gcs_client():
     """Get a GCS client, returning None if unavailable."""
     try:
         from google.cloud import storage
-
         return storage.Client()
     except Exception:
         return None
@@ -55,19 +71,15 @@ def _save_to_gcs(client, data: dict) -> bool:
 
 def _load() -> dict:
     """Load companies.json, trying GCS first, then local file."""
-    # Try GCS first
     if GCS_BUCKET:
         client = _get_gcs_client()
         if client:
             gcs_data = _load_from_gcs(client)
             if gcs_data is not None:
-                # Sync to local file as backup
                 DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
                 with open(DATA_FILE, "w") as f:
                     json.dump(gcs_data, f, indent=2)
                 return gcs_data
-
-    # Fall back to local file
     if not DATA_FILE.exists():
         return {"companies": []}
     with open(DATA_FILE, "r") as f:
@@ -79,8 +91,6 @@ def _save(data: dict) -> None:
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=2)
-
-    # Sync to GCS
     if GCS_BUCKET:
         client = _get_gcs_client()
         if client:
@@ -89,16 +99,22 @@ def _save(data: dict) -> None:
 
 def get_all() -> list[dict]:
     """Return all companies."""
+    if _use_supabase():
+        return _get_supabase_storage().companies.get_all()
     return _load()["companies"]
 
 
 def get_active() -> list[dict]:
     """Return only active companies."""
+    if _use_supabase():
+        return _get_supabase_storage().companies.get_active()
     return [c for c in get_all() if c.get("status") == "active"]
 
 
 def get_by_name(name: str) -> Optional[dict]:
     """Find a company by name (case-insensitive)."""
+    if _use_supabase():
+        return _get_supabase_storage().companies.get_by_name(name)
     name_lower = name.lower()
     for c in get_all():
         if c.get("name", "").lower() == name_lower:
@@ -108,6 +124,8 @@ def get_by_name(name: str) -> Optional[dict]:
 
 def get_by_id(company_id: str) -> Optional[dict]:
     """Find a company by UUID."""
+    if _use_supabase():
+        return _get_supabase_storage().companies.get_by_id(company_id)
     for c in get_all():
         if c.get("id") == company_id:
             return c
@@ -131,13 +149,14 @@ def add(
     Returns:
         The newly created company dict.
     """
+    if _use_supabase():
+        return _get_supabase_storage().companies.add(
+            name, domain, alert_email, alert_channels
+        )
     data = _load()
-
-    # Check for duplicate
     existing = get_by_name(name)
     if existing:
         return existing
-
     channels = alert_channels or (["email"] if alert_email else ["console"])
     company = {
         "id": str(uuid.uuid4()),
@@ -156,6 +175,9 @@ def add(
 
 def update_last_checked(company_id: str) -> None:
     """Update the last_checked timestamp for a company."""
+    if _use_supabase():
+        _get_supabase_storage().companies.update_last_checked(company_id)
+        return
     data = _load()
     for c in data["companies"]:
         if c["id"] == company_id:
@@ -166,6 +188,9 @@ def update_last_checked(company_id: str) -> None:
 
 def set_status(company_id: str, status: str) -> None:
     """Set company status to 'active' or 'paused'."""
+    if _use_supabase():
+        _get_supabase_storage().companies.set_status(company_id, status)
+        return
     data = _load()
     for c in data["companies"]:
         if c["id"] == company_id:
@@ -180,6 +205,8 @@ def remove(company_id: str) -> bool:
     Returns:
         True if removed, False if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().companies.remove(company_id)
     data = _load()
     before = len(data["companies"])
     data["companies"] = [

@@ -1,6 +1,7 @@
 """Score storage for lead scoring results.
 
 Stores scoring data in ~/.scout/scores.json.
+Delegates to Supabase when SUPABASE_URL and SUPABASE_KEY are set.
 """
 
 import json
@@ -10,6 +11,23 @@ from typing import Optional
 
 SCORES_FILE = Path.home() / ".scout" / "scores.json"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _load() -> dict:
     """Load scores data from disk."""
@@ -48,6 +66,10 @@ def save(
     Returns:
         The saved score entry dict.
     """
+    if _use_supabase():
+        return _get_supabase_storage().scores.save(
+            company_id, company_name, score, grade, reasons, recommended_action
+        )
     data = _load()
     entry = {
         "company_id": company_id,
@@ -57,7 +79,6 @@ def save(
         "reasons": reasons,
         "recommended_action": recommended_action,
     }
-    # Replace any existing score for this company
     data["scores"] = [s for s in data["scores"] if s.get("company_id") != company_id]
     data["scores"].append(entry)
     _save(data)
@@ -73,6 +94,8 @@ def get_latest(company_id: str) -> Optional[dict]:
     Returns:
         Score dict or None if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().scores.get_latest(company_id)
     data = _load()
     for entry in reversed(data.get("scores", [])):
         if entry.get("company_id") == company_id:
@@ -86,9 +109,23 @@ def get_all_latest() -> list[dict]:
     Returns:
         List of score dicts, one per company.
     """
+    if _use_supabase():
+        return _get_supabase_storage().scores.get_all_latest()
     data = _load()
     seen: dict[str, dict] = {}
     for entry in data.get("scores", []):
         cid = entry.get("company_id", "")
         seen[cid] = entry
     return list(seen.values())
+
+
+def get_scores(company_id: str) -> list[dict]:
+    """Return all scores for a company (all time).
+
+    Note: Supabase only — JSON fallback returns a list with get_latest only.
+    """
+    if _use_supabase():
+        return _get_supabase_storage().scores.get_scores(company_id)
+    # JSON doesn't store full history; return latest as single-item list
+    latest = get_latest(company_id)
+    return [latest] if latest else []

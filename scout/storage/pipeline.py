@@ -1,6 +1,10 @@
-"""Pipeline storage for tracking sales opportunities and deal health."""
+"""Pipeline storage for tracking sales opportunities and deal health.
+
+Delegates to Supabase when SUPABASE_URL and SUPABASE_KEY are set.
+"""
 
 import json
+import os
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -10,6 +14,23 @@ PIPELINE_FILE = Path(__file__).parent.parent / "data" / "pipeline.json"
 
 STAGES = ["discovery", "qualification", "proposal", "negotiation", "poc", "closed_won", "closed_lost"]
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _load() -> dict:
     """Load pipeline data from disk."""
@@ -44,19 +65,21 @@ def track_opportunity(
     Returns:
         The opportunity dict.
     """
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.track_opportunity(
+            company_name, stage, expected_close, champion_contact
+        )
     data = _load()
-    # Check if already tracked
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():
             return opp
-
     opp = {
         "opportunity_id": str(uuid.uuid4()),
         "company_name": company_name,
         "stage": stage,
         "expected_close": expected_close,
         "champion_contact": champion_contact,
-        "health_score": 50,  # default
+        "health_score": 50,
         "signals": [],
         "last_assessed": None,
         "created_at": datetime.now(timezone.utc).isoformat(),
@@ -73,6 +96,8 @@ def untrack(company_name: str) -> bool:
     Returns:
         True if removed, False if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.untrack(company_name)
     data = _load()
     before = len(data["opportunities"])
     data["opportunities"] = [
@@ -87,6 +112,8 @@ def untrack(company_name: str) -> bool:
 
 def get_opportunity(company_name: str) -> Optional[dict]:
     """Get an opportunity by company name."""
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.get_opportunity(company_name)
     data = _load()
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():
@@ -104,6 +131,10 @@ def update_health_score(
     Returns:
         Updated opportunity dict or None if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.update_health_score(
+            company_name, score, signals
+        )
     data = _load()
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():
@@ -118,6 +149,8 @@ def update_health_score(
 
 def get_unhealthy(threshold: int = 50) -> list[dict]:
     """Get opportunities with health score below threshold."""
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.get_unhealthy(threshold)
     data = _load()
     return [
         o for o in data["opportunities"]
@@ -127,6 +160,8 @@ def get_unhealthy(threshold: int = 50) -> list[dict]:
 
 def get_all_opportunities() -> list[dict]:
     """Get all tracked opportunities."""
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.get_all_opportunities()
     return _load()["opportunities"]
 
 
@@ -138,6 +173,8 @@ def update_stage(company_name: str, new_stage: str) -> Optional[dict]:
     """
     if new_stage not in STAGES:
         return None
+    if _use_supabase():
+        return _get_supabase_storage().pipeline.update_stage(company_name, new_stage)
     data = _load()
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():

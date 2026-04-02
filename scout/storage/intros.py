@@ -1,6 +1,10 @@
-"""Warm intro path storage."""
+"""Warm intro path storage.
+
+Delegates to Supabase when SUPABASE_URL and SUPABASE_KEY are set.
+"""
 
 import json
+import os
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,6 +12,23 @@ from typing import Optional
 
 INTROS_FILE = Path(__file__).parent.parent / "data" / "intros.json"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _load() -> dict:
     """Load intros data from disk."""
@@ -36,6 +57,8 @@ def save_intro_request(company_name: str, target_contact: dict, intro_paths: lis
     Returns:
         The saved intro request dict.
     """
+    if _use_supabase():
+        return _get_supabase_storage().intros.save_intro(company_name, target_contact, intro_paths)
     data = _load()
     entry = {
         "request_id": str(uuid.uuid4()),
@@ -55,6 +78,8 @@ def get_intro_request(company_name: str) -> Optional[dict]:
     Returns:
         The most recent intro request dict, or None if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().intros.get_intro(company_name)
     data = _load()
     matching = [
         e for e in reversed(data["intros"])
@@ -65,4 +90,6 @@ def get_intro_request(company_name: str) -> Optional[dict]:
 
 def get_all() -> list[dict]:
     """Return all stored intro requests."""
+    if _use_supabase():
+        return _get_supabase_storage().intros.get_all_intros()
     return _load()["intros"]

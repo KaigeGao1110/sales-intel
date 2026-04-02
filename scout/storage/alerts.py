@@ -1,6 +1,10 @@
-"""Alert log CRUD for alerts_log.json."""
+"""Alert log CRUD for alerts_log.json.
+
+Delegates to Supabase when SUPABASE_URL and SUPABASE_KEY are set.
+"""
 
 import json
+import os
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,6 +12,23 @@ from typing import Optional
 
 ALERTS_FILE = Path(__file__).parent.parent / "data" / "alerts_log.json"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _load() -> dict:
     if not ALERTS_FILE.exists():
@@ -49,6 +70,11 @@ def log_alert(
     Returns:
         The created alert dict.
     """
+    if _use_supabase():
+        return _get_supabase_storage().alerts.save_alert(
+            company_id, company_name, alert_type, severity,
+            title, summary, score, channels, notified,
+        )
     data = _load()
     now = datetime.now(timezone.utc).isoformat()
     alert = {
@@ -72,6 +98,8 @@ def log_alert(
 
 def get_recent(company_id: str, hours: int = 24) -> list[dict]:
     """Return alerts for a company within the last N hours (for dedup)."""
+    if _use_supabase():
+        return _get_supabase_storage().alerts.get_recent(company_id, hours)
     cutoff = datetime.now(timezone.utc).timestamp() - hours * 3600
     results = []
     for a in _load()["alerts"]:
@@ -88,11 +116,16 @@ def get_recent(company_id: str, hours: int = 24) -> list[dict]:
 
 def get_all() -> list[dict]:
     """Return all logged alerts."""
+    if _use_supabase():
+        return _get_supabase_storage().alerts.get_all()
     return _load()["alerts"]
 
 
 def mark_notified(alert_id: str) -> None:
     """Mark an alert as notified."""
+    if _use_supabase():
+        _get_supabase_storage().alerts.mark_notified(alert_id)
+        return
     data = _load()
     now = datetime.now(timezone.utc).isoformat()
     for a in data["alerts"]:

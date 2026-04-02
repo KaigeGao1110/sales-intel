@@ -1,14 +1,34 @@
-"""CRUD operations for meeting_preps.json storage."""
+"""CRUD operations for meeting_preps.json storage.
+
+Delegates to Supabase when SUPABASE_URL and SUPABASE_KEY are set.
+"""
 
 import json
+import os
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
-
 DATA_FILE = Path(__file__).parent.parent / "data" / "meeting_preps.json"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _load() -> dict:
     """Load meeting_preps.json from disk."""
@@ -32,9 +52,10 @@ def store(meeting_id: str, prep_data: dict) -> None:
         meeting_id: Unique identifier for the meeting.
         prep_data: Dict containing meeting prep fields.
     """
+    if _use_supabase():
+        _get_supabase_storage().meeting_prep.save_meeting_prep(meeting_id, prep_data)
+        return
     data = _load()
-
-    # Check for existing entry and update, or append new
     existing_indices = [
         i for i, m in enumerate(data["meeting_preps"]) if m["meeting_id"] == meeting_id
     ]
@@ -42,7 +63,6 @@ def store(meeting_id: str, prep_data: dict) -> None:
         data["meeting_preps"][existing_indices[0]] = prep_data
     else:
         data["meeting_preps"].append(prep_data)
-
     _save(data)
 
 
@@ -55,6 +75,8 @@ def get(meeting_id: str) -> Optional[dict]:
     Returns:
         The meeting prep dict or None if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().meeting_prep.get_meeting_prep(meeting_id)
     data = _load()
     for m in data["meeting_preps"]:
         if m["meeting_id"] == meeting_id:
@@ -71,6 +93,8 @@ def get_by_company(company_name: str) -> list[dict]:
     Returns:
         List of matching meeting prep dicts.
     """
+    if _use_supabase():
+        return _get_supabase_storage().meeting_prep.get_by_company(company_name)
     data = _load()
     name_lower = company_name.lower()
     return [
@@ -88,10 +112,11 @@ def get_upcoming(hours_ahead: int = 24) -> list[dict]:
     Returns:
         List of upcoming meeting prep dicts.
     """
+    if _use_supabase():
+        return _get_supabase_storage().meeting_prep.get_upcoming_meetings(hours_ahead)
     data = _load()
     now = datetime.now(timezone.utc)
     upcoming: list[dict] = []
-
     for m in data["meeting_preps"]:
         meeting_time_str = m.get("meeting_time")
         if not meeting_time_str:
@@ -103,7 +128,6 @@ def get_upcoming(hours_ahead: int = 24) -> list[dict]:
                 upcoming.append(m)
         except Exception:
             continue
-
     return upcoming
 
 
@@ -116,6 +140,8 @@ def mark_complete(meeting_id: str) -> bool:
     Returns:
         True if updated, False if not found.
     """
+    if _use_supabase():
+        return _get_supabase_storage().meeting_prep.mark_complete(meeting_id)
     data = _load()
     for m in data["meeting_preps"]:
         if m["meeting_id"] == meeting_id:
@@ -131,4 +157,6 @@ def list_all() -> list[dict]:
     Returns:
         List of all meeting prep dicts.
     """
+    if _use_supabase():
+        return _get_supabase_storage().meeting_prep.list_all()
     return _load()["meeting_preps"]

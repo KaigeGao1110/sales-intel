@@ -1,6 +1,7 @@
 """Snapshot storage for company monitoring state."""
 
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,6 +9,23 @@ from typing import Optional
 
 SNAPSHOTS_DIR = Path(__file__).parent.parent / "data" / "snapshots"
 
+# ── Supabase delegation ───────────────────────────────────────────────────────
+
+def _use_supabase() -> bool:
+    """Return True when SUPABASE_URL and SUPABASE_KEY are both set."""
+    return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+
+_supabase_storage = None
+
+def _get_supabase_storage():
+    """Lazily create and return a SupabaseStorage instance."""
+    global _supabase_storage
+    if _supabase_storage is None:
+        from storage.supabase_client import SupabaseStorage
+        _supabase_storage = SupabaseStorage()
+    return _supabase_storage
+
+# ── JSON helpers ─────────────────────────────────────────────────────────────
 
 def _get_slot(dt: datetime) -> str:
     """Return 'AM' if hour < 12 UTC, 'PM' otherwise."""
@@ -24,11 +42,9 @@ def _parse_snapshot_filename(filename: str) -> tuple[str, str, str]:
     Handles both old format (no slot, treated as AM) and new format.
     Returns (company_id, date_str, slot).
     """
-    # New format: {company_id}_{date}_{slot}.json
     match = re.match(r"^(.+)_(\d{4}-\d{2}-\d{2})_(AM|PM)\.json$", filename)
     if match:
         return match.group(1), match.group(2), match.group(3)
-    # Old format: {company_id}_{date}.json (treat as AM)
     match = re.match(r"^(.+)_(\d{4}-\d{2}-\d{2})\.json$", filename)
     if match:
         return match.group(1), match.group(2), "AM"
@@ -46,6 +62,13 @@ def save(company_id: str, company_name: str, research_data: dict) -> Path:
     Returns:
         Path to the saved snapshot file.
     """
+    if _use_supabase():
+        result = _get_supabase_storage().snapshots.save_snapshot(
+            company_id, company_name, research_data, source="AM"
+        )
+        # Supabase returns dict; return the id as a pseudo-path for compatibility
+        return Path(result.get("id", str(company_id)))
+
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc)
     date_str = now.strftime("%Y-%m-%d")
@@ -75,6 +98,8 @@ def get_latest(company_id: str) -> Optional[dict]:
     Returns:
         Snapshot dict or None if no snapshots exist.
     """
+    if _use_supabase():
+        return _get_supabase_storage().snapshots.get_latest(company_id)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     pattern = f"{company_id}_*.json"
     matches = sorted(SNAPSHOTS_DIR.glob(pattern), reverse=True)
@@ -93,29 +118,28 @@ def get_previous(company_id: str) -> Optional[dict]:
     Returns:
         Snapshot dict or None if no previous snapshot exists.
     """
+    if _use_supabase():
+        return _get_supabase_storage().snapshots.get_previous(company_id)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc)
     current_date = now.strftime("%Y-%m-%d")
     current_slot = _get_slot(now)
-
-    # Current snapshot filename (to skip)
     current_filename = f"{company_id}_{current_date}_{current_slot}.json"
-
-    # Sort all snapshots by filename descending
     pattern = f"{company_id}_*.json"
     matches = sorted(SNAPSHOTS_DIR.glob(pattern), reverse=True)
-
-    # Skip current snapshot and return the first previous one
     for path in matches:
         if path.name == current_filename:
             continue
         with open(path, "r") as f:
             return json.load(f)
-
     return None
 
 
 def list_snapshots(company_id: str) -> list[Path]:
     """List all snapshot files for a company, oldest first."""
+    if _use_supabase():
+        snapshots = _get_supabase_storage().snapshots.list_snapshots(company_id)
+        # Supabase returns dicts; return list of paths for compatibility
+        return [Path(s.get("id", company_id)) for s in snapshots]
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     return sorted(SNAPSHOTS_DIR.glob(f"{company_id}_*.json"))
