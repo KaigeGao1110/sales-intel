@@ -44,7 +44,8 @@ def cli() -> None:
 @click.option("--email", default="", help="Email for monitoring alerts")
 @click.option("--no-monitor", is_flag=True, default=False,
               help="Don't add company to monitoring list")
-def scout(company_name: str, domain: str, email: str, no_monitor: bool) -> None:
+@click.option("--month", default="", help="Historical month to research (e.g. 2026-01)")
+def scout(company_name: str, domain: str, email: str, no_monitor: bool, month: str) -> None:
     """Research a company and generate a sales brief.
 
     COMPANY_NAME: Name of the company to scout (e.g. "Acme Corp")
@@ -57,6 +58,7 @@ def scout(company_name: str, domain: str, email: str, no_monitor: bool) -> None:
         domain=domain,
         alert_email=email,
         add_to_monitoring=not no_monitor,
+        historical_month=month or None,
     )
     agent.print_brief(brief)
 

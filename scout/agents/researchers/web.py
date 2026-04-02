@@ -1,9 +1,8 @@
-"""Web Researcher - searches for hiring/funding signals. Run-only, no state."""
+"""Web Researcher - searches for hiring/funding signals via tool routing. Run-only, no state."""
 
 import re
 
-from services.brave_search import BraveSearchService
-from services.tavily import TavilyService
+from services.search_registry import SearchToolRegistry
 
 
 LAYOFF_KEYWORDS = [
@@ -73,30 +72,29 @@ def _detect_funding(texts: list[str]) -> dict:
 
 
 def run(company_name: str) -> dict:
-    """Web Researcher - searches for hiring/funding signals. Run-only."""
-    brave = BraveSearchService()
-    tavily = TavilyService()
+    """
+    Web Researcher - searches for hiring and funding signals.
 
-    brave_hiring: list[dict] = []
-    brave_funding: list[dict] = []
-    tavily_hiring: list[dict] = []
-    tavily_funding: list[dict] = []
+    Uses SearchToolRegistry for intelligent multi-tool routing:
+    - hiring signals → brave (real-time) → serpapi (jobs) → tavily
+    - funding signals → serpapi (precision) → tavily → brave
 
-    if brave.available:
-        brave_hiring = brave.search_hiring_signals(company_name)
-        brave_funding = brave.search_funding(company_name)
+    Falls back gracefully if tools are unavailable.
+    """
+    registry = SearchToolRegistry()
 
-    if tavily.available:
-        tavily_hiring = tavily.search_hiring_signals(company_name)
-        tavily_funding = tavily.search_funding(company_name)
+    # Route hiring signals to best available tool
+    hiring_results = registry.route("hiring", company_name)
 
-    all_hiring = brave_hiring + tavily_hiring
-    all_funding = brave_funding + tavily_funding
+    # Route funding signals to best available tool
+    funding_results = registry.route("funding", company_name)
 
+    # Build texts for signal detection
+    all_results = hiring_results + funding_results
     all_texts: list[str] = []
     raw_signals: list[str] = []
 
-    for item in all_hiring + all_funding:
+    for item in all_results:
         text = f"{item.get('title', '')} {item.get('description', '')}"
         if text.strip():
             all_texts.append(text)

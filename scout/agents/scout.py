@@ -98,6 +98,7 @@ class ScoutAgent:
         domain: str = "",
         alert_email: str = "",
         add_to_monitoring: bool = True,
+        historical_month: Optional[str] = None,
     ) -> str:
         """Research a company and generate a sales brief.
 
@@ -106,6 +107,7 @@ class ScoutAgent:
             domain: Optional company domain for enrichment.
             alert_email: Email for monitoring alerts.
             add_to_monitoring: Whether to add to monitoring list.
+            historical_month: Optional "YYYY-MM" for historical research.
 
         Returns:
             Markdown brief as a string.
@@ -115,7 +117,9 @@ class ScoutAgent:
         )
 
         # Step 1: Research
-        research_data = self.research_agent.research(company_name, domain=domain)
+        research_data = self.research_agent.research(
+            company_name, domain=domain, historical_month=historical_month
+        )
 
         # Step 2: Generate brief
         console.print("\n[bold cyan]Generating brief...[/bold cyan]")

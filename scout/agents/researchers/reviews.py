@@ -1,7 +1,6 @@
-"""Review Researcher - searches for customer/employee reviews. Run-only, no state."""
+"""Review Researcher - searches for customer/employee reviews via tool routing. Run-only, no state."""
 
-from services.brave_search import BraveSearchService
-from services.tavily import TavilyService
+from services.search_registry import SearchToolRegistry
 
 
 def _detect_sentiment(text: str) -> str:
@@ -33,24 +32,24 @@ def _detect_reviews(texts: list[str]) -> dict:
 
 
 def run(company_name: str) -> dict:
-    """Review Researcher - searches for customer/employee reviews. Run-only."""
-    brave = BraveSearchService()
-    tavily = TavilyService()
+    """
+    Review Researcher - searches for customer/employee reviews via tool routing.
 
-    brave_reviews: list[dict] = []
-    tavily_reviews: list[dict] = []
+    Routing priority for reviews:
+        1. serpapi (Google reviews, G2, Trustpilot)
+        2. brave (real-time reviews)
+        3. tavily (AI summary)
 
-    if brave.available:
-        brave_reviews = brave.search_reviews(company_name)
+    Falls back gracefully if tools are unavailable.
+    """
+    registry = SearchToolRegistry()
 
-    if tavily.available:
-        tavily_reviews = tavily.search_reviews(company_name)
-
-    all_reviews = brave_reviews + tavily_reviews
+    # Route reviews search to best available tool(s)
+    review_results = registry.route("reviews", company_name)
 
     texts = [
         f"{item.get('title', '')} {item.get('description', '')}"
-        for item in all_reviews
+        for item in review_results
     ]
 
     return {

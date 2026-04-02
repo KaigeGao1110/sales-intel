@@ -1,8 +1,6 @@
-"""News Researcher - fetches recent news from multiple sources. Run-only, no state."""
+"""News Researcher - fetches recent news from multiple sources via tool routing. Run-only, no state."""
 
-from services.brave_search import BraveSearchService
-from services.news_api import NewsAPIService
-from services.tavily import TavilyService
+from services.search_registry import SearchToolRegistry
 
 
 def _detect_sentiment(text: str) -> str:
@@ -21,30 +19,28 @@ def _detect_sentiment(text: str) -> str:
 
 
 def run(company_name: str) -> dict:
-    """News Researcher - fetches recent news from Brave, NewsAPI, and Tavily. Run-only."""
-    brave = BraveSearchService()
-    news_api = NewsAPIService()
-    tavily = TavilyService()
+    """
+    News Researcher - fetches recent news via SearchToolRegistry.
 
-    brave_results: list[dict] = []
-    newsapi_results: list[dict] = []
-    tavily_results: list[dict] = []
+    Routing priority for news:
+        1. tavily (AI-optimized news summaries)
+        2. brave (real-time news)
+        3. serpapi (Google News authority)
+        4. exa (semantic news)
 
-    if brave.available:
-        brave_results = brave.search_news(company_name)
+    Results are deduplicated by URL and merged.
+    """
+    registry = SearchToolRegistry()
 
-    if news_api.available:
-        newsapi_results = news_api.get_company_news(company_name)
+    # Route news search to best available tool(s)
+    news_results = registry.route("news", company_name)
 
-    if tavily.available:
-        tavily_results = tavily.search_news(company_name)
-
-    # Merge and deduplicate by URL
+    # Deduplicate by URL
     seen_urls: set[str] = set()
     articles: list[dict] = []
     sentiments: list[str] = []
 
-    for item in brave_results + newsapi_results + tavily_results:
+    for item in news_results:
         url = item.get("url", "")
         if url and url not in seen_urls:
             seen_urls.add(url)
