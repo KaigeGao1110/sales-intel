@@ -7,6 +7,7 @@ from rich.console import Console
 
 from storage import alerts as alert_store
 from services.hunter import HunterService
+from services.apollo import ApolloService
 
 console = Console()
 
@@ -24,15 +25,39 @@ ALERT_THRESHOLD = 10
 
 
 def _lookup_contacts(company_name: str, domain: str = "") -> list[dict]:
-    """Look up company contacts via Hunter.io.
+    """Look up company contacts via Apollo.io (preferred) with Hunter.io fallback.
 
     Returns up to 3 relevant contacts (prioritizing executives and sales).
     """
+    contacts = []
+
+    # Apollo.io first (more complete: has title + LinkedIn + email)
+    apollo = ApolloService()
+    if apollo.available:
+        apollo_contacts = apollo.search_people(
+            company_name=company_name,
+            domain=domain,
+            limit=3,
+        )
+        for c in apollo_contacts:
+            contacts.append({
+                "first_name": c.get("first_name", ""),
+                "last_name": c.get("last_name", ""),
+                "email": c.get("email", ""),
+                "position": c.get("title", ""),
+                "linkedin_url": c.get("linkedin_url", ""),
+                "confidence": 100 if c.get("email_status") == "verified" else 50,
+                "verification": {
+                    "status": "valid" if c.get("email_status") == "verified" else "unknown",
+                },
+            })
+        if contacts:
+            return contacts[:3]
+
+    # Hunter.io fallback
     hunter = HunterService()
     if not hunter.available:
         return []
-
-    contacts = []
 
     # If we have a domain, search by domain (executives first)
     if domain:

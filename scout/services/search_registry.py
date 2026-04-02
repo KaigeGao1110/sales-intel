@@ -15,6 +15,7 @@ from services.tavily import TavilyService
 from services.serpapi import SerpAPIService
 from services.exa import ExaService
 from services.firecrawl import FirecrawlService
+from services.apollo import ApolloService
 
 console = Console()
 
@@ -69,6 +70,7 @@ class SearchToolRegistry:
         ],
         "competitor": [
             ("exa", "semantic similarity"),
+            ("apollo", "org search"),
             ("tavily", "AI overview"),
             ("serpapi", "competitor pages"),
         ],
@@ -96,6 +98,7 @@ class SearchToolRegistry:
         self._serpapi: Optional[SerpAPIService] = None
         self._exa: Optional[ExaService] = None
         self._firecrawl: Optional[FirecrawlService] = None
+        self._apollo: Optional[ApolloService] = None
 
     # --- Lazy service accessors ---
 
@@ -129,6 +132,12 @@ class SearchToolRegistry:
             self._firecrawl = FirecrawlService()
         return self._firecrawl
 
+    @property
+    def apollo(self) -> ApolloService:
+        if self._apollo is None:
+            self._apollo = ApolloService()
+        return self._apollo
+
     # --- Public API ---
 
     def get_available_tools(self) -> list[str]:
@@ -144,6 +153,8 @@ class SearchToolRegistry:
             available.append("exa")
         if self.firecrawl.available:
             available.append("firecrawl")
+        if self.apollo.available:
+            available.append("apollo")
         return available
 
     def route(self, task_type: str, company: str, **kwargs) -> list[dict]:
@@ -325,6 +336,11 @@ class SearchToolRegistry:
                 if task_type == "deep_content":
                     return tool.search(query, limit=kwargs.get("limit", 5))
                 return tool.search(query, limit=kwargs.get("limit", 3))
+
+            elif tool_name == "apollo":
+                if task_type == "competitor":
+                    return tool.search_organizations(company, limit=kwargs.get("limit", 10))
+                return tool.search_people(company, limit=kwargs.get("limit", 5))
 
             return []
         except Exception as e:

@@ -5,6 +5,7 @@ from typing import Optional
 from rich.console import Console
 
 from services.clearbit import ClearbitService
+from services.apollo import ApolloService
 from services.search_registry import SearchToolRegistry
 from agents.researchers import news as news_researcher
 from agents.researchers import web as web_researcher
@@ -23,6 +24,7 @@ class ResearchAgent:
     def __init__(self) -> None:
         self.registry = SearchToolRegistry()
         self.clearbit = ClearbitService()
+        self.apollo = ApolloService()
 
     def research(
         self,
@@ -89,9 +91,18 @@ class ResearchAgent:
             if text and text[:200] not in raw_signals:
                 raw_signals.append(text[:200])
 
-        # --- Clearbit Enrichment (optional) ---
+        # --- Apollo Enrichment (preferred, more complete than Clearbit) ---
         enrichment: dict = {}
-        if self.clearbit.available:
+        if self.apollo.available:
+            console.print("[dim]  Enriching via Apollo.io...[/dim]")
+            if domain:
+                enrichment = self.apollo.enrich_organization(domain) or {}
+            if enrichment:
+                console.print(f"[dim]  Apollo enrichment: {enrichment.get('name', 'N/A')} — "
+                              f"{enrichment.get('employee_count', 'N/A')} employees[/dim]")
+
+        # --- Clearbit Enrichment (fallback if Apollo unavailable) ---
+        if not enrichment and self.clearbit.available:
             console.print("[dim]  Enriching via Clearbit...[/dim]")
             if domain:
                 enrichment = self.clearbit.enrich_by_domain(domain) or {}
