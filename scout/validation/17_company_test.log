@@ -1,0 +1,1852 @@
+================================================================================
+17 COMPANY VALIDATION TEST
+Started: 2026-04-06T11:43:17.126043
+================================================================================
+
+================================================================================
+Company: Anthropic | Status: success | Duration: 37.6s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Anthropic
+============================================================
+Generated: 2026-04-06T11:43:54.655616
+Confidence: MEDIUM
+
+## Anthropic Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-04T16:32:22+00:00: Anthropic says Claude Code subscribers will need to pay extra for OpenClaw usage - TechCrunch
+  Source: https://news.google.com/rss/articles/CBMiuAFBVV95cUxQakxlX1lJUklzd3JYNkp4Q2NGZlFPZ3NhcmVKYUJYcGprR3dxWWtYMUFrV0VXc1Yta1BNSUR5ZVEtZjdWY2hGeFRQZVNWeVhCX2RHeGtIY2k0ZVVRM1VmMlh2bFZjOWgwTTY2OXlSNTRGOHVNMGhiUkhoUnVHdGx3SHRlQ0Z1aWoyOUNDLXl2VXdMTXdldTVrZzFKSFhnMXJHTXZGXzItU1NnMnZ0aVl3UWp4eWxWRmdL?oc=5
+
+[T3] 2026-04-05T04:00:49+00:00: UK courts Anthropic to expand in London after US defence clash - Financial Times
+  Source: https://news.google.com/rss/articles/CBMihAFBVV95cUxPQnlKWE14TVk1R21kTlRNN0lqUHV2cUxac0sxSE1XNHE0T084NGdLVTVjWVIxSkRzbTJpTkI5dnpkazBrNUFCRnc4VGMwNXlRQ1RJZjZqOGJJM1hNejN0MTRlVGpSODR1a1ljYml1YzRWX3VrUHRXX2o2ME5fMVkydnE5emc?oc=5
+
+[T3] 2026-04-05T04:29:00+00:00: Britain woos Anthropic expansion after US defence clash, FT says - Reuters
+  Source: https://news.google.com/rss/articles/CBMiugFBVV95cUxQSlNHSDZHRDJkanNObFJFREVrUlpieTh0cGdXcmdYdTBsXzNXYnZBYnViZDRyVG03X0tIbGt5VDIxV0ZfTFIyN0dpWHNvb0ItdENnelpSTWFIekNjOTZiWWVEUkM4TmpOcjBVZUxobGYtRFN4bEZtVUlERFhTRFFOTXphR2t5cktaVURLaC1VWDhuWVdya0czWFJPaUdOZkhoV1o4eUMycDlTbk9Gd2plWldqTkxpSmQ5SkE?oc=5
+
+[T3] 2026-04-06T01:00:00+00:00: An Inside Look at OpenAI and Anthropic’s Finances Ahead of Their IPOs - WSJ
+  Source: https://news.google.com/rss/articles/CBMi-gJBVV95cUxNaU1rUjR6dzFwZnV1N3h5MkNYOU41M2tleHgxOFNDc3k2ODVzaWlvV1dPcmx1OXV6dmFzQ1R3U2ZHbkhPaERENEJfY09uTVo1Qm9MMHl3dC1HZjJQVmFUZERpMlR1WHBIdU52dUMzOHVZcGwzY2VmUFM5eHBXQklZb1YxQnRTX2c4V2xYdzlRZk5kaVA5UzYzUkdZaVFSX1NqeWNfQUg5SXZ4dlZEcXdpX2l0a1FPRjNJa3VJdC1qQUJJNUJKRHdYTHlwVjhlNVJjN1pLWURteVBfQmpEWEM2OFVFM0o3S1pYR2NGaHpac3B4NzVwbkVOR214cTRtcHRBSk9tcjFEZzJ6bE84YmVfRUpYaFgtQ3JxcnZtVGlTMlBMM2lGd3dSX3ZfRjk5dkRsNGhPd0lIdjFPMnhCVnBjY2lMcHE2ZHl6SEpSVHFNbXpKcmg1ejByOVpRZE1jZmxDNUhFcWkwZmtMVDdGR1hHd1NLVjRWYzNRQ3c?oc=5
+
+[T3] 2026-04-05T17:15:02+00:00: The mega IPOs of SpaceX, Anthropic and OpenAI alone can't fix this stock market - CNBC
+  Source: https://news.google.com/rss/articles/CBMiqgFBVV95cUxORVFBRHpvbzNEYmtLeUVzUUd6SHFwOWh4bGVVWFJHV01wLXFtVmVPNWozWWVzaDFrQll2RmVpV29uZTlWanVES1N6VTZzbnBmVUdPRjRZMWo1UTJJZ1R0TXhFWkNITjVoVTdCWXp6MlY5ZlNsNUU0RXItOXRqLUdFZG5DTkNDREpTdk11cktkSnZpdGk4cDZVZ3dCU1JkVHEzU0xKV3U5VndqUQ?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Anthropic_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Recent coverage: Anthropic says Claude Code subscribers will need to pay extra for OpenClaw usage - TechCrunch
+• Recent coverage: UK courts Anthropic to expand in London after US defence clash - Financial Times
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Anthropic",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Anthropic says Claude Code subscribers will need to pay extra for OpenClaw usage - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQakxlX1lJUklzd3JYNkp4Q2NGZlFPZ3NhcmVKYUJYcGprR3dxWWtYMUFrV0VXc1Yta1BNSUR5ZVEtZjdWY2hGeFRQZVNWeVhCX2RHeGtIY2k0ZVVRM1VmMlh2bFZjOWgwTTY2OXlSNTRGOHVNMGhiUkhoUnVHdGx3SHRlQ0Z1aWoyOUNDLXl2VXdMTXdldTVrZzFKSFhnMXJHTXZGXzItU1NnMnZ0aVl3UWp4eWxWRmdL?oc=5",
+      "source": "TechCrunch",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-04-04T16:32:22+00:00",
+      "snippet": "Anthropic says Claude Code subscribers will need to pay extra for OpenClaw usage&nbsp;&nbsp;TechCrunchAnthropic tells OpenClaw users to pay up&nbsp;&nbsp;The Rundown AIThe AI agent buffet is closed&nb",
+      "source_link": "https://news.google.com/rss?q=TechCrunch&hl=en-US"
+    },
+    {
+      "title": "UK courts Anthropic to expand in London after US defence cla
+STDERR:
+🔍 Researching Anthropic...
+
+
+================================================================================
+Company: Apple | Status: success | Duration: 6.6s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Apple
+============================================================
+Generated: 2026-04-06T11:44:04.257018
+Confidence: MEDIUM
+
+## Apple Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-05T12:00:00+00:00: My Favorite Apple Watch Bands (and the Ones to Avoid) - WIRED
+  Source: https://news.google.com/rss/articles/CBMiYEFVX3lxTE83LVlfZWF1WXVqTUtmSGliOTVMbTFEMTBqSzRlU3BNQWItZ1VrbHJhcHhXbjZydHZKOWNxRWx3ZThkMEJJRHpqSUZOY2tGNGNkdGp6WV95MlhHWVNqM2U3Zw?oc=5
+
+[T3] 2026-04-06T16:26:00+00:00: AI Is Squeezing Memory Supplies. How Apple’s Strategy Can Boost Its Stock. - barrons.com
+  Source: https://news.google.com/rss/articles/CBMi9AJBVV95cUxNWTFFQ1FhWG05UHRhOFdqQ3A0TWhLSVJubUZKOTgxaDBNTUNQcGpjNGpBTGkwdS1ZNHNaWi1ZQmFXdVVRbkctT3dOR1NUak1xdVRsMEJsUDMyM015b3ZBeW5TYktpR191WVlaVTVDcjVET1hBVGllMlpDYU45Sy1MYUNRaGVpenVBUDQtMjBmb1BadzBBa2lqR2tqYTg0X2w3d2VabFlkd0FuSWhvOWJidTFhYnBMTFY4MDEwalVXWkJQU3Y2ZXZiN1k0dW5sRkNYcVk2cVZUck1XNDVCSWVIUXdMUFZsQi1oVVk5NzlFMUFQN183LVRwYUpUaUZjbXFQNEVjaGMtMjdGYmo3RnZqMG9jbF93NGFWQlBkeWk0TlVCMjBPY3NCUkhJaTkxT1NlaEkxb09BdElJd09WNGFDTV9oMEdFSmt4amZublR3Zjg2Wm81X3hJQm5hdGthZGVhLTRJVnZ6VmJvVUo4Zm10d1lVa3k?oc=5
+
+[T3] 2026-04-05T15:00:00+00:00: The Vibe Coding Effect? Apple’s App Store Saw 84% Jump in New Apps in Quarter - The Information
+  Source: https://news.google.com/rss/articles/CBMipwFBVV95cUxQZjVwZXdOUzhobEctc1VrRDZNMjZxQzFhc2tGUTJ5OVZBbERsa2lBNUJSeGVDWkZwb21FR1V1ZG05N0pFSmhmRnBzQzdlWEI3X0pJR2NnZnF1MzBOcThsZkdoOWxFdjgzdFdnZjAyMzBIQ19lUkNLekc1cE1vNlFjUDM2dzBqTHpVWTZzVndUdWhVZkllMGJUNUN4MngxQVBQUVdULXdvbw?oc=5
+
+[T3] 2026-04-06T07:10:01+00:00: ‘Stop Texting’—Apple Changes iPhone After 15 Years - Forbes
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxPY2hYZmNmejYxYXlZV3NlQUEwWHhzZVZGSDB6cklXWk1iNm92MElteXQ5QjBGaXA1bXdvQW1mdDEzOWFzQllCcUxfTzlidzc5WHFUbHlza3hkSlV4RjhvcEdHY3JxckwxMjB2bk1YeXdHcjhNZjdIYkJHbjRqeDhFbDVBLXpfNDZsbHhlcE1VVFQybU1ncUlsYVJRS2pKN0djR1E?oc=5
+
+[T3] 2026-04-04T09:00:00+00:00: Amazon has the Apple M5 MacBook Air for its best price ever: Save $149 - Mashable
+  Source: https://news.google.com/rss/articles/CBMia0FVX3lxTE1BZkUxMkVPd2pVbkZnNHE2angtRlpMSEhFVWJRdUVCZk03VUpSSDQ1NEl2eVo3dU5TLWU1dHZBNGNTNEFsV3BOVTlacUZmbDRoREoyX2U1V3hLM1R2MXM0WEpMVzZxY3JPSEhZ?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Apple_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+• Recent coverage: My Favorite Apple Watch Bands (and the Ones to Avoid) - WIRED
+• Recent coverage: AI Is Squeezing Memory Supplies. How Apple’s Strategy Can Boost Its Stock. - barrons.com
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Apple",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "My Favorite Apple Watch Bands (and the Ones to Avoid) - WIRED",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE83LVlfZWF1WXVqTUtmSGliOTVMbTFEMTBqSzRlU3BNQWItZ1VrbHJhcHhXbjZydHZKOWNxRWx3ZThkMEJJRHpqSUZOY2tGNGNkdGp6WV95MlhHWVNqM2U3Zw?oc=5",
+      "source": "WIRED",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-04-05T12:00:00+00:00",
+      "snippet": "My Favorite Apple Watch Bands (and the Ones to Avoid)&nbsp;&nbsp;WIRED",
+      "source_link": "https://news.google.com/rss?q=WIRED&hl=en-US"
+    },
+    {
+      "title": "AI Is Squeezing Memory Supplies. How Apple\u2019s Strategy Can Boost Its Stock. - barrons.com",
+      "url": "https://news.google.com/rss/articles/CBMi9AJBVV95cUxNWTFFQ1FhWG05UHRhOFdqQ3A0TWhLSVJubUZKOTgxaDBNTUNQcGpjNGpBTGkwdS1ZNHNaWi1ZQmFXdVVRbkctT3dOR1NUak1xdVRsMEJsUDMyM015b3ZBeW5TYktpR191WVlaVTVDcjVET1hBVGllMlpDYU45Sy1MYUNRaGVpenVBUDQtMjBmb1BadzBBa2lqR2tqYTg0X2w3d2VabFlkd0FuSWhvOWJidTFhYnBMTFY4MDEwalVXWkJQU3Y2ZXZiN1k0dW5sRkNYcVk2cVZUck1XNDVCSWVIUXdMUFZsQi1oVVk5NzlFMUFQN183LVRwYUpUaUZjbXFQNEVjaGMtMjdGYmo3RnZqMG9jbF93NGFWQlBkeWk0TlVCMjBPY3NCUkhJaTkxT1NlaEkxb09B
+STDERR:
+🔍 Researching Apple...
+
+
+================================================================================
+Company: Atlassian | Status: success | Duration: 37.6s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Atlassian
+============================================================
+Generated: 2026-04-06T11:44:44.827545
+Confidence: MEDIUM
+
+## Atlassian Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T00:06:00+00:00: Elastic, PagerDuty, nCino, Atlassian, and Commerce Shares Skyrocket, What You Need To Know - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNdjhFX19USHJya1NTaFEyXzVvamcwQUZFeW9vVDlxdEhMQWRkYWV2STFSQTlncllkY05YZHB1Qlc3Wll6aTRLLXhsbHVZMjRhZ1VSUTFGc1BxRmw0aXZUYWhUbFhvNTgzanBkWmFycmY2OTQtY3FicE84bjhWUzF1TGhjaUpyVkV0Y2oydXNILVN4NGtlQzFWRlBRazEwa0ptU3owRTY4aGJ0dWc?oc=5
+
+[T3] 2026-03-31T04:30:00+00:00: Atlassian Layoffs Recast AI Focus And Cloud Valuation Story - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMinwFBVV95cUxPczhEeGFfYWtHcGlldUI3YkxqWGg0LU95a3ZxRXliQ2dRcXF4cy1sODVaUENpNlRrTU1sbHE0alFsaFdVQk5QOGREajJuelZNUFVaZ1hidXp5N0ExMl9aaldSOTh4eVdtdGR0M1JtZFFWUENrcFZYQXgwTmhhdlBIcjlVellSUUYxZ016N2lJUlVXVy1qS0VhU2NHVnc1REE?oc=5
+
+[T3] 2026-03-31T14:08:43+00:00: Atlassian Stock Is Down 57% in 2026. Here’s Why Analysts See 47% Upside to $98 - TIKR.com
+  Source: https://news.google.com/rss/articles/CBMioAFBVV95cUxPZUtEZm5xTFVFR2hadlBVVnEwX2lDeW5JdHFYNUhfaS1yT1RHOHVwUUJsT1FMWWdlbTVQWkMyVkd6SGhWVWwzNU5mU0NXc3RzTDZ2QkhRaHVRLWwzdUNLLTdPM1psRFY5d0RLWl83c252SFpib3J4eklvc1B2cmc1cm1JOTFtRGZyNF9JbWVjaHc0ZWEwdkY0WVN2eDFYX0lx?oc=5
+
+[T3] 2026-03-31T17:50:24+00:00: Atlassian (TEAM) Hits All-Time High of $66.10 - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMimgFBVV95cUxNbGJvcGtsRDZOUHMzanNrelJMOGlRWWRoaWl4M0ZrVmVKSW9qa0w5aHFnazRlQ05uNnV3Z19YZ3BnUkc5SzZOT1Rad2pfYkcyNkM0QjZqZVVLZThuR1dhRTlwMS1odFdRd2ZaWFpnTWhnZmtldVBYcEFabTJ1djFreFRLeU1jbEhodnJwWFFFbmpSVVk5aDExajhR?oc=5
+
+[T3] 2026-04-01T04:55:00+00:00: Atlassian targeted by union demand for bigger stock redundancy payouts - afr.com
+  Source: https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlZqUFlGMEk2OVBuNnNXVVNJblNUZ3EwNGZ0ZFVOb0c2YkZsTm8wZ2htdW9nZy1xcDhuVXdZNy1CN0hrLTZOZkw0b1pJeDhVQ0dLVFY3T1lvb1BxdWN4QzlnbmdaY3NOTkljclZsZlY4d1hPUVBRTTl5RmFDbU02UE1SaFVFSFpFN3p5LTJNMEg3Z1FvYno4Z2Z1SGpGdXFYeFBBMzlqbXlkRVJEdjdfVWJBT2E?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** 2
+**Signal:** ➡️ STABLE
+**Trend:** STABLE
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Atlassian_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Atlassian",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Elastic, PagerDuty, nCino, Atlassian, and Commerce Shares Skyrocket, What You Need To Know - finance.yahoo.com",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNdjhFX19USHJya1NTaFEyXzVvamcwQUZFeW9vVDlxdEhMQWRkYWV2STFSQTlncllkY05YZHB1Qlc3Wll6aTRLLXhsbHVZMjRhZ1VSUTFGc1BxRmw0aXZUYWhUbFhvNTgzanBkWmFycmY2OTQtY3FicE84bjhWUzF1TGhjaUpyVkV0Y2oydXNILVN4NGtlQzFWRlBRazEwa0ptU3owRTY4aGJ0dWc?oc=5",
+      "source": "finance.yahoo.com",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T00:06:00+00:00",
+      "snippet": "Elastic, PagerDuty, nCino, Atlassian, and Commerce Shares Skyrocket, What You Need To Know&nbsp;&nbsp;finance.yahoo.com",
+      "source_link": "https://news.google.com/rss?q=finance.yahoo.com&hl=en-US"
+    },
+    {
+      "title": "Atlassian Layoffs Recast AI Focus And Cloud Valuation Story - finance.yahoo.com",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPczhEeGFfYWtHcGlldUI3YkxqWGg0LU95a3ZxRXliQ2dRcXF4cy1sODVaUENpNlRrTU1sbHE0alFsaFdVQk5QOGREajJuelZNUFVaZ1hidXp5N0ExMl9aaldSOTh4eVdtdGR0M1JtZFFWUENrcFZYQXgwTmhhdlBIcjlVellSUUYxZ016N2lJUlVXVy1qS0VhU2NHVnc1REE?oc=5",
+      "source": "finance.yahoo.com",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T04:30:00+00:00",
+      "snippet": "Atlassian Layoffs Recast AI Focus And Cloud Valuation Story&nbsp;&
+STDERR:
+🔍 Researching Atlassian...
+
+
+================================================================================
+Company: Canva | Status: success | Duration: 7.1s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Canva
+============================================================
+Generated: 2026-04-06T11:44:54.905613
+Confidence: MEDIUM
+
+## Canva Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-06T15:14:46+00:00: Nearly 50% of India’s mangoes come from just 2 states: Top 10 producers - CNBC TV18
+  Source: https://news.google.com/rss/articles/CBMivAFBVV95cUxNQzFWTFVPU2xmNHFRaVhmODBqU1I1V1A5bmNCOENOcVc0ajhycUJyUC1pY2VCWXFXeWFBZjd3TFVQVXlvVEFYU213dzZtNGFwaE5ZWXNxMC1sblJtb3hkMTVEcDhKRGJ3MGthRHZISWFfc05NN1ctbWVsX0plZEp0cFp4Y243VWV3VGhVZGtFOFNKVklUWmhtT1FPQS15RmxEejQzNl9qX0JWeHlEMUI3bVg4RGEtVy1STGlyTNIBwgFBVV95cUxOTUl0WkNhSWtSWUpkejR2R0MxbFVteUQ4dWlya25UYXpySEF3VUU3cV8xczNiRVgxc0dXbnRnS25xcXNxQ0Zwc3FTYVZPcUstUkF2YmtoM0RhV0p4Z2ZUNkVFeVlpbTJuNzcydm1Ib3ZjSjlyWmc1NW5jalh3M2pzb1BQbWdiZ0wtcXJJSjAweUpoQ1YyNmJuWlhlYUpnMWt0Z1pLNGN2M1dJVE9OcFVRUldCMXlOZWVjQm1IcDJaZVVHZw?oc=5
+
+[T3] 2026-03-31T06:45:00+00:00: Canva's Tom Carey on why imperfection might be your greatest creative weapon - creativeboom.com
+  Source: https://news.google.com/rss/articles/CBMiswFBVV95cUxOdFpKRTNTc0JMXzhqSEpfbjduTS14TW11bGlzRGh0OHZVSl9aZ29IbmJfNm5PVXdoUHQ0V19PR1VaV3FRVnJRWmktbGxlN3ZodVoxdTZkWm0xRzcyS2otMWlzRFJDcTV3TzdKVjNHeGh1aFAySVZoRUl3MjVYdkRicG5IR0dYVFk4ZUs0Y29PQUM0bjMtRUcybUtHdDBjVFJHd0NQSHJVTERVT0Q0Z1pzUkdtWQ?oc=5
+
+[T3] 2026-04-01T09:08:00+00:00: Canva signs on with Firmus neocloud rival Sharon AI - afr.com
+  Source: https://news.google.com/rss/articles/CBMioAFBVV95cUxOUk5nUzlibzcwVi1xeTNMR29xSWxIS1JwaDhHaUZ5ODNyNU0xNkhoejJ6QTZwSVB5N3JULVNxaTZnUFBPMm80amotbER2V28zLXI4UkFVYWFoSmlGX3k0Zl9BSTdXUjJOc3NrTTEwS2FHcjQxOXRnbGJBNzFsdWRHMEhsSE1rWWgya1N2ajVfbUhUdGpkcm1lVEoxVFFlaVBf?oc=5
+
+[T3] 2026-04-01T18:21:00+00:00: Sam’s Club is raising membership prices starting next month - kktv.com
+  Source: https://news.google.com/rss/articles/CBMingFBVV95cUxQUTZZZDM4LWxybko4a2tRa1NZeXRTM1RPdVdTb1dTVlhUZVBHeHBocHo2WWM2cm9iQU5RbnNTRGQ3c1BNY1RPNmpsVXhwa0Vkb0hMaW4wbkNfLW1mVzRFQzNTVTd2NEE5djF4SjJsYjkxcURnZkdwUjJObUtQeGVhVzJoaEE0Z2Rqc2JqMGcxVjgzYzJKckQwblppdkItdw?oc=5
+
+[T3] 2026-04-02T13:15:00+00:00: Media Alert from ClassDojo for Districts: New ClassDojo + Canva Integration Helps Districts Control School Communications at Scale - PR Newswire
+  Source: https://news.google.com/rss/articles/CBMikgJBVV95cUxNMzQ2VGxxRlUwQS1qay1IWWlXd2ZYaDZxcEdackFBQThUbElETlNGcjFlaUZ0Um5LSjNuSldWRjN0S0xLLXlLeFBCVVdVVW9aZTd5M00yQkFsWEVMeVY4djJiRjd4Uk9ON0VBUnhPR0tiQWhrcHcwNXhqZllFT1VjRktOVHAtektKNnNUWVh0aXZpdk9VY21WRlJNZDJRLXVwd1RqRE9LSkZhQzhvb3YzZHBFYkZHWWZhWmhBRExvX21BWGhLVDZvdkF3SEZ3OGxfdU91eFFmN1B1dU40UmE1SXZkTlZPbTQtX3Q2dFZEV3lXcFJrOHFYbFNVNXRMd2tPczhHcVkzNDA1ZW0wX0xzVXd3?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Canva_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Canva",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Nearly 50% of India\u2019s mangoes come from just 2 states: Top 10 producers - CNBC TV18",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQzFWTFVPU2xmNHFRaVhmODBqU1I1V1A5bmNCOENOcVc0ajhycUJyUC1pY2VCWXFXeWFBZjd3TFVQVXlvVEFYU213dzZtNGFwaE5ZWXNxMC1sblJtb3hkMTVEcDhKRGJ3MGthRHZISWFfc05NN1ctbWVsX0plZEp0cFp4Y243VWV3VGhVZGtFOFNKVklUWmhtT1FPQS15RmxEejQzNl9qX0JWeHlEMUI3bVg4RGEtVy1STGlyTNIBwgFBVV95cUxOTUl0WkNhSWtSWUpkejR2R0MxbFVteUQ4dWlya25UYXpySEF3VUU3cV8xczNiRVgxc0dXbnRnS25xcXNxQ0Zwc3FTYVZPcUstUkF2YmtoM0RhV0p4Z2ZUNkVFeVlpbTJuNzcydm1Ib3ZjSjlyWmc1NW5jalh3M2pzb1BQbWdiZ0wtcXJJSjAweUpoQ1YyNmJuWlhlYUpnMWt0Z1pLNGN2M1dJVE9OcFVRUldCMXlOZWVjQm1IcDJaZVVHZw?oc=5",
+      "source": "CNBC TV18",
+      "tier": 2,
+      "tier_label": "TIER2",
+      "date": "2026-04-06T15:14:46+00:00",
+      "snippet": "Nearly 50% of India\u2019s mangoes come from just 2 states: Top 10 producers&n
+STDERR:
+🔍 Researching Canva...
+
+
+================================================================================
+Company: Databricks | Status: success | Duration: 38.3s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Databricks
+============================================================
+Generated: 2026-04-06T11:45:36.255949
+Confidence: MEDIUM
+
+## Databricks Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T08:34:26+00:00: Databricks Announces $850M UK Investment to Accelerate Enterprise Data + AI Adoption - Databricks
+  Source: https://news.google.com/rss/articles/CBMiwwFBVV95cUxORVFTWUZzQllPWkk4b01kTkE5RWVSNVFqcndLSkEwS0otNEV3MloyemM3ZmRZRXptTUFzY1ZTbVdubzZIWGc2ZkJEZm14RUJ4eVpuOG1PNnNrcy1oTWtQMllHV0xOaUNNV3VMZjRJNkM4TzVWSDV0YzhBOTV6MHNpcnpXT0FubHByN2FCZnE3ak42Z3BBUDZMVnVkWmRCLXBucU1DSDZ1NGxlbkNMMTdpSUM5NWxUTTJvVHllVmdTajdWNkk?oc=5
+
+[T3] 2026-04-01T05:35:46+00:00: Natura Unifies Data with Databricks & Unity Catalog - Databricks
+  Source: https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ldlFjWFJxTVU1bnBGNHVKM1ppRVpFOWtqcl9wellob0FhR0t2cVlNU1pleEQzbXZVUjFXNEZ2WVFjdUNUaVJ2ZWlBZUY3aDFwbjRGMmZ6am9ObElKOXpIY3FPTFc3b0dy?oc=5
+
+[T3] 2026-04-01T14:49:08+00:00: Announcing the 2026 Built-On Databricks Startup Challenge - Databricks
+  Source: https://news.google.com/rss/articles/CBMiigFBVV95cUxPVmp0dWQ4cFBadmFZZjFaandpVVZVUEotODJFR3ROQ1hvcWpFdTg1aFdKYk03cjZrOVBHcmlRSkFRMlBTMHFPNGhaWEFqU2VGYWw5czJ5YVl1WDhJUmJUZ04zbnlQZ1d5aC13dXpJckNhQkNjbHViVkFncGtLVWlQYkI2QjRVNVA5OWc?oc=5
+
+[T3] 2026-04-02T08:31:04+00:00: How Addepar Scales Investment Workflows with Databricks AI Agents - Databricks
+  Source: https://news.google.com/rss/articles/CBMilwFBVV95cUxNUnF3NkNVOEV1QnduczJhQXo4WHdoY3R5bTdYaFJFdWFIcy1IVlpPcjhvTFFpSF9ZQi1uRXR1bldzMDdPdXNGY1NQVmExRWJwa01odmVZN3R4cWJMVmI0Q3UzdklORkZuNy1VeFNOdmFDblp4QVdZZHlEOEJpaU9KdnBzdDFQSTRWOVg5MEI1cXFmS2pSZzJz?oc=5
+
+[T3] 2026-04-02T12:03:00+00:00: OpenAI’s record $122 billion round is just the start - The Business Journals
+  Source: https://news.google.com/rss/articles/CBMipgFBVV95cUxNUFRNQXBlQVhIVlhLVVNYQkNMdU1BdkFqSTRhYk8tdWI0WGlNZE1MeXF5MkVVRDBSQlQyR3UwWUZrSURETmUxSWxEaVNhYWdqdEdkblhWR20yWmZOVndFcnpvVXpkd3RDdkNBUks0YmgyUkFMTU9ZQkIta3ZrTHRzQWZGV1JRZGJOa182SjN5Y0Z4SU9xQS1Xa2c1Qmp6Unl4SS1IY3BB?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Databricks_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Databricks",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Databricks Announces $850M UK Investment to Accelerate Enterprise Data + AI Adoption - Databricks",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxORVFTWUZzQllPWkk4b01kTkE5RWVSNVFqcndLSkEwS0otNEV3MloyemM3ZmRZRXptTUFzY1ZTbVdubzZIWGc2ZkJEZm14RUJ4eVpuOG1PNnNrcy1oTWtQMllHV0xOaUNNV3VMZjRJNkM4TzVWSDV0YzhBOTV6MHNpcnpXT0FubHByN2FCZnE3ak42Z3BBUDZMVnVkWmRCLXBucU1DSDZ1NGxlbkNMMTdpSUM5NWxUTTJvVHllVmdTajdWNkk?oc=5",
+      "source": "Databricks",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T08:34:26+00:00",
+      "snippet": "Databricks Announces $850M UK Investment to Accelerate Enterprise Data + AI Adoption&nbsp;&nbsp;Databricks",
+      "source_link": "https://news.google.com/rss?q=Databricks&hl=en-US"
+    },
+    {
+      "title": "Natura Unifies Data with Databricks & Unity Catalog - Databricks",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ldlFjWFJxTVU1bnBGNHVKM1ppRVpFOWtqcl9wellob0FhR0t2cVlNU1pleEQzbXZVUjFXNEZ2WVFjdUNUaVJ2ZWlBZUY3aDFwbjRGMmZ6am9ObElKOXpIY3FPTFc3b0dy?oc=5",
+      "source": "Databricks",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-04-01T05:35:46+00:00",
+      "snippet": "Natura Unifies Data with Databricks & Unity Catalog&nbsp;&nbsp;Databricks",
+      "source_link": "https://news.google.com/rss?q=Databricks&hl=en-US"
+    },
+    {
+      "title": "Announcing the 2026 Built-On Databricks Startup Challenge - Databricks",
+      "url": "https://news.google.com/rss/
+STDERR:
+🔍 Researching Databricks...
+
+
+================================================================================
+Company: Figma | Status: success | Duration: 34.7s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Figma
+============================================================
+Generated: 2026-04-06T11:46:14.005029
+Confidence: MEDIUM
+
+## Figma Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-01T07:02:29+00:00: Figma: Ugly Chart, Good Business - Trefis
+  Source: https://news.google.com/rss/articles/CBMilAFBVV95cUxQeXlqNjE1Y1RxZUJGdXpLU3NVRThmbHh1RC1PN3NmNXBadHpuZTNMbmg2aDNYck1MbThncFVlMmV6SnZmLXBsQzczb05TbUtGeVNWSTVoU0w3T0hHeTdxMEl2ZjNsckdYdi1ZYWh3aE1BN2RkVWs3a2lJMkNGVUVNYUxZc3BISVRFS3d5Mlo3d2VESTU1?oc=5
+
+[T3] 2026-04-01T11:41:05+00:00: Oppenheimer Initiates Coverage of Figma (FIG) with a ‘Perform’ Rating - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMiqAFBVV95cUxQc2MwMmg2bXVHdGx1UkJ4aDdrZy05aHdOSFBJcjhwWUt2OFk2NmR4VVlfcG5aX0g2M1VsVVBpMWFwTkFITkhmLVVSYTg2UlpPTm1GY1dITzBZZGNFMDUwNWhXb2IyVk1XV0UzYy1ienBuelZxWUl3WnFlOE5xYlNzckJfbVg2cmpJSHpScXdjUTFhZzZ3X3N2MFh5Y0VLUHBfLUl2YXJVUlU?oc=5
+
+[T3] 2026-04-01T11:47:03+00:00: Oppenheimer Initiates Coverage of Figma (FIG) with a ‘Perform’ Rating - Insider Monkey
+  Source: https://news.google.com/rss/articles/CBMirgFBVV95cUxOSllLQlpHUTBpTDlwc1k5d1Zia2RsTVlmWGF5T2ZWRTlUa1hWZmRkV0hQNXQ0WHdTWXRrTWNpT0NtaUd2cUZMRzRzSm12OUcxSDVfUkFLMmZRUnBTenBIM0NzcWhVV3RodW5Ba3A2bDNSbnktQ3p6RDNQdGI1ZmhBVEFCQXlReGFFNzc2TnAwYTRaMGU0eVc3S3RpbjdyLVV2OTNZTGU4d0t2RUxLd0HSAbYBQVVfeXFMTkcwbFU0bVBMNnRtWVl5cGdia2Z3aXdMUlFwNm1kV2RzenI1Ulp2RVdrUDd2YUF0MjlhU1hHLThHZFFHMnpBZDh1T1ZfOGpORkdCbTcwVzVNOGVSOE9rSDh0U0JYSjNKMjFkZUlpWG8yQkFiZkRwQXdCQkpvcXVDX3NSU29aUkRBM0FqaExOZ18ySWxlQmF6cTRxTEw1czNDNUVxSlBtVXZIT2ktMkZTRGdjMUhOdkE?oc=5
+
+[T3] 2026-04-02T14:37:43+00:00: Figma (NYSE:FIG) Sets New 52-Week Low - Time to Sell? - MarketBeat
+  Source: https://news.google.com/rss/articles/CBMiowFBVV95cUxNTFVXalZaOEE0Nk80SjItTWhDcmIyM2NlWXd1dWYyX0prbW5xaVNaREY1b05JVmgzU2JXbFdZalU1SVlqTnpxNXZyM2RfbEVBVjZaYnJVZDRVYURUQ1diNkVXNWRCRDlpb3FrVlNKVFRGY0p5QnMyLXgwM21tR0p4VlN6SUd5aEZMTXh1RTBhT091ZVJ0WXlrOGJlYU0yQ0Q0c2Fv?oc=5
+
+[T3] 2026-04-02T16:03:03+00:00: FIG Stock: Figma is a Cautionary Tale for Tech Investors - CMC Markets
+  Source: https://news.google.com/rss/articles/CBMimAFBVV95cUxNcnVFYzZwSDVDXzItc1Nvbk1nSm5UWmcxNG40amV0TXRlUlZhTVhlSlkybFEyekFxVk1Rdl81NEQtcjRKbWpJMVlHcGM3b1hGY3ltelNScE5DMzNkRHFKUWNaT2Y1THJzMEEzWC1lbnZ3Qi1uZTQ0S09KcXdhckMyazFLZ0k2M0NRWmU5dDVsejlSakp6NGVveA?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📉 CONTRACTION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Figma_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Showing contraction signals - may indicate cost optimization phase
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Figma",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Figma: Ugly Chart, Good Business - Trefis",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQeXlqNjE1Y1RxZUJGdXpLU3NVRThmbHh1RC1PN3NmNXBadHpuZTNMbmg2aDNYck1MbThncFVlMmV6SnZmLXBsQzczb05TbUtGeVNWSTVoU0w3T0hHeTdxMEl2ZjNsckdYdi1ZYWh3aE1BN2RkVWs3a2lJMkNGVUVNYUxZc3BISVRFS3d5Mlo3d2VESTU1?oc=5",
+      "source": "Trefis",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-04-01T07:02:29+00:00",
+      "snippet": "Figma: Ugly Chart, Good Business&nbsp;&nbsp;Trefis",
+      "source_link": "https://news.google.com/rss?q=Trefis&hl=en-US"
+    },
+    {
+      "title": "Oppenheimer Initiates Coverage of Figma (FIG) with a \u2018Perform\u2019 Rating - finance.yahoo.com",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQc2MwMmg2bXVHdGx1UkJ4aDdrZy05aHdOSFBJcjhwWUt2OFk2NmR4VVlfcG5aX0g2M1VsVVBpMWFwTkFITkhmLVVSYTg2UlpPTm1GY1dITzBZZGNFMDUwNWhXb2IyVk1XV0UzYy1ienBuelZxWUl3WnFlOE5xYlNzckJfbVg2cmpJSHpScXdjUTFhZzZ3X3N2MFh5Y0VLUHBfLUl2YXJVUlU?oc=5",
+      "source": "finance.yahoo.com",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-04-01T11:41:05+00:00",
+      "snippet": "Oppenheimer Initiates Coverage of Figma (FIG) with a \u2018Perform\u20
+STDERR:
+🔍 Researching Figma...
+
+
+================================================================================
+Company: HubSpot | Status: success | Duration: 6.7s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: HubSpot
+============================================================
+Generated: 2026-04-06T11:46:23.702865
+Confidence: MEDIUM
+
+## HubSpot Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T10:19:20+00:00: Assessing HubSpot (HUBS) Valuation After NASDAQ Internet Index Inclusion - simplywall.st
+  Source: https://news.google.com/rss/articles/CBMiwgFBVV95cUxNd3lSYXZnRTQtYzVMSC1HcktQaTd3M0RYRnJJa3hwVlBDTERTWEluQ0wzZDExR2lYZGhac1d1dnZPS1pZVlVsYnFwS2l6bWh0bDh6MXI0WGJLR3hERlJDZkFtYjdCc3JiTk5MdFRYYXNub3I4Z1JhRHhPR2I1YjdnYWpNRGtDWFJoZWxMOXVzYVp1SExpd09ueFZPSXlpUzhianpwSW0wWFlLMVlUWWhPWm9kS0Z3M2lidmljZ2pwT2FNZ9IBxwFBVV95cUxOSWxYZThqNDNGd2YxS2hLY29tVDh2eEVkMU9pYlNndkcyejc3Z0xNNkpaMFRFOUEtc05BWnNpRzlRYjl5Y3ZiODgwQjhoajFBYUlUaXNrdmZfOVlST1FXVGRIWFItS2dWVDYyX3AxWjVkaG9ZTzdhcWpOblRtT0tqVmFQU3Q0VjVRR1RVSVNrZGs5UEh6U25VWHRDY1JTU2RnN293ZEtHN1R6VHd5RDlMbjlpeDE3SHBMQ003RzVrRWFKamhaR29z?oc=5
+
+[T3] 2026-03-31T11:07:24+00:00: BofA Securities initiates HubSpot stock coverage with buy rating - Investing.com
+  Source: https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdFRBTHJfbWN2bVdRZE5mWnZTeFllMEVNVG1tWGkwaHhEMU5VbFh0djFRTnhHal9RVnJncW8wU0lXYUVmTzMzNmJtbmdLTWRidFdaRjBsdTFJWmxSWGZfc1R4N0JZN1llRzF2My1XNGgwaFhsYk9rMTJrQjhFb3lKS2RwbkRoSTNmb25ieUNZVUVHVjhGMld1SUg3YXJQbm1KTHhsX1dmMFdVSEtNeVJPUEd5bjZRMDFiaWU0WGcyNS1sUQ?oc=5
+
+[T3] 2026-03-31T13:50:22+00:00: Despite HubSpot’s Big Losses, Wall Street Thinks Its a Winner This Year - 24/7 Wall St.
+  Source: https://news.google.com/rss/articles/CBMiswFBVV95cUxOUlJBVl9BU1YyUzBxRGVVYkoyY19hRFJfdTEwNTFKd0JnVExoTXlWbzdYWnBNVWN1QU5xSXIxa0U1TzJ4MjN2c2xWNDE1ZFh2STlHSnNUOXcxdVh6ZUlQSkduV0NxdTVVcXJ4SjdDS2YyVXRQZ0Y5bE80SDNGRlUyNlNoVGFaUHdsY1ZPY3MwRnk5N29YSWp5bHN6MjBLOWQ1QlVUWDRJalY0d0o2T1JoMXpxQQ?oc=5
+
+[T3] 2026-03-31T16:57:52+00:00: HubSpot in focus as BofA restarts with Buy rating, sees 'underappreciated AI durability' (HUBS:NYSE) - Seeking Alpha
+  Source: https://news.google.com/rss/articles/CBMiwAFBVV95cUxPOUdPVTRLS0ZNZ0hMM3l4cGQ0NFVocFc2aE1jTzZoNDBHS2JPczF5TXVyQ0RRVnlrQTQzZzlCX0RGNDBsS19oaFBpejAyYjBlMzlmNkhvUGVvTTgxUV81Qm0zcTlNbDlsTkVyNlNtZzhuRHVHaTctaTM1SE5iOTJlS2QyVlE0ZnU1TUtGeEpoaFhVQUVhbXJIUm5Ick1DdTNzZlY0b0lOTkVPM2FYdTZjRTNGUGVIeEFHYVNGTGxCZjA?oc=5
+
+[T3] 2026-04-01T13:00:16+00:00: Here’s Why HubSpot (HUBS) Shares Crashed More Than 40% in 2025 - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMinAFBVV95cUxOSUZCZWVOQmlQRTJkSUI4S3FHR044X1NVaU9SSFZYckR3Nm9DaDQ0ZFB2MlpvU2oyb1ZGcnczcU56VXFicG9NdmR6dVJJVF8zNWw0cUpSbXpBb19wS1FYWFh4aUpaUWRlSVhXRlhkR3hzLUpXRlhvUUQ1bGpKcmdnMFFpTkpYaER5bWpRS2hhOE5Bc1A0Yml5Z3NfLVU?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=HubSpot_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "HubSpot",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Assessing HubSpot (HUBS) Valuation After NASDAQ Internet Index Inclusion - simplywall.st",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNd3lSYXZnRTQtYzVMSC1HcktQaTd3M0RYRnJJa3hwVlBDTERTWEluQ0wzZDExR2lYZGhac1d1dnZPS1pZVlVsYnFwS2l6bWh0bDh6MXI0WGJLR3hERlJDZkFtYjdCc3JiTk5MdFRYYXNub3I4Z1JhRHhPR2I1YjdnYWpNRGtDWFJoZWxMOXVzYVp1SExpd09ueFZPSXlpUzhianpwSW0wWFlLMVlUWWhPWm9kS0Z3M2lidmljZ2pwT2FNZ9IBxwFBVV95cUxOSWxYZThqNDNGd2YxS2hLY29tVDh2eEVkMU9pYlNndkcyejc3Z0xNNkpaMFRFOUEtc05BWnNpRzlRYjl5Y3ZiODgwQjhoajFBYUlUaXNrdmZfOVlST1FXVGRIWFItS2dWVDYyX3AxWjVkaG9ZTzdhcWpOblRtT0tqVmFQU3Q0VjVRR1RVSVNrZGs5UEh6U25VWHRDY1JTU2RnN293ZEtHN1R6VHd5RDlMbjlpeDE3SHBMQ003RzVrRWFKamhaR29z?oc=5",
+      "source": "simplywall.st",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T10:19:20+00:00",
+      "snippet": "Assessing HubSpot (HUBS) Valuation After NASDAQ Internet Index Inclusion&nbsp;&nbsp;simplywall.st",
+    
+STDERR:
+🔍 Researching HubSpot...
+
+
+================================================================================
+Company: Linear | Status: success | Duration: 6.3s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Linear
+============================================================
+Generated: 2026-04-06T11:46:32.980323
+Confidence: MEDIUM
+
+## Linear Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-02T15:30:00+00:00: YouTube’s TV takeover continues with 24/7 streaming ‘Stations’ - The Verge
+  Source: https://news.google.com/rss/articles/CBMiZkFVX3lxTFBRWlFYM1Y2TTJqdmZ3bnROVGJRbDlncTB3Mnk4TWpHcFBpMHVxUEpnbkVCY1NrVHBBeTdqWlJGY0JUSFJSQ01BSVFqSXdJQ0taQlZWTU1VNW5NdVk0eTlMODZ6eEp5dw?oc=5
+
+[T3] 2026-04-01T13:36:17+00:00: LinkedIn Exec: AI Is Killing the Linear Career Ladder - Startup Fortune
+  Source: https://news.google.com/rss/articles/CBMihwFBVV95cUxNWFNiOFRDaTkyQWNWNVVobGhTU0JneDNsWTczWWdqNkN4WXFmSU9uNFVuYmN1bS0xV0xuaDFHekRSaUxIQTdvU1Yyc0otOXdGbnFPaVdiQWphSEZuVlFmNVdyelJNWnlyb1Axc05DbXhVTmdOcWZ6TVdtT21RNU1DVjdOeDhYcVk?oc=5
+
+[T3] 2026-03-31T15:00:30+00:00: South of Midnight on PS5 – A linear action adventure that’s good for your gaming soul - TheSixthAxis
+  Source: https://news.google.com/rss/articles/CBMieEFVX3lxTE9LSFFNYThScE81UTNlOEtlZ1BsVjQ4eV9zNDgzTllTRVRkeXpqVktRMXpHbmY0VGhvbGhCc084YkpkaV9CbW9HWk9nZXp1VXFZQ2hMTzlHWnpBZkhVRU1PbjJvWGF3WFFGSU9XMWJvaEJhd1hWcVJqMA?oc=5
+
+[T3] 2026-03-31T21:39:29+00:00: Samsung TotalView unifies linear and CTV reach for 70 million EU smart TVs - eMarketer
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxNSFBuWVMySDZPYTNfNlFuS2xTTklwOVBYaHlqN2YwNEJFSmM4OFhiQ0p2bTdPWEo2WDhBMmlmTGtOUTl5cWM4MHUtZmc5a0VCM0VxdWtjVEgyaW9xRHE1TnlQdklKdWRpOC1BVmNEbkZvVjhJNGU5YU9GajNRTWJGRnNNbEJINEN4dWxGQ3JleXh1ZUI5Nmppb3hnX21xUW9jV0E?oc=5
+
+[T3] 2026-04-03T01:46:48+00:00: Could Linear Generators Ease Long Island’s Power Crunch? - southshorepress.com
+  Source: https://news.google.com/rss/articles/CBMiowFBVV95cUxQT21TUndEZEFRQUNrN3VuRUxXQzdZaVZBWnFsbktJRUtkYkVqSG5SVVhZTGZDOTM1OWxmUUZiZUtYWGRLN3hfakdMaEV1SEs5WEtCYUV3N3AzOTdFOGJNRFBxTUR4U0IzdjdNaVlrS3pZRHBUV0J1VzVRUW1rRFBSV0lYdGRvUUhFbVNubnRvUkYtaEtoZXJjOVE0R3JnZVBvVHlj?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Linear_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Recent coverage: YouTube’s TV takeover continues with 24/7 streaming ‘Stations’ - The Verge
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Linear",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "YouTube\u2019s TV takeover continues with 24/7 streaming \u2018Stations\u2019 - The Verge",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBRWlFYM1Y2TTJqdmZ3bnROVGJRbDlncTB3Mnk4TWpHcFBpMHVxUEpnbkVCY1NrVHBBeTdqWlJGY0JUSFJSQ01BSVFqSXdJQ0taQlZWTU1VNW5NdVk0eTlMODZ6eEp5dw?oc=5",
+      "source": "The Verge",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-04-02T15:30:00+00:00",
+      "snippet": "YouTube\u2019s TV takeover continues with 24/7 streaming \u2018Stations\u2019&nbsp;&nbsp;The Verge",
+      "source_link": "https://news.google.com/rss?q=The%20Verge&hl=en-US"
+    },
+    {
+      "title": "LinkedIn Exec: AI Is Killing the Linear Career Ladder - Startup Fortune",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNWFNiOFRDaTkyQWNWNVVobGhTU0JneDNsWTczWWdqNkN4WXFmSU9uNFVuYmN1bS0xV0xuaDFHekRSaUxIQTdvU1Yyc0otOXdGbnFPaVdiQWphSEZuVlFmNVdyelJNWnlyb1Axc05DbXhVTmdOcWZ6TVdtT21RNU1DVjdOeDhYcVk?oc=5",
+      "source": "Startup Fortune",
+      "tier": 2,
+      "tier_label": "TIER2",
+      "date": "2026-04-01T13:36:17+00:00",
+      "snippet": "LinkedIn Exec: AI Is Killing the Linear Career Ladder&nbsp;&nbsp;Startup Fortune",
+      "source_link": "https://news.google.com/rss?q=Startup%20Fortune&hl=en-US"
+    },
+    {
+      "title": "South of Midnight on PS5 \u2013 A linear action adventure that\u2019s good for your gaming soul - TheSixthAxis",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9LSFFNYThScE81UTNlOEtlZ1BsVjQ4eV9zNDgzTllTRVRkeXpqVktRMXpHbmY0VGhvb
+STDERR:
+🔍 Researching Linear...
+
+
+================================================================================
+Company: Notion | Status: success | Duration: 39.0s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Notion
+============================================================
+Generated: 2026-04-06T11:47:14.940673
+Confidence: MEDIUM
+
+## Notion Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T02:04:13+00:00: How Notion Brings Its AI Interface to Life in Slack - Slack
+  Source: https://news.google.com/rss/articles/CBMiakFVX3lxTE5VY2p6UWFRWlVleW5pOGxDc3VfSTNrOEg5TG5GOC1BWXlFdHgwMTI4S28wODJYSGMyQ0ZqQUN4Z0pUc3lDZlg0MXZHQ2dERUdyQzNBWjVnTjdzeGJZOHBYY2l6X2NKVzg4R1E?oc=5
+
+[T3] 2026-03-31T17:19:56+00:00: This productivity tool is Notion on steroids and I can’t recommend it enough - MSN
+  Source: https://news.google.com/rss/articles/CBMi4AJBVV95cUxNSGhobWJlSEZDbm51OVZpYjV2QkFNQjkzRmkwS3Rlb2FoR05ybVNMRVBWRDZiWjY2QkhIVjkzZ0tXaDJGeDVQSmNXLVpDVXlhaXlnMFM1eDhtcUw3RDJfM2VtNFVLX1RONU5EbGFGbXJ0dDlEY1gxV1Judm0tREZua2RHRlgzem5hNXhVcVRtREI5ekhWWUt5RjlWbm1UeENrMWpjMW5xTTZ1NWtVQVJKei1WVGhXSlA5MG1vYXlZWXNyYlZRX0VoZGh1YzM4QmhZSlhpcFN4WG4wM2VhRnF3bEk3TGNLTjBOMnNselhxclNrT0dvd21vS1RMRjd6cm9yM05vck1nSFBfVGI2SUxPM3RvemI0aVlnejNSbjBLY0FVLWpvbGdpTWpBWkF6Xy03T0RIREpXRzJHZk9vRWFYZ0o0UkY5X2ZnS1A5YW84UnE0SmpKTlRDUmljRW93YzZf?oc=5
+
+[T3] 2026-04-01T12:25:11+00:00: Giants ace Logan Webb dispels notion WBC impacted start to 2026 MLB season - Yahoo Sports
+  Source: https://news.google.com/rss/articles/CBMiggFBVV95cUxOblFSVmJKMlI1Z1ZEeXBlSER2U2EzNHhfODZnYVQ3Nlg0TGtfT0U4NmpYVlNRMXNFZTFnTzZlM1VpWVlvR0xlZkF1WHBfNEpISnhyMElmRTdKazEzUEVYR0xOWjRyMXdfN3FHNldodmY4NFFIYnk2enBXajhTcUE1d2ZR?oc=5
+
+[T3] 2026-04-03T13:05:05+00:00: The Notion of the Chinese Nation: How Beijing’s New Ethnic Law Pushes Taiwan Further Away - The Diplomat – Asia-Pacific Current Affairs Magazine
+  Source: https://news.google.com/rss/articles/CBMivAFBVV95cUxQcG40VnJKX25rR04wZTBJdldXUzNhcVhYcjFOWmswcmR6VVVZY0lrUGZVMjBFcXBzaWV1Y0M4SzJvak9ZUmxRRG9yZjF2OV9UaXJZN203UGM4bGVWSllkQ2xiZjEtVVlKM2ZjVDJ6NktLbHNtOXBCMWNWQXhOalUwWUxZcEpJMjg1bnQxMUI5SW1va3h3Z2NObFMzY202WDhXZV9fbDhlRFRITWxXclYyRHRySkpzYzZnS2tjMQ?oc=5
+
+[T3] 2026-04-04T12:58:06+00:00: California Congresswoman Nancy Pelosi on the Trump Administration's $152 Million Alcatraz Budget Request, Says, “Rebuilding Alcatraz Into A Modern Prison Is A Stupid Notion That Would Be Nothing More Than A Waste Of Taxpayer Dollars” - Sierra Sun Times
+  Source: https://news.google.com/rss/articles/CBMiqwNBVV95cUxNeTQ0aUd6ZXozb3BfdXdnR0pWbG95aERJcXNSZzY0akFDTUtlbWt2NVVUQW0tdmNZZmpIdWdWT1NiY0UybVlTSHVlMlV5cktGYk1GOUc2N0lONkk3Z1lfNGxSRktIY3BlOThwckxTclJEQU5xek5DaC13dTQ0QnZnNXp6LU1Kam9nX2RjZUNEWjhhZncwLURFVXZVVDVWc3Z6YWwxak1nbmkta1NrSjlaN19MZ0k3ZTU4UURpeENNbTRYU01TeGxoNUpiNG9TbHg3cVIyOHdJdm0yeE82b3dtVXVodUJFVHQ0d2l2SkJ1WFZacHpOaWljM01YWFF0TkRUQ0lpTkhubGxlQ0FPSWU2VlRaR1NpTHF4WmVWMlc4bXhlQnNvR1l1S3dOeVJ1Wkl1OHdhZzI5OWFJdXhjME9XU0lwdVRibkZPdHd2d1lPTXhrOHZ4aURWRE1jZFdmbFNtOEhKc0VXaUNmUW8yejFqRzV4azJ5QVJodkhSRXJjdXFXRWhtNDJkVjJBLWJseThqSHFNZngtbjBUZ0xid3MtMFQtWlN0eW1DUTlr?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Notion_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Notion",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "How Notion Brings Its AI Interface to Life in Slack - Slack",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5VY2p6UWFRWlVleW5pOGxDc3VfSTNrOEg5TG5GOC1BWXlFdHgwMTI4S28wODJYSGMyQ0ZqQUN4Z0pUc3lDZlg0MXZHQ2dERUdyQzNBWjVnTjdzeGJZOHBYY2l6X2NKVzg4R1E?oc=5",
+      "source": "Slack",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T02:04:13+00:00",
+      "snippet": "How Notion Brings Its AI Interface to Life in Slack&nbsp;&nbsp;Slack",
+      "source_link": "https://news.google.com/rss?q=Slack&hl=en-US"
+    },
+    {
+      "title": "This productivity tool is Notion on steroids and I can\u2019t recommend it enough - MSN",
+      "url":
+STDERR:
+🔍 Researching Notion...
+
+
+================================================================================
+Company: OpenAI | Status: success | Duration: 36.1s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: OpenAI
+============================================================
+Generated: 2026-04-06T11:47:54.086996
+Confidence: MEDIUM
+
+## OpenAI Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-06T01:00:00+00:00: An Inside Look at OpenAI and Anthropic’s Finances Ahead of Their IPOs - WSJ
+  Source: https://news.google.com/rss/articles/CBMi-gJBVV95cUxNemFSQ2RKT3RxdTZ5WjA2R04yRm1RZlhDV1VSSUcwaEFJVGZycFlUVTYxdEp3WXY4VnI4NE5ZSEk5SXoyTlE2SmYyQ0hlVUs0UEI3dll3TlRRbGlyRjJWdXVWcl9BdGxYWVZQbzFnbWUzbXhtV29YOHdsZmpLN1kxdUZxTmRCM3B1UFFGdGpCaThDUmZpV25sOFA5TVBKVGJBSFRZTHNKWmxad0xBY1pVMDI1cVZ5aWFaTEVERXJJb2NrTDc2dkV4MS1YMmNObXpxYUlraW1jYjNReUc2b2NlbW9RNHlhUmxpZGZKV2w1dHZLQnBHTXNyMWtqcGJDV2xNQkpabGxlcl9RUDlIRkNnb015TU1fZjhBQWNvU2lLOFluM2VKZnpTdVBZa0lzNkRadWJTWTdCWV9EYWFOalJ0ZHNpQmM0dzFIMWhsWkJNNGJXYlpTczBmWV9HWVQ0Z2s5N3hLVEpmcF9qQTkyREh4clhaTDZlQnU2U1E?oc=5
+
+[T3] 2026-04-06T10:43:22+00:00: Behind the Curtain: Sam's superintelligence New Deal - Axios
+  Source: https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZVNNUllLUmllRnFfeTdxa0hWcU9yUlB2aUcwVVNLY1hoRk9KZzYtR0tpeWVSMVhGcEVZcHR6WFV3c0Nsc2JhZUI2YVFxY0ZIajlhd3hqSFhXUW1CZWotRGVBNmJiS1RtWWdzcjNDS1prQUdEREU5ZlpJaWIyZU5rWGNQRnZSelE2NHpr?oc=5
+
+[T3] 2026-04-06T15:54:19+00:00: Iran threatens OpenAI’s Stargate data center in Abu Dhabi - The Verge
+  Source: https://news.google.com/rss/articles/CBMisAFBVV95cUxOaGVHLXF4TndIcElrN2RpbDVlYkFkZjNUaVZKeFFzM1NfX094cThmclhNNWRRb0ZMTU11VXlQVVpYblI1N0hjeXl5S0JpWlVnZ3FLdVFzUHBnMGxHWHlGeEdXbHRXNUxRUnk1NmZ5bUozbzFUc2lMeDlYRVRSYXZrYU9DbFdhbC00YnJOV3ZZUXloVEVCbEpCVWJmb3VicjRuZ2tjMEVsUkM1dUFodDJBdg?oc=5
+
+[T3] 2026-04-03T20:20:05+00:00: OpenAI's Fidji Simo takes medical leave, announces leadership changes - CNBC
+  Source: https://news.google.com/rss/articles/CBMijwFBVV95cUxNbkl0UzR5X0Y2d21yV1lja2dwbC1jS2NzQXhtV2dtMDgzV2xFY0FMZ09fY1B0SEZFNk9RNEV2elBIQ09iYV9BZHdLS2lUdmZwd3RnSm1ZZnB4WnVNTzFHaFYtUVlmbmZtdFdwdjhPZTREREg2RFZUeGl0N21zb3Y2Sm9nUHVabzJ2YXVQMlpkONIBlAFBVV95cUxPM3pZaVc5WHRKakdxUERlaWhjX1BobWFzTV9PVHpqa1N2cTJwT0ZBa1ptZzNIdlUxRkZMVGp3eFJBVkhLOFBDUDBlYy1GbUhyUUdiMEtJSVBjRlJmbGZ3TmUzdS10LWRBbEZ5US1JTHdFTTRZOEhpdTJjWllYMlVta0ozUW1qTEFjYmpkOE1ZY0lTbXdK?oc=5
+
+[T3] 2026-04-04T19:05:00+00:00: POTS explained: The disorder that led OpenAI exec Fidji Simo to take medical leave - Business Insider
+  Source: https://news.google.com/rss/articles/CBMilgFBVV95cUxPQklzZVhvZ1pDVVg4dldMaXFWbXpkLUY5M3RXNEFBaktjRFRiN3BJMjVJSTZiV2Q0MExJVTg3QzFIMkQ1Q2Y3N2dGT2hPRjhsaTNVLWNlQjN6Ymc5QkdySDFQN3JmVEE0dVZjM3Z1M0VmbnJJNnJYLW5oRnRCRm44X3U4SGxQTnkzTG1rX2d6NlBaSHZpM0E?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=OpenAI_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+• Recent coverage: An Inside Look at OpenAI and Anthropic’s Finances Ahead of Their IPOs - WSJ
+• Recent coverage: Behind the Curtain: Sam's superintelligence New Deal - Axios
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "OpenAI",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "An Inside Look at OpenAI and Anthropic\u2019s Finances Ahead of Their IPOs - WSJ",
+      "url": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxNemFSQ2RKT3RxdTZ5WjA2R04yRm1RZlhDV1VSSUcwaEFJVGZycFlUVTYxdEp3WXY4VnI4NE5ZSEk5SXoyTlE2SmYyQ0hlVUs0UEI3dll3TlRRbGlyRjJWdXVWcl9BdGxYWVZQbzFnbWUzbXhtV29YOHdsZmpLN1kxdUZxTmRCM3B1UFFGdGpCaThDUmZpV25sOFA5TVBKVGJBSFRZTHNKWmxad0xBY1pVMDI1cVZ5aWFaTEVERXJJb2NrTDc2dkV4MS1YMmNObXpxYUlraW1jYjNReUc2b2NlbW9RNHlhUmxpZGZKV2w1dHZLQnBHTXNyMWtqcGJDV2xNQkpabGxlcl9RUDlIRkNnb015TU1fZjhBQWNvU2lLOFluM2VKZnpTdVBZa0lzNkRadWJTWTdCWV9EYWFOalJ0ZHNpQmM0dzFIMWhsWkJNNGJXYlpTczBmWV9HWVQ0Z2s5N3hLVEpmcF9qQTkyREh4clhaTDZlQnU2U1E?oc=5",
+      "source": "WSJ",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-04-06T01:00:00+00:00",
+      "snippet": "An Inside Look at OpenAI and Anthropic\u20
+STDERR:
+🔍 Researching OpenAI...
+
+
+================================================================================
+Company: Salesforce | Status: success | Duration: 36.4s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Salesforce
+============================================================
+Generated: 2026-04-06T11:48:33.538974
+Confidence: MEDIUM
+
+## Salesforce Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T22:46:25+00:00: Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch
+  Source: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQzJ2VEVpRlV2XzVMNXZ4dW9RNW1FUjhENnJfRHowanAwMUx2WGRvUDJKdGswMkQ0RnNoRVRVS2VMUTQ2MUJUV19sTFdxcTJQbTdOWUVNOEdPelBSeWkzSWwtbmItTURsYXhwcExFVjNHVzJ5aDZSZndkTFlGQ2xWcVVydFhna3NrY05ZU2hnR2t4dnpfdlU2cGo4ZWJnNTY1S0JCU09iY0Y0T1E?oc=5
+
+[T3] 2026-04-03T01:44:00+00:00: Salesforce Agentforce Executive Departs for Rival Sierra - The Information
+  Source: https://news.google.com/rss/articles/CBMimAFBVV95cUxOQW56ZUFWcHVkZlpJLXVPbzNrNXJZa1QyWHk4TVAzQ28wZGFVaVpTb19DU2ZJY1VoUnhBdkhOZjRpRDNPM1lMTk90NHZMTzMzTXNnUVJLT2dGTUZFWHl1ek13N0tZcmFJZWgtQlN2bHdRbHY4OGFXdTRXUVlHT0NvNTVQRUZZSWFTMWFxclV5M2RBLXRXaGFHeA?oc=5
+
+[T3] 2026-04-06T09:35:25+00:00: Salesforce stuffs 30 AI skills into Slackbot in bold Copilot mirror move - Startup Fortune
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxNOTd6V2p0QnY1dWh3UjUzTm1LaGJKeVNMOEkzS205bDBjOFY5R1R5MzJoaGdZWUluaW8zeEpkYXIyc0FCczFjV3NnZGFGbjBmNXBhQTdfTDA3NWwwcGtsU1dDQVFRODJMZDVrX0stTG5hMTZ5YWs3dXJhcmVieWkzS2d1cUNYbV9FNGYycnJncTZMaTFBb09EUVNmTGN0WDdlRHc?oc=5
+
+[T3] 2026-03-31T01:02:00+00:00: Adobe, Paycom, Pegasystems, Salesforce, and Box Shares Are Soaring, What You Need To Know - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMipwFBVV95cUxQVFZEUG1vYW0wMmc2UHZDbFZfVUN2NWRGblRNWDl3QWYwazlXTnZvNUY5S0R3R3cxQ0puVl9odVU1V3lXX1BsVEZIbmx0ZEIyUDQ1UHYtRWxsalQ0UjdnWnZKSFo3NF9MNmFNZDZza2YzaktQVDFXV21EbTZBcDhyNWk5SmZMYV9QYmtYWkpzZjR1OVA3bU1STUNIejNmY3M1TnViaHMwcw?oc=5
+
+[T3] 2026-03-31T23:25:22+00:00: Parker Harris Just Told You to Stop Logging into Salesforce - salesforcedevops.net
+  Source: https://news.google.com/rss/articles/CBMiswFBVV95cUxQZmEzS1JpM3VQU215NU1EN2NFYzFzTVAxaUF1b3BkQ0U2S0ppLWJfclFtT2g4bWtjTnh2MmtPOFVWQ3lfbG0yU2NBZTFpX29NMnZ5YWZFZG5xN1dRbXV2ZkNlS0FQVmtxd1BieDc0TTBucDhpVXIza3B5bEI1SEhwMG1oSVdQM2xDNkItelVScFR2dmx1TWNlS1l0OURGdFR2b3B5WC1wUDc2Qzg5S1dIczlJUQ?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** 2
+**Signal:** 📈 EXPANSION
+**Trend:** STABLE
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Salesforce_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with 2 open roles
+• Recent coverage: Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Salesforce",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQzJ2VEVpRlV2XzVMNXZ4dW9RNW1FUjhENnJfRHowanAwMUx2WGRvUDJKdGswMkQ0RnNoRVRVS2VMUTQ2MUJUV19sTFdxcTJQbTdOWUVNOEdPelBSeWkzSWwtbmItTURsYXhwcExFVjNHVzJ5aDZSZndkTFlGQ2xWcVVydFhna3NrY05ZU2hnR2t4dnpfdlU2cGo4ZWJnNTY1S0JCU09iY0Y0T1E?oc=5",
+      "source": "TechCrunch",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-03-31T22:46:25+00:00",
+      "snippet": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features&nbsp;&nbsp;TechCrunch",
+      "source_link": "https://news.google.com/rss?q=TechCrunch&hl=en-US"
+    },
+    {
+      "title": "Salesforce Agentforce Executive Departs for Rival Sierra - The Information",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOQW56ZUFWcHVkZlpJLXVPbzNrNXJZa1QyWHk4TVAzQ28wZGFVaVpTb19DU2ZJY1VoUnhBdkhOZjRpRDNPM1lMTk90NHZMTzMzTXNnUVJLT2dGTUZFWHl1ek13N0tZcmFJZWgtQlN2bHdRbHY4OGFXdTRXUVlHT0NvNTVQRUZZSWFTMWFxclV5M2RBLXRXaGFHeA?oc=5",
+      "source": "The Information",
+      "tier": 2,
+      "tier_label": "TIER2",
+      "date": "2026-04-03T01:44:00+00:00",
+      "snippet": "Salesforce Agentforce Execut
+STDERR:
+🔍 Researching Salesforce...
+
+
+================================================================================
+Company: Shopify | Status: success | Duration: 36.3s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Shopify
+============================================================
+Generated: 2026-04-06T11:49:12.863738
+Confidence: MEDIUM
+
+## Shopify Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-01T20:53:57+00:00: Shopify shoppers bought Spring things in March - Retail Brew
+  Source: https://news.google.com/rss/articles/CBMilwFBVV95cUxPZFQ1c2ZFZ0w4Y0QzWURqTjlnQ09JeFdMMnpFa0NPS1hLdGtxNmhvWmhQZ3JrUnZEM1VFdTN0YWtrUnZlNW1lcTJJclNpMkh5OWNBS0xfZTdaX0ZRM3BTU3p6djdfU1p1VEVGWmdHUnVNSzRITEMyM0tLVHJxaFB6MEFuX0RhbXI5U3RjWTRlanVRNTZsX2Y0?oc=5
+
+[T3] 2026-04-02T15:13:41+00:00: Shopify brings native B2B features to millions more merchants - Shopify
+  Source: https://news.google.com/rss/articles/CBMiUkFVX3lxTFBibWhQWmszN00xZkJ6cXYya3RoNmp3YUtTQURrcmtnQ2lacFRpdzZSbDNtbUVxYUo5MTBrLV8yMS1jbHJKcWo1dnBCWlkxLWR3bVE?oc=5
+
+[T3] 2026-04-03T07:00:00+00:00: Boost Sales with Digital Signage in Retail (2026) - Shopify
+  Source: https://news.google.com/rss/articles/CBMiZkFVX3lxTFBKVXRBclAwV2phT2tyRzlHQ2hlTFVvMXR1YmpJanZ6eDhPUzBXaVJvLTJaZVhaZVN0WkU2bDFBMUZJdWVzOUpORFV1S2k4V2lNRm1BaVc5X0gtOUFKZEx0Rzd5QV9fZw?oc=5
+
+[T3] 2026-04-03T17:33:00+00:00: Shopify Stock (SHOP) Opinions on Q4 Earnings Release - Quiver Quantitative
+  Source: https://news.google.com/rss/articles/CBMikwFBVV95cUxOdkIxS3RudGpBbk5HVTM3TnpqbG16RXd3a0FyYVhlVV9ySW5zWUFtZjZ4MktOd2c0SS1FQjBHUEduYmxoS1FwSl9zcFZTV1B2ZVVpZUlIZFhBUUFLMzFmaTdYcFUwOE5kWUxRZk11Y3phNnp2aW1EU2cxVU5XbTA2UURiS2RoVk44RVlCclpoRk9aWk0?oc=5
+
+[T3] 2026-04-03T21:44:55+00:00: Shopify adds B2B features for more merchants - Digital Commerce 360
+  Source: https://news.google.com/rss/articles/CBMijwFBVV95cUxPc1RwMWl3cFRCdkNlekdTdl85bUZrUUFWTG4yd1VmNnZFa3gwNUFiSFpCbGR1cVBvR1Q5ZHdOblQtb1hyVzQwRnZiZDIxZkNKakQzX1g4SkpqVnc1UWl5US1IUTF4eTJYTEFGdDZZdzlUZ0NENDh0dEJyZTNRbFM5eHlEWVdVRXhpSmloSzRMa9IBlAFBVV95cUxQV09pMmpBQlZTRWUzQ3Y3VnZhVlAzUUpMTDNvVlZBS0tPQU5qUF9XSXFlZ1N3Rmpsamd2Rl9LWmhtV0plclRyQlBrakRpYVEyMnRRRF9kdTBnSmN3ZnlEQ2I0S3lTVVpQZnNqMHlEdFRFSHFlZWpNRGZPQnU0V0Z1TWxZeEVVWVBCYnd5WkF4Y3B5a0t4?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Shopify_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Shopify",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Shopify shoppers bought Spring things in March - Retail Brew",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZFQ1c2ZFZ0w4Y0QzWURqTjlnQ09JeFdMMnpFa0NPS1hLdGtxNmhvWmhQZ3JrUnZEM1VFdTN0YWtrUnZlNW1lcTJJclNpMkh5OWNBS0xfZTdaX0ZRM3BTU3p6djdfU1p1VEVGWmdHUnVNSzRITEMyM0tLVHJxaFB6MEFuX0RhbXI5U3RjWTRlanVRNTZsX2Y0?oc=5",
+      "source": "Retail Brew",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-04-01T20:53:57+00:00",
+      "snippet": "Shopify shoppers bought Spring things in March&nbsp;&nbsp;Retail Brew",
+      "source_link": "https://news.google.com/rss?q=Retail%20Brew&hl=en-US"
+    },
+    {
+      "title": "Shopify brings native B2B features to millions more merchants - Shopify",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBibWhQWmszN00xZkJ6cXYya3RoNmp3YUtTQURrcmtnQ2lacFRpdzZSbDNtbUVxYUo5MTBrLV8yMS1jbHJKcWo1dnBCWlkxLWR3bVE?oc=5",
+      "source": "Shopify",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-04-02T15:13:41+00:00",
+      "snippet": "Shopify brings native B2B features to millions more merchants&nbsp;&nbsp;Shopify",
+      "source_link": "https://news.google.com/rss?q=Shopify&hl=en-US"
+    },
+    {
+      "title": "Boost Sales with Digital Signage in Retail (2026) - Shopify",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBKVXRBclAwV2phT2tyRzlHQ2hlTFVvMXR1YmpJanZ6eDhPUzBXaVJvLTJaZVhaZVN0WkU2bDFBMUZJdWVzOUpORFV1S2k4V2lNRm1BaVc5X0gtOUFKZEx0Rzd5QV9fZw?oc=5",
+      "source": "Shopify",
+      "tier
+STDERR:
+🔍 Researching Shopify...
+
+
+================================================================================
+Company: Slack | Status: success | Duration: 6.7s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Slack
+============================================================
+Generated: 2026-04-06T11:49:22.585346
+Confidence: MEDIUM
+
+## Slack Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T22:46:25+00:00: Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch
+  Source: https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQzJ2VEVpRlV2XzVMNXZ4dW9RNW1FUjhENnJfRHowanAwMUx2WGRvUDJKdGswMkQ0RnNoRVRVS2VMUTQ2MUJUV19sTFdxcTJQbTdOWUVNOEdPelBSeWkzSWwtbmItTURsYXhwcExFVjNHVzJ5aDZSZndkTFlGQ2xWcVVydFhna3NrY05ZU2hnR2t4dnpfdlU2cGo4ZWJnNTY1S0JCU09iY0Y0T1E?oc=5
+
+[T3] 2026-04-04T11:30:00+00:00: Small Business Technology News: Salesforce Rolls Out A Major AI Upgrade For Slack - Forbes
+  Source: https://news.google.com/rss/articles/CBMi1gFBVV95cUxPLWp6SnBhdklxeHdFZ2dsUU5QTXBYM2lqY1VNdFR0YnVHdE1XRzZMNDU4NVRBY0RVd3lFbWt4UGVTamhuMjcxYnhUN2VndmN2OHYwaFJhNmJxSHFwMG1kZ3NUcFhtZTh5aXVoSjA5MW1ldHVzMUw5bHZoY0ZiN3lva1FTb29JV2wwZWdMSnRaOGZvOGktSDUwN0dFZ2RkUjA0aGNQTzJudldmSkI5V1NYMjlQNmNXdzFFZGhwYXRWdjVpcWlHelJfeGlhelVtMDZBODlsS2J3?oc=5
+
+[T3] 2026-04-06T00:08:00+00:00: I Built AI Employees From OpenClaw — Then Needed a Human-Only Slack - Business Insider
+  Source: https://news.google.com/rss/articles/CBMinwFBVV95cUxOMW9ENmtFMm84cHFSOHdxV0hPUWllQXNjeDB2b0pWSFY4eF9DaUFBNk10ZmNWOG11aHc5enFwYkdIaG03dEd0RFBpamh3Z09tSEdPb1dqYlBBUXVBLVVHOFVqTXZmci1GV2tkM1ppcEhZU0U0NXNWQ0hSYnpoeC1VSGJVUndRTnNLZVVVSThlblNrdlVFTkYwaElPejU5Z28?oc=5
+
+[T3] 2026-04-06T04:25:00+00:00: Anthropic's head of growth says the company culture is so open that people 'just argue with Dario' on Slack - Business Insider
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxQSXQ3UHJPMmRoX3I5WHo0UWlwSloxNGJsbWRtRGVsLWFobk5OMlJCY3JGLUxTNm9vbV9IVGpzS1V2Yi1iMHBrTVF5TUxzemZaYi1WMFNPZFR0bTdSS0VsdjNxN1BFbFJ1QmI3NHZ6U0RPS1c5Z2k0TVpQT1JPODIzZWlnTWNER3R0WjBDWk9SQnRjNVN4dkdwalR0LUI0YTZWeXc?oc=5
+
+[T3] 2026-03-31T07:00:00+00:00: Slack for Business: How Slack Is Changing Workplace Communication - Business.com
+  Source: https://news.google.com/rss/articles/CBMihwFBVV95cUxOZFhwcjNmWHhaX04zLWo3d3BDQXFPWGdHVXpSbU4zZWpjN01BeEtHQTAwRDBvQjA5RXEyOTV6d1QzS0ZNNjA0eGpVTV9aZWFrZVhFV3pGREU4LTlJNk5ncTIwLVd3SVlCSGo2UEMyU3U3VzhHOWJtMkdBcjFWX3o5aXR3T09heG8?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Slack_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+• Recent coverage: Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Slack",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQzJ2VEVpRlV2XzVMNXZ4dW9RNW1FUjhENnJfRHowanAwMUx2WGRvUDJKdGswMkQ0RnNoRVRVS2VMUTQ2MUJUV19sTFdxcTJQbTdOWUVNOEdPelBSeWkzSWwtbmItTURsYXhwcExFVjNHVzJ5aDZSZndkTFlGQ2xWcVVydFhna3NrY05ZU2hnR2t4dnpfdlU2cGo4ZWJnNTY1S0JCU09iY0Y0T1E?oc=5",
+      "source": "TechCrunch",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-03-31T22:46:25+00:00",
+      "snippet": "Salesforce announces an AI-heavy makeover for Slack, with 30 new features&nbsp;&nbsp;TechCrunch",
+      "source_link": "https://news.google.com/rss?q=TechCrunch&hl=en-US"
+    },
+    {
+      "title": "Small Business Technology News: Salesforce Rolls Out A Major AI Upgrade For Slack - Forbes",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPLWp6SnBhdklxeHdFZ2dsUU5QTXBYM2lqY1VNdFR0YnVHdE1XRzZMNDU4NVRBY0RVd3lFbWt4UGVTamhuMjcxYnhUN2VndmN2OHYwaFJhNmJxSHFwMG1kZ3NUcFhtZTh5aXVoSjA5MW1ldHVzMUw5bHZoY0ZiN3lva1FTb29JV2wwZWdMSnRaOGZvOGktSDUwN0dFZ2RkUjA0aGNQTzJudldmSkI5V1NYMjlQNmNXdzFFZGhwYXRWdjVpcWlHelJfeGlhelVtMDZBODlsS2J3?oc=5",
+      "source": "Forbes",
+      "tier": 2,
+
+STDERR:
+🔍 Researching Slack...
+
+
+================================================================================
+Company: Snowflake | Status: success | Duration: 38.2s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Snowflake
+============================================================
+Generated: 2026-04-06T11:50:03.855783
+Confidence: MEDIUM
+
+## Snowflake Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T13:05:00+00:00: Snowflake Appoints Jonathan Beaulier as Chief Revenue Officer - Business Wire
+  Source: https://news.google.com/rss/articles/CBMiugFBVV95cUxQR21aMmE3UjdqR0ptX0VhVm1PTkpDMlV6WUtjT2dFdkJ2ME03YWdGeHJTVVN0eFByMEQ5ZXZ5TDdpNVNzVHBUOHY3UEVmY05CeWljQTF0cXloc05Pd083M3hycDhYNmw1WkRCOThCT0FkQU8wOF9mMnhRaWNReDdOQXhEUWcxOHl4ZlZjTEpDT3paZmhJQXFNX2R3UzJqNVljdjZmZFRYc3o3RlJwTnlmU3NQYzNtekRTLXc?oc=5
+
+[T3] 2026-03-31T13:34:09+00:00: Snowflake stock falls on leadership change announcement - Investing.com
+  Source: https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZGNvVThpRldSZUVQc1czcUJpZXNkVl9teTZISGhGSFU4dFJCLWV3UFNFVG5Pekw1NG9VMHFaVkpUSEdtdTNwWVhVQm5TSkx4T2pWYVYwWmRJWnZJVGExcE9aOGt0UWlXLW9CUllVU2tTUTE2STJnMTliT2J3YmRlaFlzRGlsc3FLdjRpQWVmbHFETE15RmhOV0hTLUV6RGRwdGtaT2FlRHJBcE9MWlF6QWtqdldCeWVI?oc=5
+
+[T3] 2026-03-31T14:51:00+00:00: Snowflake’s stock falls as investors weigh a surprise leadership shift - marketwatch.com
+  Source: https://news.google.com/rss/articles/CBMitwNBVV95cUxObmRuRC1ueHBHU1JNeVE2NzNDMmJveDZnRTJ5QWVRSTBPa2x2eTkwVzZUMDJuaVVaQzJnN0Z4UWRveEtTR3hPVVVVY2VaUllVblpLX0ZHaXBHcEtfY1haTEN5bUlHLXdLaFhTUGNhaUM2b3l4MnZDbndqWU5lNFVVNFI1eWlORi0zdjlvamVVSUpjWUhuY3YxZGNib2JDblRsMHRaZjVGRnR0MHE4T3Yyd2k4ZU1XMGFUSjRBTm5RM1BQZjVJZ1YtWnA2dmZhYVh6djM4Q25OYWo2ZzVPVWUtTElsX3I0enkxQ003Umxkc2FHU1Mwelo5M1JtYUI3WC1CSzlZYVVDRVloMWRlem1uVVEtdmxyTkxCRmJRVHo2TV96bXI5dDNCWmNCRzRYYXBsS2taSFR1ejFyQWp3ZWNCVUhEZlNZWC13SHQwTDRTZFA5cm4wMGEwS2RJZFUwdzNpakhjemNPSFJSV0tIUGNnRmFRd3VwMGVCRndQODlfck9QZjd1T2NUSDhIUUV6d3BRbnlsc1NhSFk5NE4wMFg5d1RCVnMybndGUnV4dm1zZjBGekhGTmgw?oc=5
+
+[T3] 2026-04-01T12:41:09+00:00: Snowflake Fell 7% This Week. Here’s Where the Stock Could Go as Growth Slows and AI Demand Builds - TIKR.com
+  Source: https://news.google.com/rss/articles/CBMivAFBVV95cUxPNDhxN29XNE96WHJBR1lMUTRDMm9scXBZWml0LVN6N3RSWjFEUWxGMUxhakt0TThzV1E5U0M2XzJuaTh6dHc3eTJfZXNEUDRoeFMwWlQyUHEtd2tkb1czOWg5MzhHejlSRjFTM1dWR2hLZHYxQnRpbkNNeW9zRGxkelVVekRkYk1TLVRoaTI3VmFieEtwb05iZ3o2WGhCV1BZYS04NDRvUFpxTTdyQlVRdFMybEhyMDlsQ21FcQ?oc=5
+
+[T3] 2026-04-01T14:13:26+00:00: Snowflake in spotlight as Benchmark starts coverage with Buy rating (SNOW:NYSE) - Seeking Alpha
+  Source: https://news.google.com/rss/articles/CBMiqAFBVV95cUxNSjdpZ2tTOUN6aGhLbHdVQjhhY1J1d0FZanUzdzVZU1BIMkVjLUQzZlpRQ3JMNFVfc3lBbHhmYVRuRjRWNlgxMVpFV1VXMUNKaEtaUGU4YVRjZnc4U01oNnV6RDN2U2lOamRmdTI3Uk9JampDVXpsSjlTb2NTWlh2dUlYZmRvaU9TY3BqX2Y1dUhZNDZET1Y4SVJKZ1dMZjlZTkJLQS1BeEE?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Snowflake_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Snowflake",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Snowflake Appoints Jonathan Beaulier as Chief Revenue Officer - Business Wire",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQR21aMmE3UjdqR0ptX0VhVm1PTkpDMlV6WUtjT2dFdkJ2ME03YWdGeHJTVVN0eFByMEQ5ZXZ5TDdpNVNzVHBUOHY3UEVmY05CeWljQTF0cXloc05Pd083M3hycDhYNmw1WkRCOThCT0FkQU8wOF9mMnhRaWNReDdOQXhEUWcxOHl4ZlZjTEpDT3paZmhJQXFNX2R3UzJqNVljdjZmZFRYc3o3RlJwTnlmU3NQYzNtekRTLXc?oc=5",
+      "source": "Business Wire",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T13:05:00+00:00",
+      "snippet": "Snowflake Appoints Jonathan Beaulier as Chief Revenue Officer&nbsp;&nbsp;Business Wire",
+      "source_link": "https://news.google.com/rss?q=Business%20Wire&hl=en-US"
+    },
+    {
+      "title": "Snowflake stock falls on leadership change announcement - Investing.com",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZGNvVThpRldSZUVQc1czcUJ
+STDERR:
+🔍 Researching Snowflake...
+
+
+================================================================================
+Company: Stripe | Status: success | Duration: 37.1s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Stripe
+============================================================
+Generated: 2026-04-06T11:50:43.943081
+Confidence: MEDIUM
+
+## Stripe Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-02T13:00:00+00:00: Coinbase, Cloudflare, Stripe Push to Shape Future of AI Money - Bloomberg.com
+  Source: https://news.google.com/rss/articles/CBMirwFBVV95cUxQRGdDNS1CZUQxWWlrMWRJYkhMYUdoOGpXT0ZLV3ZCU1pfVGlVXzQ5X3RTa0ZrTjczQmlsQUstNVpoRTAzWkd6TnR1Rmg0cUxfN2RHM3dZTlQxTlVCci1XdXhMdDRTTm9rRW5iYXJUdkZXRkJPVE1GZnpVZFgyRk95elBVTFlYU2ZhbHdpcWJLaXZ2NVNKM2xXajdFa2FqS3p3cVR4UlZuR2U5TkZ2X18w?oc=5
+
+[T3] 2026-03-31T14:30:00+00:00: Former Stripe and Coinbase employees raise $8 million for Latitude, a startup whose core product is stablecoin-based ‘Global Payouts’ - Fortune
+  Source: https://news.google.com/rss/articles/CBMiqwFBVV95cUxQOFdFOC1remFPa3c1NC04c1N5WXJuYl82VzlpWHN0SllTYi05OXE5aUVwTjhrcGdua3Q3bHJzQnVrc0VHaGxJajE0d2NjbEkxMVRRWUpMX3kwNnp0YnRocUNjRlpJWWJjdndtbUZ1djltWWFQcXB5V1FWankwdXFiTmlhbXZQYW1CaWR6Tnpyb29sR2puQkl1bnJURUZuMS1ZWW40aUM4M3dncEU?oc=5
+
+[T3] 2026-03-31T17:14:00+00:00: This Ohio State freshman is already turning heads, and he just lost his black stripe - Cleveland.com
+  Source: https://news.google.com/rss/articles/CBMixAFBVV95cUxQZE94bUstdHV2MThISVZpNDNPNW1vbGVxY0JaRk9OUmk1QlZnTVZZTWItMHVKalRQRFRncVVBcWFucVlEVE1RNmgtQ3dwYnZoUE1DS1Zqczl5aFRwRHdlTXVBcWNCNm9UclpPRC1qQmZfWTRONFVDWGhFQTBWNFk2cEpyVWtYUmYzNzE4S0M2a2VMUlRFRm01ZTJ0UFpkWDVxWnhvVmxzcUFYT09CdmExSkE1ZGJhUUVQeHBZTnRsRUJCMTJD0gHYAUFVX3lxTE5uaWlfcWJmQXphdm5SZm9nN0FPd2pEXzljNmt3SUlodGYyRW92NmpURFpvMTlUOFY3VjlzYVVPeWRVZmhaRjVxSmdMSXBwZThoSk1pd1dzWjQ4aXF1UVJ5YUc5VTE4NGZjNFExUndPNnU5d0Z6MXNSV0FmM3p2QUhveGs0aWtPMXc1UGNPa1JCSXVFT1NKcGZrTl9kbnNhaU5zN0pXZHhxRGp4R0xMamVXUTBNLWczMzJLbGN3d1I4eDdQakJwUHhwbDA4ZlVBU3lGRnNBT0hPcA?oc=5
+
+[T3] 2026-04-01T19:39:07+00:00: Line Stripe Work to Begin on County Roads Monday, April 20, 2026 - Garrett County Government (.gov)
+  Source: https://news.google.com/rss/articles/CBMivAFBVV95cUxPM01yM3pNR3hnWkV2eHZmZXRtTW9yN3dTTm95dnlBQUdSUGp0R1dJV3VSMUx6d2VzV1JoakJlNmk0QW54dmszYjZqSVR2QjlsdEFNWEhJNlMxYXE5aDVubGlhSEl4UUZjUEtrZ2tyRklwMjloSl9DbkVUenFabVNmYS1MOU5XV3dGSEc3TlRVcVRjYzZsSnk2N1VyVWtBalk0cGNDeE5rQlpOa29Hd2lnMTRxbWhHbjloWGhFUQ?oc=5
+
+[T3] 2026-04-02T08:13:37+00:00: FTC probes debanking practices at PayPal, Stripe, Visa and Mastercard - Retail Insight Network
+  Source: https://news.google.com/rss/articles/CBMisgFBVV95cUxOVi11RVRnb1lGT2JvdVY0dHJyaFlPV2kwU1drMWpud0h6cnBveEVHQUNBbUxtLTZIdE5KMzJmRXZDbXhBNFNmblRXZmZaTkdiZG1EeWp4Ynd3VDdYUy1mbkoxV01ydjJwanFEaG8tV0dkbkQydFBmdmFuVVZNWF80TUVfcTNyVjNHcjFMdk5UR1dKeGwwcHRhYWdQd01DLVM2OGVjUEhBSkxLakZxaXFFb0VB?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Stripe_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+• Recent coverage: Coinbase, Cloudflare, Stripe Push to Shape Future of AI Money - Bloomberg.com
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Stripe",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Coinbase, Cloudflare, Stripe Push to Shape Future of AI Money - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQRGdDNS1CZUQxWWlrMWRJYkhMYUdoOGpXT0ZLV3ZCU1pfVGlVXzQ5X3RTa0ZrTjczQmlsQUstNVpoRTAzWkd6TnR1Rmg0cUxfN2RHM3dZTlQxTlVCci1XdXhMdDRTTm9rRW5iYXJUdkZXRkJPVE1GZnpVZFgyRk95elBVTFlYU2ZhbHdpcWJLaXZ2NVNKM2xXajdFa2FqS3p3cVR4UlZuR2U5TkZ2X18w?oc=5",
+      "source": "Bloomberg.com",
+      "tier": 1,
+      "tier_label": "TIER1",
+      "date": "2026-04-02T13:00:00+00:00",
+      "snippet": "Coinbase, Cloudflare, Stripe Push to Shape Future of AI Money&nbsp;&nbsp;Bloomberg.com",
+      "source_link": "https://news.google.com/rss?q=Bloomberg.com&hl=en-US"
+    },
+    {
+      "title": "Former Stripe and Coinbase employees raise $8 million for Latitude, a s
+STDERR:
+🔍 Researching Stripe...
+
+
+================================================================================
+Company: Twilio | Status: success | Duration: 39.7s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Twilio
+============================================================
+Generated: 2026-04-06T11:51:26.650320
+Confidence: MEDIUM
+
+## Twilio Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-04-06T12:21:39+00:00: Here are Monday's biggest analyst calls: Nvidia, Apple, Tesla, Netflix, Carvana, Tyson Foods, Twilio & more - CNBC
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxPZEJPMWVBVTFCRW92RHNoU1N3SDViWHVSZEEzQlRQdml3N285N3M1cHBhVkdFbU1sMGxoSnlCR0FzZzRrMGZtY3NCR2VubWJDVEZqRHo5aldLZEVSdGVSY0E4UGVYVGFodnM1d1gxNWVVRHpHMGNWc1hhLUd4azQ4YzlYcmNaOTFIOFljMF95Ny1yclJfZkpjSTV6OHNJU0x4LWc?oc=5
+
+[T3] 2026-04-01T07:43:42+00:00: Is Twilio’s Expanded Carrier Network And New Director Altering The Investment Case For Twilio (TWLO)? - simplywall.st
+  Source: https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZlh0TkszVjVtMG5XcGFMX05weHdJS29YNVpyMHFKSG9fRGs2Yl9SR3QyZm1EeEFUd2tFZHo0OFpnLXFxUzV2Z2JvaEszTl9JalNWUlJUVGl2N21ud3hfQjFRVzROT2RoSnhqcGt0dFpfc1ZNSC1DZFdDWklYeFdTbkx3aDlyLWhhMTROQ3RXOVQyVnAxeVY3NmQ0bDZkVE55R0QyRjZObHpMb21EeW04UXRHZWZWMndWRVZDd2dOV2rSAcYBQVVfeXFMTUZLNFFWV1VsVHBteHRFMTJGMUs5d2RXVzFrSGdlZkxXYlkzakdmdEtoQksyYWxyMWc4UW5kUFcwVVprbXQtdmxyUU5vQWhPRzhTWGJGR01aQlNWejBCWTVBWFJTNUFiN3BZR2JCaXAzakgyN0k2bWI2cHB6RDk2ZU5wbmFnQmJfX21INHNVU3pDUEFLZUJTejNndU5sZmZjb0JSeGpLekNzNzN5dzZieXFraWIwRXhkMm53TGVKYjRIaVRvUGRR?oc=5
+
+[T3] 2026-04-03T07:13:31+00:00: Allspring Global Investments Holdings LLC Lowers Stock Holdings in Twilio Inc. $TWLO - MarketBeat
+  Source: https://news.google.com/rss/articles/CBMi2wFBVV95cUxQWDFIVzRYYk5pYjlGT0lBRnpBR1FwS2wyU09yVWdUaWliQWw0ekM4ZDFZcFg4VjBPN2t0dHEwdy1DYjZZRHVINTR2dE9EUHdRNGFZVjd3ZW00VTNTeE50QXU3TXdDTzNVX3FwY2NIc3dmUFlkZ01JSVNIb0RlZlZwTlRHd29kMk1Dak9iSmpZeVRDQ0VQNnhkTzZ4ZzBOZFFTT3Zma01vYW1QVi1ZTVJ4clNOR0RmdEJyUjBXaDc3RlZCbDJQY25nbkNlUGU3ZFVuN0lUX0wzNlczQTg?oc=5
+
+[T3] 2026-04-03T13:00:04+00:00: Twilio Inc. (TWLO) is Attracting Investor Attention: Here is What You Should Know - finance.yahoo.com
+  Source: https://news.google.com/rss/articles/CBMiogFBVV95cUxPRGJMY1NiNUpNem43cVIxRWZ0WnJ3dV9CZDN4YUVTWVRUYjlYVmNNVG0zcWY2c3RBRW1SUnFfTklteWtnWnVyOXdqWWczeE1peFlWRWNYTzNibVBueVBzaktja0x4dDlyUF9GRTlsQnVfbHhVekhSN0U1ZDNnd2JMMkliZlZ1U3lKd05vNEI2MGhHczRiWjgyeFRhckFrbzNKb0E?oc=5
+
+[T3] 2026-04-05T20:45:53+00:00: Carvana’s Forecast Discrepancy: Binary Earnings Assessment Set for April 29 - Bitget
+  Source: https://news.google.com/rss/articles/CBMiXkFVX3lxTE11ZURGa0VQdDhwMDE1cXE3RERycGVrZ2RvM2dYUnJreHR6S2RiZjBqbks5el9lQm10YVlndWxKRE92eXNha29sYXRVSkhyUVhXOG1uUXhJMFBlUmVHcVHSAWNBVV95cUxPRGNTQVlxeV9XRGxyTjNjaWRZbTlOR1VKcnZGT3NDMzRlcTRxUFZTMW8zSGhfV2t1TFVucW1RTmQwY2N0bEVaUXd4RXdQYWJKUkdTdXVaZm03d3ZwbjlvbnI5bEE?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** 📈 EXPANSION
+**Trend:** unknown
+**Confidence:** MEDIUM
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Twilio_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Actively hiring with None open roles
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Twilio",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "Here are Monday's biggest analyst calls: Nvidia, Apple, Tesla, Netflix, Carvana, Tyson Foods, Twilio & more - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZEJPMWVBVTFCRW92RHNoU1N3SDViWHVSZEEzQlRQdml3N285N3M1cHBhVkdFbU1sMGxoSnlCR0FzZzRrMGZtY3NCR2VubWJDVEZqRHo5aldLZEVSdGVSY0E4UGVYVGFodnM1d1gxNWVVRHpHMGNWc1hhLUd4azQ4YzlYcmNaOTFIOFljMF95Ny1yclJfZkpjSTV6OHNJU0x4LWc?oc=5",
+      "source": "CNBC",
+      "tier": 2,
+      "tier_label": "TIER2",
+      "date": "2026-04-06T12:21:39+00:00",
+      "snippet": "Here are Monday's biggest analyst calls: Nvidia, Apple, Tesla, Netflix, Carvana, Tyson Foods, Twilio & more&nbsp;&nbsp;CNBC",
+      "source_link": "https://news.google.com/rss?q=CNBC&hl=en-US"
+    },
+    {
+      "title": "Is Twilio\u2019s Expanded Carrier Network And New Director Altering The Investment Case For Twilio (TWLO)? - simplywall.st",
+STDERR:
+🔍 Researching Twilio...
+
+
+================================================================================
+Company: Vercel | Status: success | Duration: 6.6s
+================================================================================
+OUTPUT:
+============================================================
+COMPANY INTELLIGENCE REPORT: Vercel
+============================================================
+Generated: 2026-04-06T11:51:36.280219
+Confidence: MEDIUM
+
+## Vercel Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+[T3] 2026-03-31T09:39:53+00:00: The web is becoming a sprawling hive mind of AI agents, and Vercel wants to build a cloud to host them - MSN
+  Source: https://news.google.com/rss/articles/CBMi_AJBVV95cUxPNFNOOXFPdGY2TlJOVGZRRXozTTk0RWVzVkhIWkxWVk16aUR4eUV1WU9kWWlSUEI3c0VvQy1SWHFmS3RhaFVhb21GMkREQ2lHOUhYR0dMWGZERWhqa0hFSjlpaWdDZWhNYnpsdTI3QkxNLUhuaVJUcVBoLWw4Q2FHblo2enU2YjVXbkF5MllkWHlGNlF0ZkxSVUEzYlBTaFBJSElfLW1WLTNkakdicTNzNXJmY2R3MG5yWjFzdUdwVGRfbnJWVzFuRXEzcGZsLVUweHlXZ3ZvVl9fajJXTGRaNy1oVVVVWGw3MkJFdVE3YkIxRXpHWk9xdWhzNmdNMDI0TDIzVGdVUGljLUtaTjhaQ2NCQm81Uk5iTVJnYUFTdmxfQ2RaY0QxNkJPUUFfYUNGNlJvcEVneUVfdmxHUzhBUWxVc1ZFdl9aY01qeWg2MC1TM3ZwdW85YTJfNFEzeHViS3ZjYWJWTU15UzRPSWVmZWdIWUVOaHBwVnVFQg?oc=5
+
+[T3] 2026-04-01T05:15:55+00:00: GS Group partners with Vercel to enhance AI coding platform capabilities - MSN
+  Source: https://news.google.com/rss/articles/CBMi2wJBVV95cUxORWp6QktmM0t1cHBxdDJRZ0dDN2diRXZ4QUk4bDAzMVVfTnNRQ0VUS0VDR3QtWG5TTjBUeUl0TlBuRkpKUG5lcktQMGpjZTl3VmNNbjB0SjZEU1hoNjVkWWhWdjhQc1pJSURtLVZCZTVJX0psNEhfMkQxWkJJdGs3R0lFWkszbXo4ZzlUVEZvcl9OVW5vcUJwSjFRMzdNcEQybUtJczFEQUdxUks2Z1lVaGxRZkR1LUNIWU5NSW9pdDY3RlhfTDJIY0RTSHhVaVVyc2lTdjZrZ1ZpUm5CMHhFaXZpRTBKVV9YXzhzaXZ2V2xYck9fajc3LWo2QU5Jc19OTWJZb3ZRN0tyb1ZIZkdKSEZnT3YxejJONUoyRWZ1QTY1d05JclVUbnBYc0FwNzNBeVJVUWN4YUxCYXc4Q0dCLTBvWmhoaHREZDNaZ3lWNjNBc3FwVThOZE9KNA?oc=5
+
+[T3] 2026-04-02T18:40:09+00:00: Vercel - 2026 Funding Rounds & List of Investors - Tracxn
+  Source: https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaFNrSlRyOUVhdTdzcDNxTE9wd3N2emhOREpRdkRDT1ZQSVVBX21iUXFCMjA4RE93UXZWc1hIelZDT0ltVl9xRm5QRG9QcHp1LXNvbTA2akk5NE93UTNVSVhrd0lRZEZIUUZuV3Q0RVJGMWcwd2k3eEZnZFdXVnJHS0VjaGM3NjU4cmQtbnRJTmg1Y283aXhDeTAxN2NtUlVDZ1hXclFRZEI?oc=5
+
+[T3] 2026-04-04T06:02:42+00:00: I Summarized Google's 50 Page AI Agent Paper + Vercel's AI Agent Doc In 8 Minutes: Here's The TLDR [600287] - Fathom Journal
+  Source: https://news.google.com/rss/articles/CBMicEFVX3lxTFA1UmJVYzJwTHQwb2M5TlRKMWVLMzg5YzZGYUFwNUtta2UyR1ZQWFpyQWMxTkVVUEdndXBJa1NLeGZpdmFUX1BFc2c4S3dONWRDWTVqZXRyWTlDTGpkaTlhclhEZlBXa2ZFdHpUR25wODY?oc=5
+
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** 1
+**Signal:** ➡️ STABLE
+**Trend:** STABLE
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/jobs/search/?keywords=Vercel_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Vercel",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)"
+  },
+  "news": [
+    {
+      "title": "The web is becoming a sprawling hive mind of AI agents, and Vercel wants to build a cloud to host them - MSN",
+      "url": "https://news.google.com/rss/articles/CBMi_AJBVV95cUxPNFNOOXFPdGY2TlJOVGZRRXozTTk0RWVzVkhIWkxWVk16aUR4eUV1WU9kWWlSUEI3c0VvQy1SWHFmS3RhaFVhb21GMkREQ2lHOUhYR0dMWGZERWhqa0hFSjlpaWdDZWhNYnpsdTI3QkxNLUhuaVJUcVBoLWw4Q2FHblo2enU2YjVXbkF5MllkWHlGNlF0ZkxSVUEzYlBTaFBJSElfLW1WLTNkakdicTNzNXJmY2R3MG5yWjFzdUdwVGRfbnJWVzFuRXEzcGZsLVUweHlXZ3ZvVl9fajJXTGRaNy1oVVVVWGw3MkJFdVE3YkIxRXpHWk9xdWhzNmdNMDI0TDIzVGdVUGljLUtaTjhaQ2NCQm81Uk5iTVJnYUFTdmxfQ2RaY0QxNkJPUUFfYUNGNlJvcEVneUVfdmxHUzhBUWxVc1ZFdl9aY01qeWg2MC1TM3ZwdW85YTJfNFEzeHViS3ZjYWJWTU15UzRPSWVmZWdIWUVOaHBwVnVFQg?oc=5",
+      "source": "MSN",
+      "tier": 3,
+      "tier_label": "TIER3",
+      "date": "2026-03-31T09:39:53+00:00",
+      "snippet": "The web is becoming a sprawling hive mind of AI agents, and Vercel wants to build a cloud to host them&nbsp;&nbsp;MSN",
+      "source_link": "https://news.google.com/rss?q=MSN&hl=en-US"
+    },
+    {
+      "title": "GS Group partners with Vercel to enhance AI coding platform capabilities - MSN",
+      "url": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxORWp6QktmM0t1cHBxdDJRZ0dDN2diRXZ4QUk4bDAzMVVfTnNRQ0VUS0VDR3QtWG5TTjBUeUl0TlBuRkpKUG5lcktQMGpjZ
+STDERR:
+🔍 Researching Vercel...
+
+
+🔍 Researching Twilio...
+============================================================
+COMPANY INTELLIGENCE REPORT: Twilio
+============================================================
+Generated: 2026-04-06T11:51:48.379938
+Confidence: MEDIUM
+
+## Twilio Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** Unknown
+**Signal:** ➡️ STABLE
+**Trend:** unknown
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/company/twilio/jobs_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Twilio",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)",
+    "_cache_hit": true
+  },
+  "news": [],
+  "jobs": {
+    "company_name": "Twilio",
+    "domain": "twilio.com",
+    "total_openings": null,
+    "department_breakdown": {},
+    "trend": "unknown",
+    "signal": "STABLE",
+    "signal_confidence": "LOW",
+    "recent_postings": 0,
+    "source_url": "https://www.linkedin.com/company/twilio/jobs",
+    "last_updated": "2026-04-06T11:51:42.704561",
+    "confidence": "MEDIUM",
+    "raw_findings": [
+      "LinkedIn search returned unknown jobs"
+    ]
+  }
+}
+🔍 Researching Vercel...
+============================================================
+COMPANY INTELLIGENCE REPORT: Vercel
+============================================================
+Generated: 2026-04-06T11:51:58.043270
+Confidence: MEDIUM
+
+## Vercel Overview
+
+**Type:** PRIVATE
+**Total Raised:** unknown
+**Stage:** unknown
+
+_Source: web search (no results) | Confidence: MEDIUM_
+
+----------------------------------------
+LATEST DEVELOPMENTS (7 days)
+----------------------------------------
+----------------------------------------
+JOB MARKET SIGNALS
+----------------------------------------
+## Job Market Signals
+
+**Open Roles:** 555845
+**Signal:** ➡️ STABLE
+**Trend:** STABLE
+**Confidence:** LOW
+
+_Source: LinkedIn | https://www.linkedin.com/company/vercel/jobs_
+
+----------------------------------------
+TALKING POINTS
+----------------------------------------
+• Limited public data available - recommend additional research
+
+============================================================
+RAW DATA
+============================================================
+{
+  "funding": {
+    "name": "Vercel",
+    "domain": "unknown",
+    "ticker": null,
+    "company_type": "private",
+    "market_cap": "unknown",
+    "revenue": "unknown",
+    "employees": "unknown",
+    "sector": "unknown",
+    "industry": "unknown",
+    "price": "unknown",
+    "52_week_range": "unknown",
+    "total_raised": "unknown",
+    "last_round": "unknown",
+    "last_round_amount": "unknown",
+    "valuation": "unknown",
+    "investors": [],
+    "stage": "unknown",
+    "is_public": false,
+    "confidence": "MEDIUM",
+    "source": "web search (no results)",
+    "_cache_hit": true
+  },
+  "news": [],
+  "jobs": {
+    "company_name": "Vercel",
+    "domain": "vercel.com",
+    "total_openings": 555845,
+    "department_breakdown": {},
+    "trend": "STABLE",
+    "signal": "STABLE",
+    "signal_confidence": "LOW",
+    "recent_postings": 0,
+    "source_url": "https://www.linkedin.com/company/vercel/jobs",
+    "last_updated": "2026-04-06T11:51:51.741884",
+    "confidence": "MEDIUM",
+    "raw_findings": [
+      "LinkedIn search returned 1 jobs"
+    ]
+  }
+}
