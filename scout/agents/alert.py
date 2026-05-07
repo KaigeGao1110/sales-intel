@@ -288,7 +288,17 @@ class AlertAgent:
             f"{company['name']} — score {score}\n{summary}"
         )
 
-        channels = company.get("alert_channels", ["console"])
+        # Determine notification channels: account-level overrides company-level
+        account_id = company.get("account_id")
+        if account_id:
+            from storage import accounts as account_store
+            account = account_store.get_by_id(account_id)
+            if account:
+                channels = account.get("notification_channels", company.get("alert_channels", ["console"]))
+            else:
+                channels = company.get("alert_channels", ["console"])
+        else:
+            channels = company.get("alert_channels", ["console"])
         notified = False
 
         # Look up contacts via Hunter.io when alert fires
@@ -306,7 +316,15 @@ class AlertAgent:
                     notified = True
 
             elif channel == "slack":
-                slack_url = os.getenv("SLACK_WEBHOOK_URL", "")
+                # Prefer account-level webhook_url, fall back to env var
+                slack_url = ""
+                if account_id:
+                    from storage import accounts as account_store
+                    account = account_store.get_by_id(account_id)
+                    if account:
+                        slack_url = account.get("webhook_url", "")
+                if not slack_url:
+                    slack_url = os.getenv("SLACK_WEBHOOK_URL", "")
                 if slack_url:
                     if _send_slack_alert(
                         slack_url,
@@ -344,6 +362,7 @@ class AlertAgent:
             score=score,
             channels=channels,
             notified=notified,
+            account_id=account_id,
         )
         return alert
 

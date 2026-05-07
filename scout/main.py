@@ -10,9 +10,11 @@ Usage:
     python main.py alert test --email you@email.com
 """
 
+import json
 import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 # Allow running from project root without installing
 sys.path.insert(0, str(Path(__file__).parent))
@@ -138,12 +140,99 @@ def monitor_list() -> None:
 
 
 @monitor.command("run")
-def monitor_run() -> None:
-    """Run monitoring checks for all active companies."""
+@click.option("--company-id", "company_id", default=None, help="UUID of a specific company to check")
+def monitor_run(company_id: Optional[str]) -> None:
+    """Run monitoring checks for all active companies, or a single company via --company-id."""
     from agents.monitor import MonitorAgent
+    from storage import companies as company_store
 
     agent = MonitorAgent()
-    agent.run_all()
+
+    if company_id:
+        company = company_store.get_by_id(company_id)
+        if not company:
+            console.print(f"[red]Company not found with id='{company_id}'[/red]")
+            return
+        result = agent.check_company(company)
+        console.print(
+            f"\n[green]Check complete[/green] for {result['company_name']}\n"
+            f"  Snapshot: {result.get('snapshot_path', 'N/A')}\n"
+            f"  Alert triggered: {result.get('alert_triggered', False)}"
+        )
+    else:
+        agent.run_all()
+
+
+def _enqueue_cloud_task(queue_name: str, task_name: str, payload: dict) -> bool:
+    """Enqueue a single task to Google Cloud Tasks.
+
+    Returns True if enqueued successfully, False otherwise.
+    """
+    try:
+        from google.cloud import tasks_v2
+    except ImportError:
+        console.print("[yellow]google-cloud-tasks not installed. Install with: pip install google-cloud-tasks[/yellow]")
+        return False
+
+    project = os.getenv("CLOUD_TASKS_PROJECT", "")
+    location = os.getenv("CLOUD_TASKS_LOCATION", "")
+    handler_url = os.getenv("MONITOR_HANDLER_URL", "")
+
+    if not all([project, location, handler_url]):
+        console.print(
+            "[yellow]Cloud Tasks env vars not fully configured. Set:\n"
+            "  CLOUD_TASKS_PROJECT  (e.g. my-gcp-project)\n"
+            "  CLOUD_TASKS_LOCATION (e.g. us-central1)\n"
+            "  MONITOR_HANDLER_URL  (e.g. https://my-app.run.app/monitor/handle)[/yellow]"
+        )
+        return False
+
+    try:
+        client = tasks_v2.CloudTasksClient()
+        parent = client.queue_path(project, location, queue_name)
+        task_v2 = tasks_v2.Task()
+        task_v2.http_request.http_method = tasks_v2.HttpMethod.POST
+        task_v2.http_request.url = handler_url
+        task_v2.http_request.headers["Content-Type"] = "application/json"
+        task_v2.http_request.body = json.dumps(payload).encode()
+        client.create_task(request={"parent": parent, "task": task_v2})
+        return True
+    except Exception as e:
+        console.print(f"[red]Cloud Tasks enqueue failed: {e}[/red]")
+        return False
+
+
+@monitor.command("enqueue")
+@click.option("--queue", "queue_name", default="scout-monitor", help="Cloud Tasks queue name")
+def monitor_enqueue(queue_name: str) -> None:
+    """Enqueue all active companies to Cloud Tasks for processing.
+
+    Queries all active companies (optionally filtered by account_id) and creates
+    a Cloud Tasks task for each one targeting the MONITOR_HANDLER_URL.
+    """
+    from agents.monitor import MonitorAgent
+    from storage import companies as company_store
+
+    active = company_store.get_active()
+    if not active:
+        console.print("[yellow]No active companies to enqueue.[/yellow]")
+        return
+
+    console.print(f"[bold]Enqueuing {len(active)} active company(ies) to Cloud Tasks queue '{queue_name}'...[/bold]")
+
+    enqueued = 0
+    failed = 0
+    for company in active:
+        task_name = f"monitor-{company['id']}"
+        payload = {"company_id": company["id"], "action": "check"}
+        if _enqueue_cloud_task(queue_name, task_name, payload):
+            enqueued += 1
+            console.print(f"  [green]+[/green] {company['name']} ({company['id']})")
+        else:
+            failed += 1
+            console.print(f"  [red]-[/red] {company['name']} ({company['id']}) — FAILED")
+
+    console.print(f"\n[bold]Enqueue complete:[/bold] {enqueued} enqueued, {failed} failed")
 
 
 @monitor.command("check")

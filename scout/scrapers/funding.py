@@ -9,11 +9,60 @@ NEVER guess. If not found, return "unknown".
 """
 
 import json
+import os
 import random
-from datetime import datetime
+import time as time_mod
+from datetime import datetime, timedelta
 from typing import Optional
 
 import requests
+
+# Cache settings
+CACHE_DIR = os.path.join(os.path.dirname(__file__), "..", "cache")
+CACHE_TTL_HOURS = 24
+
+# Ensure cache directory exists
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+
+def _get_cache_path(company_name: str) -> str:
+    """Get cache file path for a company."""
+    safe_name = company_name.lower().replace(" ", "_").replace("/", "_")
+    return os.path.join(CACHE_DIR, f"funding_{safe_name}.json")
+
+
+def _read_cache(company_name: str) -> Optional[dict]:
+    """Read cached data if exists and not expired."""
+    cache_path = _get_cache_path(company_name)
+    if not os.path.exists(cache_path):
+        return None
+
+    try:
+        with open(cache_path, "r") as f:
+            cached = json.load(f)
+
+        # Check TTL
+        cached_at = datetime.fromisoformat(cached.get("cached_at", "2000-01-01"))
+        if datetime.now() - cached_at > timedelta(hours=CACHE_TTL_HOURS):
+            return None
+
+        return cached.get("data")
+    except Exception:
+        return None
+
+
+def _write_cache(company_name: str, data: dict) -> None:
+    """Write data to cache."""
+    cache_path = _get_cache_path(company_name)
+    try:
+        with open(cache_path, "w") as f:
+            json.dump({
+                "cached_at": datetime.now().isoformat(),
+                "company": company_name,
+                "data": data,
+            }, f, indent=2, default=str)
+    except Exception:
+        pass  # Cache write failures are non-fatal
 
 # Timeout for HTTP requests
 TIMEOUT = 10
@@ -53,20 +102,19 @@ TICKER_MAP = {
 }
 
 
-def _get_public_company_info(ticker: str, retries: int = 4) -> dict:
+def _get_public_company_info(ticker: str, retries: int = 4, delay_range: tuple = (2, 3)) -> dict:
     """
     Fetch public company info from Yahoo Finance API.
 
     Args:
         ticker: Stock ticker symbol
         retries: Number of retry attempts on rate limiting
+        delay_range: Tuple of (min_delay, max_delay) seconds to wait before request
 
     Returns:
         Dict with market_cap, revenue, employees, sector, 52_week_range, price
         or empty dict if not found.
     """
-    import time as time_mod
-
     url = f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
     params = {"modules": "financialData,defaultKeyStatistics,profile,price"}
     headers = {
@@ -74,6 +122,9 @@ def _get_public_company_info(ticker: str, retries: int = 4) -> dict:
     }
 
     for attempt in range(retries + 1):
+        # Add delay before each request (2-3 seconds)
+        time_mod.sleep(random.uniform(delay_range[0], delay_range[1]))
+
         try:
             resp = requests.get(url, params=params, headers=headers, timeout=TIMEOUT)
             if resp.status_code == 429:
@@ -161,7 +212,7 @@ def _search_private_company(query: str) -> dict:
     # Try using BraveSearch service if available
     try:
         import sys as sys_mod
-        sys_mod.path.insert(0, "/mnt/openclaw-efs/.openclaw/workspace/projects/ScoutAI/scout")
+        sys_mod.path.insert(0, "/home/kaige/.openclaw/.openclaw/workspace/projects/ScoutAI/scout")
         from services.brave_search import BraveSearch
         search = BraveSearch()
         results = search.search(query=f"{query} funding round 2024 2025", count=5)
@@ -184,7 +235,7 @@ def _search_private_company(query: str) -> dict:
 
     # Try using Exa or other search services
     try:
-        sys_mod.path.insert(0, "/mnt/openclaw-efs/.openclaw/workspace/projects/ScoutAI/scout")
+        sys_mod.path.insert(0, "/home/kaige/.openclaw/.openclaw/workspace/projects/ScoutAI/scout")
         from services.exa import ExaSearch
         exa = ExaSearch()
         results = exa.search(query=f"{query} funding round", num_results=5)
@@ -226,6 +277,12 @@ def get_funding_info(company_name: str, domain: Optional[str] = None, ticker: Op
         - investors, stage
         - is_public, confidence (HIGH/MEDIUM/LOW), source
     """
+    # Check cache first for any company type
+    cached = _read_cache(company_name)
+    if cached:
+        cached["_cache_hit"] = True
+        return cached
+
     result = {
         "name": company_name,
         "domain": domain or "unknown",
@@ -259,6 +316,7 @@ def get_funding_info(company_name: str, domain: Optional[str] = None, ticker: Op
                     result["52_week_range"] = f"${info['52_week_low']:.2f} - ${info['52_week_high']:.2f}"
                 result["company_type"] = "public"
                 result["confidence"] = "HIGH"
+                _write_cache(company_name, result)
                 return result
 
     # Check ticker map if company_name matches (only for auto or public mode)
@@ -272,11 +330,14 @@ def get_funding_info(company_name: str, domain: Optional[str] = None, ticker: Op
                         result["52_week_range"] = f"${info['52_week_low']:.2f} - ${info['52_week_high']:.2f}"
                     result["company_type"] = "public"
                     result["confidence"] = "HIGH"
+                    _write_cache(company_name, result)
                     return result
 
     # Try to detect if company is public via Yahoo Finance search
     if company_type == "auto":
         search_url = "https://query1.finance.yahoo.com/v1/finance/search"
+        # Add delay before Yahoo Finance search API call
+        time_mod.sleep(random.uniform(2, 3))
         try:
             resp = requests.get(
                 search_url,
@@ -297,6 +358,7 @@ def get_funding_info(company_name: str, domain: Optional[str] = None, ticker: Op
                                 result["52_week_range"] = f"${info['52_week_low']:.2f} - ${info['52_week_high']:.2f}"
                             result["company_type"] = "public"
                             result["confidence"] = "HIGH"
+                            _write_cache(company_name, result)
                             return result
         except Exception:
             pass
@@ -308,6 +370,7 @@ def get_funding_info(company_name: str, domain: Optional[str] = None, ticker: Op
         result["company_type"] = "private"
         result["confidence"] = "MEDIUM" if search_result.get("source") != "unknown" else "LOW"
 
+    _write_cache(company_name, result)
     return result
 
 

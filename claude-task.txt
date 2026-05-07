@@ -1,0 +1,65 @@
+Implement multi-account architecture for Scout. Here is the complete design:
+
+## SCHEMA:
+
+### 1. Create new 'accounts' table:
+```sql
+CREATE TABLE accounts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  company_name TEXT NOT NULL,
+  plan_type TEXT NOT NULL DEFAULT 'free',
+  max_companies INTEGER NOT NULL DEFAULT 5,
+  is_active BOOLEAN NOT NULL DEFAULT true,
+  notification_channels JSONB NOT NULL DEFAULT '[]',
+  alert_threshold INTEGER NOT NULL DEFAULT 10,
+  webhook_url TEXT,
+  notes TEXT
+);
+CREATE INDEX idx_accounts_is_active ON accounts(is_active);
+```
+
+### 2. Alter existing tables to add account_id:
+```sql
+ALTER TABLE companies ADD COLUMN account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE CASCADE;
+CREATE INDEX idx_companies_account_id ON companies(account_id);
+CREATE INDEX idx_companies_account_status ON companies(account_id, status);
+
+ALTER TABLE snapshots ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+CREATE INDEX idx_snapshots_account_id ON snapshots(account_id);
+
+ALTER TABLE alerts ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+CREATE INDEX idx_alerts_account_id ON alerts(account_id);
+
+ALTER TABLE scores ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+CREATE INDEX idx_scores_account_id ON scores(account_id);
+
+ALTER TABLE outreach ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+
+ALTER TABLE pipeline ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+
+ALTER TABLE intros ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+
+ALTER TABLE meeting_prep ADD COLUMN account_id UUID REFERENCES accounts(id) ON DELETE CASCADE;
+```
+
+## TASKS:
+1. Create new `storage/accounts.py` module with CRUD operations for accounts matching the schema
+2. Update all existing storage modules: companies, snapshots, alerts, scores, outreach, pipeline, intros, meeting_prep
+   - Add account_id parameter to all relevant methods
+   - Add methods to get companies by account
+   - When querying, filter by account_id if provided
+   - Maintain backward compatibility: if account_id is None/ not provided, return all results (for existing single-account use)
+3. Update `supabase_client.py` - add AccountsClient to SupabaseStorage class, add account_id to all queries
+4. Update `main.py` to add new CLI commands:
+   - `monitor enqueue` - query all active companies from Supabase, enqueue each to Cloud Tasks
+   - `monitor run --company-id <UUID>` - process a single company (what used to be the full monitor run)
+5. Update notification logic: when an alert triggers, get the notification channels from the account, not from global env vars
+6. Keep the existing pattern: delegate to Supabase when SUPABASE_URL and SUPABASE_KEY are set, fall back to JSON when not configured
+7. Keep backward compatibility for existing single-account usage (if no account_id, it just works like before)
+8. Output the complete SQL migration at the end
+
+Work in `scout/` directory. Use the existing Supabase delegation pattern that's already implemented.

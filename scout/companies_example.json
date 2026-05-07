@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Stripe",
+    "domain": "stripe.com",
+    "ticker": "STRIPE",
+    "type": "public"
+  },
+  {
+    "name": "Anthropic",
+    "domain": "anthropic.com",
+    "type": "private"
+  },
+  {
+    "name": "Snowflake",
+    "domain": "snowflake.com",
+    "ticker": "SNOW",
+    "type": "public"
+  },
+  {
+    "name": "Databricks",
+    "domain": "databricks.com",
+    "type": "private"
+  },
+  {
+    "name": "Figma",
+    "domain": "figma.com",
+    "type": "private"
+  }
+]

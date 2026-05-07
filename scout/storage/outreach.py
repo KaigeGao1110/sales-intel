@@ -8,6 +8,7 @@ import os
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional
 
 OUTREACH_FILE = Path.home() / ".scout" / "outreach.json"
 
@@ -44,11 +45,19 @@ def _save(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
+def _filter_by_account(records: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter records by account_id if provided. Returns all if account_id is None."""
+    if account_id is None:
+        return records
+    return [r for r in records if r.get("account_id") == account_id]
+
+
 def log(
     company_id: str,
     company_name: str,
     contacts: list[dict],
     variants: dict,
+    account_id: Optional[str] = None,
 ) -> dict:
     """Append an outreach record to outreach.json.
 
@@ -57,13 +66,14 @@ def log(
         company_name: Display name.
         contacts: List of contact dicts used (may be empty).
         variants: Dict with cold_emails, linkedin_messages, subject_lines.
+        account_id: Account UUID.
 
     Returns:
         The created outreach record dict.
     """
     if _use_supabase():
         return _get_supabase_storage().outreach.save_outreach(
-            company_id, company_name, contacts, variants
+            company_id, company_name, contacts, variants, account_id
         )
     data = _load()
     now = datetime.now(timezone.utc).isoformat()
@@ -77,6 +87,7 @@ def log(
     ]
     record = {
         "id": str(uuid.uuid4()),
+        "account_id": account_id,
         "company_id": company_id,
         "company_name": company_name,
         "created_date": now,
@@ -90,17 +101,17 @@ def log(
     return record
 
 
-def get_by_company(company_id: str) -> list[dict]:
+def get_by_company(company_id: str, account_id: Optional[str] = None) -> list[dict]:
     """Return all outreach records for a company, newest first."""
     if _use_supabase():
-        return _get_supabase_storage().outreach.get_by_company(company_id)
-    records = _load().get("outreach_records", [])
+        return _get_supabase_storage().outreach.get_by_company(company_id, account_id)
+    records = _filter_by_account(_load().get("outreach_records", []), account_id)
     return [r for r in reversed(records) if r.get("company_id") == company_id]
 
 
-def get_all() -> list[dict]:
+def get_all(account_id: Optional[str] = None) -> list[dict]:
     """Return all outreach records, newest first."""
     if _use_supabase():
-        return _get_supabase_storage().outreach.get_all()
-    records = _load().get("outreach_records", [])
+        return _get_supabase_storage().outreach.get_all(account_id)
+    records = _filter_by_account(_load().get("outreach_records", []), account_id)
     return list(reversed(records))

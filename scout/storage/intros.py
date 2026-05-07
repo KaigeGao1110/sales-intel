@@ -46,22 +46,38 @@ def _save(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
-def save_intro_request(company_name: str, target_contact: dict, intro_paths: list[dict]) -> dict:
+def _filter_by_account(intros: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter intros by account_id if provided. Returns all if account_id is None."""
+    if account_id is None:
+        return intros
+    return [i for i in intros if i.get("account_id") == account_id]
+
+
+def save_intro_request(
+    company_name: str,
+    target_contact: dict,
+    intro_paths: list[dict],
+    account_id: Optional[str] = None,
+) -> dict:
     """Save a warm intro request for a company.
 
     Args:
         company_name: Name of the target company.
         target_contact: Dict with name, email, role of the target contact.
         intro_paths: List of intro path dicts.
+        account_id: Account UUID.
 
     Returns:
         The saved intro request dict.
     """
     if _use_supabase():
-        return _get_supabase_storage().intros.save_intro(company_name, target_contact, intro_paths)
+        return _get_supabase_storage().intros.save_intro(
+            company_name, target_contact, intro_paths, account_id
+        )
     data = _load()
     entry = {
         "request_id": str(uuid.uuid4()),
+        "account_id": account_id,
         "company_name": company_name,
         "target_contact": target_contact,
         "intro_paths": intro_paths,
@@ -72,24 +88,23 @@ def save_intro_request(company_name: str, target_contact: dict, intro_paths: lis
     return entry
 
 
-def get_intro_request(company_name: str) -> Optional[dict]:
+def get_intro_request(company_name: str, account_id: Optional[str] = None) -> Optional[dict]:
     """Get the most recent intro request for a company.
 
     Returns:
         The most recent intro request dict, or None if not found.
     """
     if _use_supabase():
-        return _get_supabase_storage().intros.get_intro(company_name)
-    data = _load()
+        return _get_supabase_storage().intros.get_intro(company_name, account_id)
     matching = [
-        e for e in reversed(data["intros"])
+        e for e in reversed(_filter_by_account(_load()["intros"], account_id))
         if e["company_name"].lower() == company_name.lower()
     ]
     return matching[0] if matching else None
 
 
-def get_all() -> list[dict]:
+def get_all(account_id: Optional[str] = None) -> list[dict]:
     """Return all stored intro requests."""
     if _use_supabase():
-        return _get_supabase_storage().intros.get_all_intros()
-    return _load()["intros"]
+        return _get_supabase_storage().intros.get_all_intros(account_id)
+    return _filter_by_account(_load()["intros"], account_id)

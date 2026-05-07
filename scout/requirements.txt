@@ -13,3 +13,5 @@ google-auth-oauthlib>=1.2.0
 google-auth-httplib2>=0.2.0
 google-api-python-client>=2.118.0
 supabase>=2.0.0
+slack-bolt>=1.18.0
+slack-sdk>=3.27.0

@@ -1,0 +1,4 @@
+2026-04-02 22:05:37,060 __main__ INFO Starting Scout Slack Bot...
+2026-04-02 22:05:37,143 slack_bolt.App INFO A new session has been established (session id: ff7431c2-e8e3-4ff0-b807-0482407eecfd)
+2026-04-02 22:05:37,143 slack_bolt.App INFO ⚡️ Bolt app is running!
+2026-04-02 22:05:37,160 slack_bolt.App INFO Starting to receive messages from a new connection (session id: ff7431c2-e8e3-4ff0-b807-0482407eecfd)

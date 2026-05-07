@@ -15,6 +15,8 @@ import os
 import sys
 import logging
 from pathlib import Path
+from threading import Thread
+from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 # Allow running from project root
 sys.path.insert(0, str(Path(__file__).parent))
@@ -35,8 +37,29 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def start_health_server():
+    """Simple HTTP health check server for Cloud Run."""
+    class HealthHandler(SimpleHTTPRequestHandler):
+        def do_GET(self):
+            if self.path == "/health":
+                self.send_response(200)
+                self.send_header("Content-type", "text/plain")
+                self.end_headers()
+                self.wfile.write(b"OK")
+            else:
+                self.send_response(404)
+                self.end_headers()
+        def log_message(self, format, *args):
+            pass  # suppress logs
+
+    port = int(os.environ.get("PORT", 8080))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    server.serve_forever()
+
 def main():
     """Start the Slack bot using Socket Mode."""
+    # Start health check server in background thread
+    Thread(target=start_health_server, daemon=True, name="health-server").start()
     from slack_bot.app import app
     from slack_bolt.adapter.socket_mode import SocketModeHandler
 

@@ -51,20 +51,21 @@ def _parse_snapshot_filename(filename: str) -> tuple[str, str, str]:
     raise ValueError(f"Cannot parse snapshot filename: {filename}")
 
 
-def save(company_id: str, company_name: str, research_data: dict) -> Path:
+def save(company_id: str, company_name: str, research_data: dict, account_id: Optional[str] = None) -> Path:
     """Save a research snapshot for a company.
 
     Args:
         company_id: Company UUID.
         company_name: Display name.
         research_data: Structured research dict from ResearchAgent.
+        account_id: Account UUID.
 
     Returns:
         Path to the saved snapshot file.
     """
     if _use_supabase():
         result = _get_supabase_storage().snapshots.save_snapshot(
-            company_id, company_name, research_data, source="AM"
+            company_id, company_name, research_data, source="AM", account_id=account_id
         )
         # Supabase returns dict; return the id as a pseudo-path for compatibility
         return Path(result.get("id", str(company_id)))
@@ -77,6 +78,7 @@ def save(company_id: str, company_name: str, research_data: dict) -> Path:
     snapshot = {
         "company_id": company_id,
         "company_name": company_name,
+        "account_id": account_id,
         "check_date": date_str,
         "slot": slot,
         "news": research_data.get("news", []),
@@ -92,14 +94,14 @@ def save(company_id: str, company_name: str, research_data: dict) -> Path:
     return path
 
 
-def get_latest(company_id: str) -> Optional[dict]:
+def get_latest(company_id: str, account_id: Optional[str] = None) -> Optional[dict]:
     """Get the most recent snapshot for a company.
 
     Returns:
         Snapshot dict or None if no snapshots exist.
     """
     if _use_supabase():
-        return _get_supabase_storage().snapshots.get_latest(company_id)
+        return _get_supabase_storage().snapshots.get_latest(company_id, account_id)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     pattern = f"{company_id}_*.json"
     matches = sorted(SNAPSHOTS_DIR.glob(pattern), reverse=True)
@@ -109,7 +111,7 @@ def get_latest(company_id: str) -> Optional[dict]:
         return json.load(f)
 
 
-def get_previous(company_id: str) -> Optional[dict]:
+def get_previous(company_id: str, account_id: Optional[str] = None) -> Optional[dict]:
     """Get the most recent snapshot that is NOT the current one.
 
     If current slot is PM, returns AM of same day if it exists.
@@ -119,7 +121,7 @@ def get_previous(company_id: str) -> Optional[dict]:
         Snapshot dict or None if no previous snapshot exists.
     """
     if _use_supabase():
-        return _get_supabase_storage().snapshots.get_previous(company_id)
+        return _get_supabase_storage().snapshots.get_previous(company_id, account_id)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc)
     current_date = now.strftime("%Y-%m-%d")
@@ -135,10 +137,10 @@ def get_previous(company_id: str) -> Optional[dict]:
     return None
 
 
-def list_snapshots(company_id: str) -> list[Path]:
+def list_snapshots(company_id: str, account_id: Optional[str] = None) -> list[Path]:
     """List all snapshot files for a company, oldest first."""
     if _use_supabase():
-        snapshots = _get_supabase_storage().snapshots.list_snapshots(company_id)
+        snapshots = _get_supabase_storage().snapshots.list_snapshots(company_id, account_id)
         # Supabase returns dicts; return list of paths for compatibility
         return [Path(s.get("id", company_id)) for s in snapshots]
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)

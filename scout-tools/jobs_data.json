@@ -1,0 +1,184 @@
+{
+  "jobs": [
+    {
+      "company": "TechFlow Solutions",
+      "title": "Senior Account Executive - Enterprise",
+      "department": "Sales",
+      "location": "San Francisco, CA",
+      "posted_date": "2026-02-10",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["SaaS", "Enterprise Sales", "DevOps", "Solution Selling"]
+    },
+    {
+      "company": "TechFlow Solutions",
+      "title": "Solutions Engineer",
+      "department": "Engineering",
+      "location": "Remote",
+      "posted_date": "2026-02-12",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Kubernetes", "Docker", "Python", "Go", "Cloud Infrastructure"]
+    },
+    {
+      "company": "TechFlow Solutions",
+      "title": "Enterprise Customer Success Manager",
+      "department": "Customer Success",
+      "location": "New York, NY",
+      "posted_date": "2026-01-28",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["SaaS", "Enterprise Accounts", "Onboarding", "Renewals"]
+    },
+    {
+      "company": "CloudMatrix Inc",
+      "title": "VP of Sales - Americas",
+      "department": "Sales",
+      "location": "Austin, TX",
+      "posted_date": "2026-02-01",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Cloud", "Enterprise Sales", "Team Leadership", "SaaS"]
+    },
+    {
+      "company": "CloudMatrix Inc",
+      "title": "Senior Cloud Architect",
+      "department": "Engineering",
+      "location": "Remote",
+      "posted_date": "2026-02-05",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["AWS", "Azure", "GCP", "Terraform", "Kubernetes"]
+    },
+    {
+      "company": "CloudMatrix Inc",
+      "title": "Sales Development Representative",
+      "department": "Sales",
+      "location": "Austin, TX",
+      "posted_date": "2026-01-20",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["SaaS", "Outbound", "CRM", "Prospecting"]
+    },
+    {
+      "company": "AIVendor Corp",
+      "title": "Enterprise Account Executive",
+      "department": "Sales",
+      "location": "San Francisco, CA",
+      "posted_date": "2026-02-08",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["AI/ML", "Enterprise Sales", "Solution Selling", "SAP"]
+    },
+    {
+      "company": "AIVendor Corp",
+      "title": "Machine Learning Engineer",
+      "department": "Engineering",
+      "location": "Seattle, WA",
+      "posted_date": "2026-02-15",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Python", "TensorFlow", "PyTorch", "MLOps", "LLMs"]
+    },
+    {
+      "company": "SecureNet Systems",
+      "title": "Channel Sales Manager",
+      "department": "Sales",
+      "location": "Chicago, IL",
+      "posted_date": "2026-01-25",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["Channel Partnerships", "Security", "SaaS", "VAR"]
+    },
+    {
+      "company": "SecureNet Systems",
+      "title": "Security Solutions Architect",
+      "department": "Engineering",
+      "location": "Remote",
+      "posted_date": "2026-02-03",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Zero Trust", "SIEM", "SOC", "Python", "Security Architecture"]
+    },
+    {
+      "company": "ScaleUp Platform",
+      "title": "Regional Sales Director - East Coast",
+      "department": "Sales",
+      "location": "Boston, MA",
+      "posted_date": "2026-01-15",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["E-commerce", "Enterprise Sales", "SaaS", "Retail"]
+    },
+    {
+      "company": "ScaleUp Platform",
+      "title": "Senior Backend Engineer",
+      "department": "Engineering",
+      "location": "Remote",
+      "posted_date": "2026-02-18",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Ruby", "Rails", "PostgreSQL", "Redis", "GraphQL"]
+    },
+    {
+      "company": "DataSync Labs",
+      "title": "Founding Account Executive",
+      "department": "Sales",
+      "location": "San Francisco, CA",
+      "posted_date": "2026-02-20",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["SaaS", "Data", "Start-up", "Founding Team"]
+    },
+    {
+      "company": "Bright Future Analytics",
+      "title": "Business Development Representative",
+      "department": "Sales",
+      "location": "Shanghai, China",
+      "posted_date": "2026-01-30",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["SaaS", "Prospecting", "APAC", "Mandarin", "CRM"]
+    },
+    {
+      "company": "Bright Future Analytics",
+      "title": "Data Analyst",
+      "department": "Data",
+      "location": "Remote",
+      "posted_date": "2026-02-12",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["SQL", "Python", "Tableau", "Data Visualization"]
+    },
+    {
+      "company": "GrowthForce",
+      "title": "Sales Enablement Specialist",
+      "department": "Revenue",
+      "location": "Denver, CO",
+      "posted_date": "2026-02-01",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["Sales Enablement", "Content Creation", "Salesforce", "Training"]
+    },
+    {
+      "company": "InnovateTech",
+      "title": "Full Stack Developer",
+      "department": "Engineering",
+      "location": "Remote",
+      "posted_date": "2026-02-22",
+      "type": "full-time",
+      "remote": true,
+      "skills": ["TypeScript", "React", "Node.js", "PostgreSQL"]
+    },
+    {
+      "company": "NexGen Software",
+      "title": "HR Generalist",
+      "department": "Human Resources",
+      "location": "Austin, TX",
+      "posted_date": "2025-12-01",
+      "type": "full-time",
+      "remote": false,
+      "skills": ["Recruiting", "Onboarding", "HRIS", "Employee Relations"]
+    }
+  ]
+}

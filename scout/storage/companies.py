@@ -97,36 +97,46 @@ def _save(data: dict) -> None:
             _save_to_gcs(client, data)
 
 
-def get_all() -> list[dict]:
-    """Return all companies."""
+def _filter_by_account(companies: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter companies by account_id if provided. Backward compatible: returns all if account_id is None."""
+    if account_id is None:
+        return companies
+    return [c for c in companies if c.get("account_id") == account_id]
+
+
+def get_all(account_id: Optional[str] = None) -> list[dict]:
+    """Return all companies, optionally filtered by account_id.
+
+    Backward compatible: if account_id is None, returns all companies.
+    """
     if _use_supabase():
-        return _get_supabase_storage().companies.get_all()
-    return _load()["companies"]
+        return _get_supabase_storage().companies.get_all(account_id)
+    return _filter_by_account(_load()["companies"], account_id)
 
 
-def get_active() -> list[dict]:
-    """Return only active companies."""
+def get_active(account_id: Optional[str] = None) -> list[dict]:
+    """Return only active companies, optionally filtered by account_id."""
     if _use_supabase():
-        return _get_supabase_storage().companies.get_active()
-    return [c for c in get_all() if c.get("status") == "active"]
+        return _get_supabase_storage().companies.get_active(account_id)
+    return [c for c in get_all(account_id) if c.get("status") == "active"]
 
 
-def get_by_name(name: str) -> Optional[dict]:
-    """Find a company by name (case-insensitive)."""
+def get_by_name(name: str, account_id: Optional[str] = None) -> Optional[dict]:
+    """Find a company by name (case-insensitive), optionally by account."""
     if _use_supabase():
-        return _get_supabase_storage().companies.get_by_name(name)
+        return _get_supabase_storage().companies.get_by_name(name, account_id)
     name_lower = name.lower()
-    for c in get_all():
+    for c in get_all(account_id):
         if c.get("name", "").lower() == name_lower:
             return c
     return None
 
 
-def get_by_id(company_id: str) -> Optional[dict]:
-    """Find a company by UUID."""
+def get_by_id(company_id: str, account_id: Optional[str] = None) -> Optional[dict]:
+    """Find a company by UUID, optionally by account."""
     if _use_supabase():
-        return _get_supabase_storage().companies.get_by_id(company_id)
-    for c in get_all():
+        return _get_supabase_storage().companies.get_by_id(company_id, account_id)
+    for c in get_all(account_id):
         if c.get("id") == company_id:
             return c
     return None
@@ -137,6 +147,7 @@ def add(
     domain: str = "",
     alert_email: str = "",
     alert_channels: Optional[list[str]] = None,
+    account_id: Optional[str] = None,
 ) -> dict:
     """Add a new company to monitoring.
 
@@ -145,21 +156,23 @@ def add(
         domain: Company domain (optional).
         alert_email: Email address for alerts.
         alert_channels: List of channels ('email', 'slack', 'console').
+        account_id: Account UUID to associate this company with.
 
     Returns:
         The newly created company dict.
     """
     if _use_supabase():
         return _get_supabase_storage().companies.add(
-            name, domain, alert_email, alert_channels
+            name, domain, alert_email, alert_channels, account_id
         )
     data = _load()
-    existing = get_by_name(name)
+    existing = get_by_name(name, account_id)
     if existing:
         return existing
     channels = alert_channels or (["email"] if alert_email else ["console"])
     company = {
         "id": str(uuid.uuid4()),
+        "account_id": account_id,
         "name": name,
         "domain": domain,
         "added_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
@@ -173,44 +186,47 @@ def add(
     return company
 
 
-def update_last_checked(company_id: str) -> None:
+def update_last_checked(company_id: str, account_id: Optional[str] = None) -> None:
     """Update the last_checked timestamp for a company."""
     if _use_supabase():
-        _get_supabase_storage().companies.update_last_checked(company_id)
+        _get_supabase_storage().companies.update_last_checked(company_id, account_id)
         return
     data = _load()
     for c in data["companies"]:
         if c["id"] == company_id:
-            c["last_checked"] = datetime.now(timezone.utc).isoformat()
-            break
+            if account_id is None or c.get("account_id") == account_id:
+                c["last_checked"] = datetime.now(timezone.utc).isoformat()
+                break
     _save(data)
 
 
-def set_status(company_id: str, status: str) -> None:
+def set_status(company_id: str, status: str, account_id: Optional[str] = None) -> None:
     """Set company status to 'active' or 'paused'."""
     if _use_supabase():
-        _get_supabase_storage().companies.set_status(company_id, status)
+        _get_supabase_storage().companies.set_status(company_id, status, account_id)
         return
     data = _load()
     for c in data["companies"]:
         if c["id"] == company_id:
-            c["status"] = status
-            break
+            if account_id is None or c.get("account_id") == account_id:
+                c["status"] = status
+                break
     _save(data)
 
 
-def remove(company_id: str) -> bool:
+def remove(company_id: str, account_id: Optional[str] = None) -> bool:
     """Remove a company from monitoring.
 
     Returns:
         True if removed, False if not found.
     """
     if _use_supabase():
-        return _get_supabase_storage().companies.remove(company_id)
+        return _get_supabase_storage().companies.remove(company_id, account_id)
     data = _load()
     before = len(data["companies"])
     data["companies"] = [
-        c for c in data["companies"] if c["id"] != company_id
+        c for c in data["companies"]
+        if c["id"] != company_id or (account_id is not None and c.get("account_id") != account_id)
     ]
     if len(data["companies"]) < before:
         _save(data)

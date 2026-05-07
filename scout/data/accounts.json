@@ -1,0 +1,28 @@
+{
+  "accounts": [
+    {
+      "id": "d50a4221-25a6-4351-810e-74466e7ed8f3",
+      "created_at": "2026-04-03T03:15:45.788279+00:00",
+      "updated_at": "2026-04-03T03:15:45.788279+00:00",
+      "name": "Default Account",
+      "email": "kaige@example.com",
+      "company_name": "Scout",
+      "plan_type": "free",
+      "max_companies": 100,
+      "is_active": true,
+      "notification_channels": [
+        {
+          "type": "slack",
+          "value": "your-slack-webhook-url"
+        },
+        {
+          "type": "email",
+          "value": "kaige@example.com"
+        }
+      ],
+      "alert_threshold": 10,
+      "webhook_url": null,
+      "notes": "Default account for existing data migration"
+    }
+  ]
+}
