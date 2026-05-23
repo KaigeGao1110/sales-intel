@@ -45,24 +45,34 @@ def _save(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
-def store(meeting_id: str, prep_data: dict) -> None:
+def _filter_by_account(preps: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter meeting preps by account_id if provided. Returns all if account_id is None."""
+    if account_id is None:
+        return preps
+    return [m for m in preps if m.get("account_id") == account_id]
+
+
+def store(meeting_id: str, prep_data: dict, account_id: Optional[str] = None) -> None:
     """Store or update a meeting prep entry.
 
     Args:
         meeting_id: Unique identifier for the meeting.
         prep_data: Dict containing meeting prep fields.
+        account_id: Account UUID.
     """
     if _use_supabase():
-        _get_supabase_storage().meeting_prep.save_meeting_prep(meeting_id, prep_data)
+        _get_supabase_storage().meeting_prep.save_meeting_prep(meeting_id, prep_data, account_id)
         return
     data = _load()
     existing_indices = [
         i for i, m in enumerate(data["meeting_preps"]) if m["meeting_id"] == meeting_id
     ]
+    prep = dict(prep_data)
+    prep["account_id"] = account_id
     if existing_indices:
-        data["meeting_preps"][existing_indices[0]] = prep_data
+        data["meeting_preps"][existing_indices[0]] = prep
     else:
-        data["meeting_preps"].append(prep_data)
+        data["meeting_preps"].append(prep)
     _save(data)
 
 
@@ -84,40 +94,41 @@ def get(meeting_id: str) -> Optional[dict]:
     return None
 
 
-def get_by_company(company_name: str) -> list[dict]:
+def get_by_company(company_name: str, account_id: Optional[str] = None) -> list[dict]:
     """Get all meeting preps for a company (case-insensitive).
 
     Args:
         company_name: Company name to search for.
+        account_id: Account UUID.
 
     Returns:
         List of matching meeting prep dicts.
     """
     if _use_supabase():
-        return _get_supabase_storage().meeting_prep.get_by_company(company_name)
-    data = _load()
+        return _get_supabase_storage().meeting_prep.get_by_company(company_name, account_id)
     name_lower = company_name.lower()
     return [
-        m for m in data["meeting_preps"]
+        m for m in _filter_by_account(_load()["meeting_preps"], account_id)
         if m.get("company_name", "").lower() == name_lower
     ]
 
 
-def get_upcoming(hours_ahead: int = 24) -> list[dict]:
+def get_upcoming(hours_ahead: int = 24, account_id: Optional[str] = None) -> list[dict]:
     """Get meetings scheduled within the next N hours.
 
     Args:
         hours_ahead: Number of hours to look ahead.
+        account_id: Account UUID.
 
     Returns:
         List of upcoming meeting prep dicts.
     """
     if _use_supabase():
-        return _get_supabase_storage().meeting_prep.get_upcoming_meetings(hours_ahead)
+        return _get_supabase_storage().meeting_prep.get_upcoming_meetings(hours_ahead, account_id)
     data = _load()
     now = datetime.now(timezone.utc)
     upcoming: list[dict] = []
-    for m in data["meeting_preps"]:
+    for m in _filter_by_account(data["meeting_preps"], account_id):
         meeting_time_str = m.get("meeting_time")
         if not meeting_time_str:
             continue
@@ -151,12 +162,15 @@ def mark_complete(meeting_id: str) -> bool:
     return False
 
 
-def list_all() -> list[dict]:
+def list_all(account_id: Optional[str] = None) -> list[dict]:
     """Return all meeting preps.
+
+    Args:
+        account_id: Account UUID.
 
     Returns:
         List of all meeting prep dicts.
     """
     if _use_supabase():
-        return _get_supabase_storage().meeting_prep.list_all()
-    return _load()["meeting_preps"]
+        return _get_supabase_storage().meeting_prep.list_all(account_id)
+    return _filter_by_account(_load()["meeting_preps"], account_id)

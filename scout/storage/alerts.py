@@ -43,6 +43,13 @@ def _save(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
+def _filter_by_account(alerts: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter alerts by account_id if provided. Returns all if account_id is None."""
+    if account_id is None:
+        return alerts
+    return [a for a in alerts if a.get("account_id") == account_id]
+
+
 def log_alert(
     company_id: str,
     company_name: str,
@@ -53,6 +60,7 @@ def log_alert(
     score: int,
     channels: list[str],
     notified: bool = False,
+    account_id: Optional[str] = None,
 ) -> dict:
     """Append an alert entry to alerts_log.json.
 
@@ -66,6 +74,7 @@ def log_alert(
         score: Significance score used to trigger this alert.
         channels: Notification channels used.
         notified: Whether notification was sent.
+        account_id: Account UUID.
 
     Returns:
         The created alert dict.
@@ -73,12 +82,13 @@ def log_alert(
     if _use_supabase():
         return _get_supabase_storage().alerts.save_alert(
             company_id, company_name, alert_type, severity,
-            title, summary, score, channels, notified,
+            title, summary, score, channels, notified, account_id,
         )
     data = _load()
     now = datetime.now(timezone.utc).isoformat()
     alert = {
         "id": str(uuid.uuid4()),
+        "account_id": account_id,
         "company_id": company_id,
         "company_name": company_name,
         "alert_date": now,
@@ -96,13 +106,13 @@ def log_alert(
     return alert
 
 
-def get_recent(company_id: str, hours: int = 24) -> list[dict]:
+def get_recent(company_id: str, hours: int = 24, account_id: Optional[str] = None) -> list[dict]:
     """Return alerts for a company within the last N hours (for dedup)."""
     if _use_supabase():
-        return _get_supabase_storage().alerts.get_recent(company_id, hours)
+        return _get_supabase_storage().alerts.get_recent(company_id, hours, account_id)
     cutoff = datetime.now(timezone.utc).timestamp() - hours * 3600
     results = []
-    for a in _load()["alerts"]:
+    for a in _filter_by_account(_load()["alerts"], account_id):
         if a["company_id"] != company_id:
             continue
         try:
@@ -114,11 +124,11 @@ def get_recent(company_id: str, hours: int = 24) -> list[dict]:
     return results
 
 
-def get_all() -> list[dict]:
-    """Return all logged alerts."""
+def get_all(account_id: Optional[str] = None) -> list[dict]:
+    """Return all logged alerts, optionally filtered by account_id."""
     if _use_supabase():
-        return _get_supabase_storage().alerts.get_all()
-    return _load()["alerts"]
+        return _get_supabase_storage().alerts.get_all(account_id)
+    return _filter_by_account(_load()["alerts"], account_id)
 
 
 def mark_notified(alert_id: str) -> None:

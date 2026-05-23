@@ -48,11 +48,19 @@ def _save(data: dict) -> None:
         json.dump(data, f, indent=2)
 
 
+def _filter_by_account(opps: list[dict], account_id: Optional[str] = None) -> list[dict]:
+    """Filter opportunities by account_id if provided. Returns all if account_id is None."""
+    if account_id is None:
+        return opps
+    return [o for o in opps if o.get("account_id") == account_id]
+
+
 def track_opportunity(
     company_name: str,
     stage: str,
     expected_close: Optional[str] = None,
     champion_contact: Optional[str] = None,
+    account_id: Optional[str] = None,
 ) -> dict:
     """Track a new opportunity or return existing one.
 
@@ -61,20 +69,22 @@ def track_opportunity(
         stage: Current pipeline stage.
         expected_close: Expected close date string.
         champion_contact: Champion contact info.
+        account_id: Account UUID.
 
     Returns:
         The opportunity dict.
     """
     if _use_supabase():
         return _get_supabase_storage().pipeline.track_opportunity(
-            company_name, stage, expected_close, champion_contact
+            company_name, stage, expected_close, champion_contact, account_id
         )
     data = _load()
-    for opp in data["opportunities"]:
+    for opp in _filter_by_account(data["opportunities"], account_id):
         if opp["company_name"].lower() == company_name.lower():
             return opp
     opp = {
         "opportunity_id": str(uuid.uuid4()),
+        "account_id": account_id,
         "company_name": company_name,
         "stage": stage,
         "expected_close": expected_close,
@@ -90,19 +100,20 @@ def track_opportunity(
     return opp
 
 
-def untrack(company_name: str) -> bool:
+def untrack(company_name: str, account_id: Optional[str] = None) -> bool:
     """Stop tracking an opportunity by company name.
 
     Returns:
         True if removed, False if not found.
     """
     if _use_supabase():
-        return _get_supabase_storage().pipeline.untrack(company_name)
+        return _get_supabase_storage().pipeline.untrack(company_name, account_id)
     data = _load()
     before = len(data["opportunities"])
     data["opportunities"] = [
         o for o in data["opportunities"]
         if o["company_name"].lower() != company_name.lower()
+        or (account_id is not None and o.get("account_id") != account_id)
     ]
     if len(data["opportunities"]) < before:
         _save(data)
@@ -110,12 +121,11 @@ def untrack(company_name: str) -> bool:
     return False
 
 
-def get_opportunity(company_name: str) -> Optional[dict]:
+def get_opportunity(company_name: str, account_id: Optional[str] = None) -> Optional[dict]:
     """Get an opportunity by company name."""
     if _use_supabase():
-        return _get_supabase_storage().pipeline.get_opportunity(company_name)
-    data = _load()
-    for opp in data["opportunities"]:
+        return _get_supabase_storage().pipeline.get_opportunity(company_name, account_id)
+    for opp in _filter_by_account(_load()["opportunities"], account_id):
         if opp["company_name"].lower() == company_name.lower():
             return opp
     return None
@@ -125,6 +135,7 @@ def update_health_score(
     company_name: str,
     score: int,
     signals: Optional[list] = None,
+    account_id: Optional[str] = None,
 ) -> Optional[dict]:
     """Update health score and signals for an opportunity.
 
@@ -133,39 +144,40 @@ def update_health_score(
     """
     if _use_supabase():
         return _get_supabase_storage().pipeline.update_health_score(
-            company_name, score, signals
+            company_name, score, signals, account_id
         )
     data = _load()
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():
-            opp["health_score"] = score
-            if signals is not None:
-                opp["signals"] = signals
-            opp["last_assessed"] = datetime.now(timezone.utc).isoformat()
-            _save(data)
-            return opp
+            if account_id is None or opp.get("account_id") == account_id:
+                opp["health_score"] = score
+                if signals is not None:
+                    opp["signals"] = signals
+                opp["last_assessed"] = datetime.now(timezone.utc).isoformat()
+                _save(data)
+                return opp
     return None
 
 
-def get_unhealthy(threshold: int = 50) -> list[dict]:
+def get_unhealthy(threshold: int = 50, account_id: Optional[str] = None) -> list[dict]:
     """Get opportunities with health score below threshold."""
     if _use_supabase():
-        return _get_supabase_storage().pipeline.get_unhealthy(threshold)
+        return _get_supabase_storage().pipeline.get_unhealthy(threshold, account_id)
     data = _load()
     return [
-        o for o in data["opportunities"]
+        o for o in _filter_by_account(data["opportunities"], account_id)
         if o.get("status") == "active" and o.get("health_score", 0) < threshold
     ]
 
 
-def get_all_opportunities() -> list[dict]:
+def get_all_opportunities(account_id: Optional[str] = None) -> list[dict]:
     """Get all tracked opportunities."""
     if _use_supabase():
-        return _get_supabase_storage().pipeline.get_all_opportunities()
-    return _load()["opportunities"]
+        return _get_supabase_storage().pipeline.get_all_opportunities(account_id)
+    return _filter_by_account(_load()["opportunities"], account_id)
 
 
-def update_stage(company_name: str, new_stage: str) -> Optional[dict]:
+def update_stage(company_name: str, new_stage: str, account_id: Optional[str] = None) -> Optional[dict]:
     """Update the pipeline stage for an opportunity.
 
     Returns:
@@ -174,11 +186,12 @@ def update_stage(company_name: str, new_stage: str) -> Optional[dict]:
     if new_stage not in STAGES:
         return None
     if _use_supabase():
-        return _get_supabase_storage().pipeline.update_stage(company_name, new_stage)
+        return _get_supabase_storage().pipeline.update_stage(company_name, new_stage, account_id)
     data = _load()
     for opp in data["opportunities"]:
         if opp["company_name"].lower() == company_name.lower():
-            opp["stage"] = new_stage
-            _save(data)
-            return opp
+            if account_id is None or opp.get("account_id") == account_id:
+                opp["stage"] = new_stage
+                _save(data)
+                return opp
     return None

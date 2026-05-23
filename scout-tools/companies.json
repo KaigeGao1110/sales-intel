@@ -1,0 +1,114 @@
+{
+  "companies": [
+    {
+      "name": "TechFlow Solutions",
+      "total_raised": 47500000,
+      "last_round": "Series B",
+      "last_round_amount": 25000000,
+      "last_round_date": "2025-09-15",
+      "investors": ["Sequoia Capital", "Andreessen Horowitz", "Salesforce Ventures"],
+      "stage": "series_b",
+      "industry": "DevOps Automation",
+      "employees": 180
+    },
+    {
+      "name": "CloudMatrix Inc",
+      "total_raised": 120000000,
+      "last_round": "Series C",
+      "last_round_amount": 55000000,
+      "last_round_date": "2025-11-20",
+      "investors": ["Tiger Global", "Coatue", "Greenoaks"],
+      "stage": "series_c",
+      "industry": "Cloud Infrastructure",
+      "employees": 420
+    },
+    {
+      "name": "DataSync Labs",
+      "total_raised": 8500000,
+      "last_round": "Seed",
+      "last_round_amount": 5000000,
+      "last_round_date": "2025-08-01",
+      "investors": ["Y Combinator", "First Round Capital"],
+      "stage": "seed",
+      "industry": "Data Integration",
+      "employees": 25
+    },
+    {
+      "name": "SecureNet Systems",
+      "total_raised": 28000000,
+      "last_round": "Series A",
+      "last_round_amount": 15000000,
+      "last_round_date": "2025-06-10",
+      "investors": ["Accel Partners", "Bessemer Venture Partners"],
+      "stage": "series_a",
+      "industry": "Cybersecurity",
+      "employees": 95
+    },
+    {
+      "name": "AIVendor Corp",
+      "total_raised": 95000000,
+      "last_round": "Series B",
+      "last_round_amount": 40000000,
+      "last_round_date": "2025-07-22",
+      "investors": ["Nvidia Ventures", "Google Ventures", "Microsoft M12"],
+      "stage": "series_b",
+      "industry": "Enterprise AI",
+      "employees": 310
+    },
+    {
+      "name": "ScaleUp Platform",
+      "total_raised": 158000000,
+      "last_round": "Series C",
+      "last_round_amount": 75000000,
+      "last_round_date": "2024-03-15",
+      "investors": ["SoftBank Vision Fund", "Insight Partners", "General Catalyst"],
+      "stage": "series_c",
+      "industry": "E-commerce Platform",
+      "employees": 580
+    },
+    {
+      "name": "NexGen Software",
+      "total_raised": 6200000,
+      "last_round": "Series A",
+      "last_round_amount": 6200000,
+      "last_round_date": "2023-01-20",
+      "investors": ["Founders Fund"],
+      "stage": "series_a",
+      "industry": "HR Tech",
+      "employees": 45
+    },
+    {
+      "name": "Bright Future Analytics",
+      "total_raised": 35000000,
+      "last_round": "Series B",
+      "last_round_amount": 18000000,
+      "last_round_date": "2025-10-05",
+      "investors": ["红杉资本", "Matrix Partners", "Gradient Ventures"],
+      "stage": "series_b",
+      "industry": "Business Intelligence",
+      "employees": 130
+    },
+    {
+      "name": "InnovateTech",
+      "total_raised": 2200000,
+      "last_round": "Pre-Seed",
+      "last_round_amount": 1200000,
+      "last_round_date": "2026-01-10",
+      "investors": ["Angel Investors"],
+      "stage": "pre_seed",
+      "industry": "Developer Tools",
+      "employees": 8
+    },
+    {
+      "name": "GrowthForce",
+      "total_raised": 52000000,
+      "last_round": "Series B",
+      "last_round_amount": 28000000,
+      "last_round_date": "2025-04-18",
+      "investors": ["Bain Capital Ventures", "Social Capital"],
+      "stage": "series_b",
+      "industry": "Sales Enablement",
+      "employees": 175
+    }
+  ]
+}

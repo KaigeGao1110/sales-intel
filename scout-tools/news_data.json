@@ -1,0 +1,104 @@
+{
+  "articles": [
+    {
+      "company": "TechFlow Solutions",
+      "title": "TechFlow Solutions Expands European Operations with New Paris Office",
+      "source": "TechCrunch",
+      "date": "2026-02-15",
+      "summary": "TechFlow Solutions announced today the opening of their new European headquarters in Paris, marking a significant expansion into the EMEA market.",
+      "url": "https://example.com/techflow-europe",
+      "sentiment": "positive",
+      "category": "expansion"
+    },
+    {
+      "company": "CloudMatrix Inc",
+      "title": "CloudMatrix Raises $55M Series C to Accelerate Global Expansion",
+      "source": "Forbes",
+      "date": "2025-11-20",
+      "summary": "CloudMatrix Inc secures $55 million in Series C funding led by Tiger Global to expand its cloud infrastructure platform globally.",
+      "url": "https://example.com/cloudmatrix-seriesc",
+      "sentiment": "positive",
+      "category": "funding"
+    },
+    {
+      "company": "AIVendor Corp",
+      "title": "AIVendor Corp Launches Revolutionary Enterprise AI Assistant",
+      "source": "VentureBeat",
+      "date": "2026-01-20",
+      "summary": "AIVendor Corp unveils their new enterprise AI assistant designed to automate complex business workflows across departments.",
+      "url": "https://example.com/aivendor-launch",
+      "sentiment": "positive",
+      "category": "product_launch"
+    },
+    {
+      "company": "SecureNet Systems",
+      "title": "SecureNet Systems Hires Former CISO from Palo Alto Networks",
+      "source": "SecurityWeek",
+      "date": "2026-02-01",
+      "summary": "SecureNet Systems announces the appointment of Sarah Chen as Chief Information Security Officer, bringing deep enterprise security expertise.",
+      "url": "https://example.com/securenet-ciso",
+      "sentiment": "positive",
+      "category": "leadership"
+    },
+    {
+      "company": "ScaleUp Platform",
+      "title": "ScaleUp Platform Announces Strategic Partnership with Shopify",
+      "source": "Business Wire",
+      "date": "2025-12-10",
+      "summary": "ScaleUp Platform partners with Shopify to provide enhanced e-commerce capabilities to mid-market retailers.",
+      "url": "https://example.com/scaleup-shopify",
+      "sentiment": "positive",
+      "category": "partnership"
+    },
+    {
+      "company": "DataSync Labs",
+      "title": "DataSync Labs Achieves SOC 2 Type II Certification",
+      "source": "PR Newswire",
+      "date": "2026-01-05",
+      "summary": "DataSync Labs announces successful completion of SOC 2 Type II audit, enabling enterprise customers to confidently meet compliance requirements.",
+      "url": "https://example.com/datasync-soc2",
+      "sentiment": "positive",
+      "category": "milestone"
+    },
+    {
+      "company": "Bright Future Analytics",
+      "title": "Bright Future Analytics Reports 300% Year-Over-Year Revenue Growth",
+      "source": "The Wall Street Journal",
+      "date": "2026-02-20",
+      "summary": "Bright Future Analytics announces record revenue growth driven by strong demand for their business intelligence platform in the Asia-Pacific region.",
+      "url": "https://example.com/brightfuture-growth",
+      "sentiment": "positive",
+      "category": "expansion"
+    },
+    {
+      "company": "GrowthForce",
+      "title": "GrowthForce Introduces AI-Powered Sales Forecasting Module",
+      "source": "CRM Magazine",
+      "date": "2026-01-15",
+      "summary": "GrowthForce launches new AI-driven sales forecasting module that uses machine learning to predict revenue with 94% accuracy.",
+      "url": "https://example.com/growthforce-ai",
+      "sentiment": "positive",
+      "category": "product_launch"
+    },
+    {
+      "company": "TechFlow Solutions",
+      "title": "TechFlow Solutions Achieves 10,000 Customer Milestone",
+      "source": "Business Wire",
+      "date": "2025-10-30",
+      "summary": "TechFlow Solutions celebrates serving 10,000 enterprise customers across 45 countries as DevOps adoption accelerates.",
+      "url": "https://example.com/techflow-milestone",
+      "sentiment": "positive",
+      "category": "milestone"
+    },
+    {
+      "company": "NexGen Software",
+      "title": "NexGen Software Lays Off 15% of Workforce Amid Restructuring",
+      "source": "The Layoff Daily",
+      "date": "2025-09-01",
+      "summary": "NexGen Software announces workforce reduction as part of strategic shift toward profitability, affecting approximately 45 employees.",
+      "url": "https://example.com/nexgen-layoffs",
+      "sentiment": "negative",
+      "category": "restructuring"
+    }
+  ]
+}
